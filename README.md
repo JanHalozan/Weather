@@ -1,6 +1,6 @@
 #Welcome to Smart Weather Agent repo
 
-###Some guidelines to follow when developing for Spletni Inteligenti Agent (SIA)
+###Some guidelines to follow when developing for Spletni Inteligentni Agent (SIA)
 ###Code standards and guidelines
 Do not write more than 100 characters per line
 
