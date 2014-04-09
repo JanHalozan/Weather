@@ -11,7 +11,18 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-		// $this->call('UserTableSeeder');
+		$this->call('TestTableSeeder');
 	}
 
+}
+
+class TestTableSeeder extends Seeder
+{
+	public function run()
+	{
+		DB::table('test')->insert(array(
+			array('test_text' => 'lep dan', 'working' => 1),
+			array('test_text' => 'ni lep dan', 'working' => 0)
+		));
+	}
 }
