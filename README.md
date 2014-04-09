@@ -7,7 +7,7 @@ Do not write more than 100 characters per line
     //A few examples on how to write code
     //All comments and code are in english
     
-    //Example for loop
+    //Example of a for loop
     for (var i = 0; i < value; i++)
     {
         printSomethingOut("Hello world");
@@ -49,6 +49,9 @@ Do not write more than 100 characters per line
             $this->son = $son;
         }
     }
+    
+    //Example of an arithmetic expression
+    var something = 2 * (3 + pow(3, 2) * log(functionThatReturns4()));
     
 ####Documentation and code commenting
 Code commenting is mandatory on sections that are not self explanatory.
