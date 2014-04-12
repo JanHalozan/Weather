@@ -17,9 +17,9 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		$result = DB::table('test')->get();
-		foreach ($result as $r)
-			var_dump($r);
+		//$result = DB::table('test')->get();
+		//foreach ($result as $r)
+		//	var_dump($r);
 		return View::make('hello');
 	}
 
