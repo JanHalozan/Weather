@@ -21,12 +21,12 @@ class CitiesTableSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('cities')->insert([
-            ['name' => 'Maribor', 'woeid' => '530779'],
-            ['name' => 'Koper', 'woeid' => '530447'],
-            ['name' => 'Ljubljana', 'woeid' => '530634'],
-            ['name' => 'Ptuj', 'woeid' => '531279']
-        ]);
+        DB::table('cities')->insert(array(
+            array('name' => 'Maribor', 'woeid' => '530779'),
+            array('name' => 'Koper', 'woeid' => '530447'),
+            array('name' => 'Ljubljana', 'woeid' => '530634'),
+            array('name' => 'Ptuj', 'woeid' => '531279')
+        ));
     }
 }
 
