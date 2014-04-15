@@ -1,0 +1,15 @@
+crontab -e
+
+->odpre crontab editor v katerega dopišeš
+
+* */1 * * * php /absolutna_pot_doskripte
+
+razlaga zvezdic:
+1: minuta
+2: ura
+3: dan v mesecu
+4: mesec
+5: dan v tednu
+
+temu sledi ukaz 
+thats it folks
