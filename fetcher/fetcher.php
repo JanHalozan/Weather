@@ -6,6 +6,10 @@
  * Time: 11:47 AM
  */
 
+//Create globals and constants that will be used on the entire fetcher
+
+$database = new mysqli("CONNECTION STRING");
+
 //Yahoo weather API fetch
 
 //First lets get the missing WOEIDs

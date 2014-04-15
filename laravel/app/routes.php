@@ -13,12 +13,6 @@
 
 Route::get('/', 'HomeController@showWelcome');
 
-//Added for debugging fetcher - remove it when done
-Route::get('/fetcher', function()
-{
-    return View::make('fetcher');
-});
-
 /*
 Route::get('/', function()
 {
