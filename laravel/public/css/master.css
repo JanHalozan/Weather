@@ -1,3 +1,8 @@
+/********************************************
+
+CSS RESET AND NORMALIZE
+
+*********************************************/
 *
 {
     margin: 0;
@@ -10,40 +15,26 @@ html, body
 }
 
 /* colors */
-body {
+body
+{
    background-color: #ffffff;
 }
 
-header {
-    background-color: #4a708b;
-}
-
-footer {
-    background-color: #ca6649; 
-}
-/* colors */
-
-/* font-colors */
-h2, h3, h4, h5, h6, a, span, td
+p, h1, h2, h3, h4, h5, h6, a, span, td
 {
     color: white;
+    font-family: 'Roboto', sans-serif;
 }
 
-p,h1 
+p, h1
 {
     color: black;
 }
-/* font-colors */
 
 /* links-decoration */
-a {
-    text-decoration: none;
-}
-/* links-decoration */
-
-p, h1, h2, h3, h4, h5, h6, a, span, td
+a
 {
-    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
 }
 
 h1
@@ -60,12 +51,64 @@ h1
     margin: 0 auto -2em;
 }
 
+/********************************************
+
+HEADER
+
+*********************************************/
+
 header
 {
     width: 100%;
     height: 50px;
-    
+    background-color: #4a708b;
 }
+
+#header-content
+{
+    width: 500px;
+    margin: 0 auto;
+    background: yellow;
+    height: 50px;
+}
+
+/* title */
+#header-content h1
+{
+    padding: 5px;
+    float: left;
+}
+
+/* navigation links */
+#header-content ul
+{
+    position: relative;
+    height: 20px;
+    background: red;
+    float: right;
+    list-style: none;
+    right: 10px;
+    top: 14px;
+}
+
+#header-content ul li
+{
+    float: left;
+    margin-left: 5px;
+    background: blue;
+    height: 100%;
+}
+
+#header-content ul li:hover
+{
+    background: orange;
+}
+
+/********************************************
+
+CONTENT
+
+*********************************************/
 
 #content
 {
@@ -74,7 +117,14 @@ header
     margin-left: auto;
     margin-right: auto;
     color: black;
+    background: red;
 }
+
+/********************************************
+
+FOOTER
+
+*********************************************/
 
 footer, #push-div
 {
@@ -86,11 +136,26 @@ footer
 {
     width: 100%;
     height: 2em;
+    background-color: #ca6649;
 }
 
 #footer-content
 {
+    background: violet;
     width: 500px;
     margin: 0 auto;
     text-align: center;
+    height: 2em;
 }
+
+#footer-content p
+{
+    display: block;
+    margin-top: 5px;
+}
+
+/********************************************
+
+OTHER
+
+*********************************************/

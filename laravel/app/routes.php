@@ -11,16 +11,15 @@
 |
 */
 
-Route::get('/', 'HomeController@showWelcome');
+//Route the index page to our index controller
+Route::get('/', 'IndexController@index');
 
+//Commented out - was a default example provided by Laravel. I will remove it - Jan
+//Route::get('/', 'HomeController@showWelcome');
+
+
+//This is a test route - not used anymore. I will remove it - Jan
 Route::get('/test', function()
 {
    return View::make('test');
 });
-
-/*
-Route::get('/', function()
-{
-	return View::make('hello');
-});
-*/
