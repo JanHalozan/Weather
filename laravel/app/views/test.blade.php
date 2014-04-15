@@ -1,5 +1,5 @@
 @extends('master')
 
-@section('header')
+@section('content')
 <h1>Hello blade!</h1>
 @stop

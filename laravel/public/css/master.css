@@ -1,0 +1,66 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+html, body
+{
+    height: 100%;
+}
+
+p, h1, h2, h3, h4, h5, h6, a, span, td
+{
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+h1
+{
+    font-size: 2em;
+    font-weight: lighter;
+}
+
+#wrapper
+{
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -2em;
+}
+
+header
+{
+    width: 100%;
+    height: 50px;
+    background: red;
+}
+
+#content
+{
+    width: 500px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background: green;
+}
+
+footer, #push-div
+{
+    height: 2em;
+    clear: both;
+}
+
+footer
+{
+    width: 100%;
+    height: 2em;
+    background: blue;
+}
+
+#footer-content
+{
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
