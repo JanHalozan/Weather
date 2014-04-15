@@ -1,0 +1,215 @@
+Design baze
+
+city
+-id (bigint, AI)
+-name (string)
+-country (string)
+-country_code? (string)
+-latitude? (float)
+-longitude? (float)
+
+current_weather
+-id (bigint, AI)
+-city_id (bigint)
+-weather_condition_id (bigint)
+-reading_time (datetime)
+-temp (float)
+-pressure (float)
+-humidity
+-wind_speed (float)
+-wind_direction (int)
+-clouds (int)
+
+weather_condition
+-id (bigint, AI)
+-descirption (string) ['Rain, 'Cloudy', 'Sun shine' ,...]
+
+Open Weather Map - 65fec2c75fb2d93d3128cf9f7b38b8d0 - city_id
+
+array (size=11)
+  'coord' => 
+    array (size=2)
+      'lon' => float 15.65
+      'lat' => float 46.55
+  'sys' => 
+    array (size=4)
+      'message' => float 0.0064
+      'country' => string 'SI' (length=2)
+      'sunrise' => int 1397534958
+      'sunset' => int 1397583924
+  'weather' => 
+    array (size=1)
+      0 => 
+        array (size=4)
+          'id' => int 801
+          'main' => string 'Clouds' (length=6)
+          'description' => string 'few clouds' (length=10)
+          'icon' => string '02d' (length=3)
+  'base' => string 'cmc stations' (length=12)
+  'main' => 
+    array (size=5)
+      'temp' => float 281.78
+      'pressure' => int 1015
+      'temp_min' => float 280.93
+      'temp_max' => float 283.15
+      'humidity' => int 67
+  'wind' => 
+    array (size=3)
+      'speed' => float 2.06
+      'gust' => float 6.17
+      'deg' => int 310
+  'clouds' => 
+    array (size=1)
+      'all' => int 20
+  'dt' => int 1397548630
+  'id' => int 3195506
+  'name' => string 'Maribor' (length=7)
+  'cod' => int 200
+
+World Weather Online - zs55z9p2qc2x5r4qd4pv48vc - name
+
+Array
+(
+    [data] => Array
+        (
+            [current_condition] => Array
+                (
+                    [0] => Array
+                        (
+                            [cloudcover] => 50
+                            [humidity] => 66
+                            [observation_time] => 08:25 AM
+                            [precipMM] => 1.2
+                            [pressure] => 1016
+                            [temp_C] => 9
+                            [temp_F] => 48
+                            [visibility] => 10
+                            [weatherCode] => 116
+                            [weatherDesc] => Array
+                                (
+                                    [0] => Array
+                                        (
+                                            [value] => Partly Cloudy
+                                        )
+
+                                )
+
+                            [weatherIconUrl] => Array
+                                (
+                                    [0] => Array
+                                        (
+                                            [value] => http://cdn.worldweatheronline.net/images/wsymbols01_png_64/wsymbol_0002_sunny_intervals.png
+                                        )
+
+                                )
+
+                            [winddir16Point] => NNE
+                            [winddirDegree] => 30
+                            [windspeedKmph] => 9
+                            [windspeedMiles] => 6
+                        )
+
+                )
+
+            [request] => Array
+                (
+                    [0] => Array
+                        (
+                            [query] => Maribor, Slovenia
+                            [type] => City
+                        )
+
+                )
+
+            [weather] => Array
+                (
+                    [0] => Array
+                        (
+                            [date] => 2014-04-15
+                            [precipMM] => 9.3
+                            [tempMaxC] => 11
+                            [tempMaxF] => 53
+                            [tempMinC] => -1
+                            [tempMinF] => 31
+                            [weatherCode] => 176
+                            [weatherDesc] => Array
+                                (
+                                    [0] => Array
+                                        (
+                                            [value] => Patchy rain nearby
+                                        )
+
+                                )
+
+                            [weatherIconUrl] => Array
+                                (
+                                    [0] => Array
+                                        (
+                                            [value] => http://cdn.worldweatheronline.net/images/wsymbols01_png_64/wsymbol_0009_light_rain_showers.png
+                                        )
+
+                                )
+
+                            [winddir16Point] => N
+                            [winddirDegree] => 7
+                            [winddirection] => N
+                            [windspeedKmph] => 18
+                            [windspeedMiles] => 11
+                        )
+
+                )
+
+        )
+
+)
+
+Yahoo weather - WOEID
+
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0" version="2.0">
+   <channel>
+      <title>Yahoo! Weather - Sunnyvale, CA</title>
+      <link>http://us.rd.yahoo.com/dailynews/rss/weather/Sunnyvale__CA/*http://weather.yahoo.com/forecast/USCA1116_f.html</link>
+      <description>Yahoo! Weather for Sunnyvale, CA</description>
+      <language>en-us</language>
+      <lastBuildDate>Fri, 18 Dec 2009 9:38 am PST</lastBuildDate>
+      <ttl>60</ttl>
+      <yweather:location city="Sunnyvale" region="CA" country="United States" />
+      <yweather:units temperature="F" distance="mi" pressure="in" speed="mph" />
+      <yweather:wind chill="50" direction="0" speed="0" />
+      <yweather:atmosphere humidity="94" visibility="3" pressure="30.27" rising="1" />
+      <yweather:astronomy sunrise="7:17 am" sunset="4:52 pm" />
+      <image>
+         <title>Yahoo! Weather</title>
+         <width>142</width>
+         <height>18</height>
+         <link>http://weather.yahoo.com</link>
+         <url>https://s.yimg.com/zz/combo?a/i/us/nws/th/main_142b.gif</url>
+      </image>
+      <item>
+         <title>Conditions for Sunnyvale, CA at 9:38 am PST</title>
+         <geo:lat>37.37</geo:lat>
+         <geo:long>-122.04</geo:long>
+         <link>http://us.rd.yahoo.com/dailynews/rss/weather/Sunnyvale__CA/*http://weather.yahoo.com/forecast/USCA1116_f.html</link>
+         <pubDate>Fri, 18 Dec 2009 9:38 am PST</pubDate>
+         <yweather:condition text="Mostly Cloudy" code="28" temp="50" date="Fri, 18 Dec 2009 9:38 am PST" />
+         <description><![CDATA[<img src="https://s.yimg.com/zz/combo?a/i/us/we/52/28.gif"/><br />
+<b>Current Conditions:</b><br />
+Mostly Cloudy, 50 F<BR />
+<BR /><b>Forecast:</b><BR />
+Fri - Partly Cloudy. High: 62 Low: 49<br />
+Sat - Partly Cloudy. High: 65 Low: 49<br />
+<br />
+<a href="http://us.rd.yahoo.com/dailynews/rss/weather/Sunnyvale__CA/*http://weather.yahoo.com/forecast/USCA1116_f.html">Full Forecast at Yahoo! Weather</a><BR/><BR/>
+(provided by <a href="http://www.weather.com" >The Weather Channel</a>)<br/>]]></description>
+         <yweather:forecast day="Fri" date="18 Dec 2009" low="49" high="62" text="Partly Cloudy" code="30" />
+         <yweather:forecast day="Sat" date="19 Dec 2009" low="49" high="65" text="Partly Cloudy" code="30" />
+         <guid isPermaLink="false">USCA1116_2009_12_18_9_38_PST</guid>
+      </item>
+   </channel>
+</rss>
+
+Forecast for Developers
+
+
+
