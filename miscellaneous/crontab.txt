@@ -1,0 +1,3 @@
+crontab -e
+
+* */1 * * * php /srv/fetcher/fetcher.php
