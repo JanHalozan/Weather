@@ -11,32 +11,15 @@
 *
 -->
 
-@section('header')
-<a href="/">
-    <h1 id="title">
-        Weatherbound
-    </h1>
-</a>
-<ul id="navigation">
-    <a href="login"><li>Log in</li></a>
-    <a href="login"><li>Log in</li></a>
-    <a href="login"><li>Log in</li></a>
-</ul>
-@stop
-
 @section('content')
 
 {{-- This is a blade comment, I will remove it soon, now its here just for the reference --}}
 {{-- Here we echo out the data that we got from our controller --}}
-{{ $data }}
+{{-- $data --}}
 
-@stop
+<h4>
+    This site is under construction. It will be up and running shortly.
+</h4>
 
-@section('footer')
-<div id="footer-content">
-    <p>
-        Copyright &copy; Weatherbound.
-    </p>
-</div>
 @stop
 

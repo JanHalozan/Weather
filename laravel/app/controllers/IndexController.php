@@ -20,7 +20,7 @@ class IndexController extends BaseController
         $place = 'Maribor';
 
         //Populate our view with data for the current city
-        $view = View::make('index', array('data' => Index::placeData($place)));
+        $view = View::make('index', array('data' => CurrentWeather::currentConditionForPlace($place)));
 
 
         return $view;
