@@ -1,0 +1,32 @@
+#frame 
+{
+	/* All other things are calculated with that height */
+	/* changing this will affect whole layout*/
+	height: 500px;
+
+	width: 100%;
+}
+
+#weather-guy 
+{
+	float: left;
+	height: 100%;
+	width: 300px;
+	background-color: blue;
+}
+
+#weather-panel 
+{
+	float: right;
+	height:50%;
+	width: 450px;
+	background-color: purple; 
+}
+
+#tasks 
+{
+	float: right;
+	height: 50%;
+	width: 450px;
+	background-color: green; 
+}
