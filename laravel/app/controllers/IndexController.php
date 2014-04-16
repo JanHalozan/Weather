@@ -20,8 +20,11 @@ class IndexController extends BaseController
         $place = 'Maribor';
 
         //Populate our view with data for the current city
-        $view = View::make('index', array('data' => CurrentWeather::currentConditionForPlace($place)));
+        $view = View::make('index');
 
+        //$record = CurrentWeather::where('name', 'like', $place);
+        $record = "";
+        $view->temperature = $record;
 
         return $view;
     }

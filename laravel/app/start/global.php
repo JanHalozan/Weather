@@ -48,7 +48,10 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 
 App::error(function(Exception $exception, $code)
 {
-	Log::error($exception);
+    Log::error($exception);
+
+    //Pop up a nice 404 page
+    return Response::view('errors.missing', array(), 404);
 });
 
 /*
