@@ -3,7 +3,6 @@
 	/* All other things are calculated with that height */
 	/* changing this will affect whole layout*/
 	height: 500px;
-
 	width: 100%;
 }
 
@@ -11,7 +10,7 @@
 {
 	float: left;
 	height: 100%;
-	width: 300px;
+	width: 40%;
 	background-color: blue;
 }
 
@@ -19,41 +18,66 @@
 {
 	float: right;
 	height:50%;
-	width: 450px;
-	background-color: purple; 
+	width: 60%;
 }
 
 #frame #tasks 
 {
 	float: right;
 	height: 50%;
-	width: 450px;
+	width: 60%;
 	background-color: green; 
 }
 
 /* info-panel -> first line */
-#frame #info-panel #first-line {
+#frame #info-panel #first-line 
+{
 	height: 55%;
 	width: 100%;
 }
 
-#frame #info-panel #first-line #icon {
+#frame #info-panel #first-line #icon 
+{
 	float: left;
 	height: 100%;
-	width: 50%;
+	width: 45%;
 	background-color: gray;
 }
 
-#frame #info-panel #first-line #temperature {
+#frame #info-panel #first-line #temperature
+{
 	float: right;
 	height: 100%;
-	width: 50%;
-	background-color: black;
+	width: 55%;
+	background-color: orange;
+}
+
+#frame #info-panel #first-line #temperature p 
+{
+	position: relative;
+
+	font-weight: 100;
+	font-size: 9.5em;
+
+	text-align: center;
+	line-height: 0.8;
+	letter-spacing: -0.05em;
+
+	background-color: red;
 }
 
 /* info-panel -> second-line */
-#frame #info-panel #second-line {
+#frame #info-panel #second-line 
+{
 	width: 100%;
 	height: 25%;
 	background-color: yellow;
+}
+
+/* info-panel -> third-line */
+#frame #info-panel #third-line 
+{
+	width: 100%;
+	height: 20%;
+	background-color: red;
 }

@@ -2,6 +2,7 @@
 
 @section('head')
 	{{HTML::style('css/index.css')}}
+	{{HTML::script('js/index.js')}}
 @stop
 
 @section('content')
@@ -16,11 +17,15 @@
 					
 				</div>
 				<div id="temperature">
-					{{ $temperature }}
+					<p>{{ $temperature }}°</p>
 				</div>
 			</div>
 			
 			<div id="second-line">
+				
+			</div>
+
+			<div id="third-line">
 				
 			</div>
 		</div>
