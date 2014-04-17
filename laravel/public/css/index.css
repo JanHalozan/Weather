@@ -7,7 +7,7 @@
 	width: 100%;
 }
 
-#weather-guy 
+#frame #weather-guy 
 {
 	float: left;
 	height: 100%;
@@ -15,7 +15,7 @@
 	background-color: blue;
 }
 
-#weather-panel 
+#frame #info-panel 
 {
 	float: right;
 	height:50%;
@@ -23,10 +23,20 @@
 	background-color: purple; 
 }
 
-#tasks 
+#frame #tasks 
 {
 	float: right;
 	height: 50%;
 	width: 450px;
 	background-color: green; 
+}
+
+#frame #info-panel #first-line {
+	height: 60%;
+	width: 100%;
+	background-color: black;  
+}
+
+#frame #info-panel #first-line #icon {
+
 }

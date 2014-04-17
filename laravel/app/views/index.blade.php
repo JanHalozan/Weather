@@ -10,8 +10,15 @@
 			
 		</div>
 		
-		<div id="weather-panel">
-			
+		<div id="info-panel">
+			<div id="first-line">
+				<div id="icon">
+					
+				</div>
+				<div id="temperature">
+					{{ $temperature }}
+				</div>
+			</div>
 		</div>
 
 		<div id="tasks">
