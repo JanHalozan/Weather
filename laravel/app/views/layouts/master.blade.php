@@ -17,7 +17,7 @@
                         </h1>
                     </a>
                     <ul id="navigation">
-                        <a href="login"><li>Log in</li></a>
+                        <a href="login"><li>{{ Lang::get('guides.login') }}</li></a>
                     </ul>
                     @show
                 </div>
