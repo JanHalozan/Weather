@@ -19,6 +19,10 @@
 					{{ $temperature }}
 				</div>
 			</div>
+			
+			<div id="second-line">
+				
+			</div>
 		</div>
 
 		<div id="tasks">

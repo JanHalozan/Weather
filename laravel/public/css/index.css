@@ -31,12 +31,29 @@
 	background-color: green; 
 }
 
+/* info-panel -> first line */
 #frame #info-panel #first-line {
-	height: 60%;
+	height: 55%;
 	width: 100%;
-	background-color: black;  
 }
 
 #frame #info-panel #first-line #icon {
+	float: left;
+	height: 100%;
+	width: 50%;
+	background-color: gray;
+}
 
+#frame #info-panel #first-line #temperature {
+	float: right;
+	height: 100%;
+	width: 50%;
+	background-color: black;
+}
+
+/* info-panel -> second-line */
+#frame #info-panel #second-line {
+	width: 100%;
+	height: 25%;
+	background-color: yellow;
 }
