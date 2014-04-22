@@ -75,7 +75,7 @@
 	position: relative;
 	text-align: center;
 
-	font-weight: 400;
+	font-weight: 300;
 	font-size: 3em;
 
 	line-height: 0.8;
@@ -110,7 +110,7 @@
 #frame #title-fact p
 {
 	position: relative;
-	font-weight: 400;
+	font-weight: 500;
 }
 
 #frame #fact 

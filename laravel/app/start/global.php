@@ -51,7 +51,7 @@ App::error(function(Exception $exception, $code)
     Log::error($exception);
 
     //Pop up a nice 404 page
-    return Response::view('errors.missing', array(), 404);
+    //return Response::view('errors.missing', array(), 404);
 });
 
 /*

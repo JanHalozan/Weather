@@ -39,7 +39,7 @@
 		</div>
 
 		<div id="fact">
-			<p>Humans are the only primates that don’t have pigment in the palms of their hands.</p>
+			<p>{{$fact}}</p>
 		</div>
 	</div>
 @stop

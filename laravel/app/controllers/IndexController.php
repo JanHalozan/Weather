@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: janhalozan
@@ -10,12 +11,11 @@
  *
  *
  */
-
-class IndexController extends BaseController
+class IndexController extends BaseController 
 {
+
     //This is the default action
-    public function index()
-    {
+    public function index() {
         //Get the user location
         $place = 'Maribor';
 
@@ -26,6 +26,20 @@ class IndexController extends BaseController
         $record = "-40";
         $view->temperature = $record;
 
+        //Useless Fact parse        
+        $html = file_get_contents("http://uselessfacts.net/");
+        
+        $doc = new DOMDocument();
+        @$doc->loadHTML($html);
+
+        $xPath = new DomXPath($doc);
+       	$temp = $xPath->query("//div[@class='facttext']");
+
+        //print_r($temp);
+        
+        $view->fact = $temp->item(1)->nodeValue;
+        //$view->fact = "nekaj";
         return $view;
     }
+
 }
