@@ -33,6 +33,10 @@
 		<div id="tasks">
 			
 		</div>
+
+		<div id="fact">
+			
+		</div>
 	</div>
 @stop
 
