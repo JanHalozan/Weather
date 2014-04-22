@@ -120,7 +120,8 @@
 	width: 100%;
 }
 
-#frame #fact p {
+#frame #fact p 
+{
 	position: relative;
 	display: inline-block;
 	text-align: center;

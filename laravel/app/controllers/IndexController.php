@@ -15,7 +15,8 @@ class IndexController extends BaseController
 {
 
     //This is the default action
-    public function index() {
+    public function index() 
+    {
         //Get the user location
         $place = 'Maribor';
 
@@ -26,19 +27,21 @@ class IndexController extends BaseController
         $record = "-40";
         $view->temperature = $record;
 
-        //Useless Fact parse        
+        /* Useless Fact parse */
+        // Get content of html
         $html = file_get_contents("http://uselessfacts.net/");
         
+        // Load that content and create xPath
         $doc = new DOMDocument();
         @$doc->loadHTML($html);
-
         $xPath = new DomXPath($doc);
-       	$temp = $xPath->query("//div[@class='facttext']");
-
-        //print_r($temp);
         
-        $view->fact = $temp->item(1)->nodeValue;
-        //$view->fact = "nekaj";
+        // Find all facts on the first page and chose one randomly
+       	$temp = $xPath->query("//div[@class='facttext']");
+        $factNumber = rand(0, $temp->length);
+        // Create variable fact which is passed to the view
+        $view->fact = $temp->item($factNumber)->nodeValue;
+        
         return $view;
     }
 
