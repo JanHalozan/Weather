@@ -22,11 +22,11 @@
 			</div>
 			
 			<div id="second-line">
-				
+				<p>Mostly cloudy</p>
 			</div>
 
 			<div id="third-line">
-				
+				<p>Maribor Slovenia</p>
 			</div>
 		</div>
 
@@ -34,8 +34,12 @@
 			
 		</div>
 
+		<div id="title-fact">
+			<p>Did you know?</p>
+		</div>
+
 		<div id="fact">
-			
+			<p>Humans are the only primates that don’t have pigment in the palms of their hands.</p>
 		</div>
 	</div>
 @stop
