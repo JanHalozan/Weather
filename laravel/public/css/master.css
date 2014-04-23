@@ -48,7 +48,7 @@ h1
     min-height: 100%;
     height: auto !important;
     height: 100%;
-    margin: 0 auto -2em;
+    margin: 0 auto -1.5em;
 }
 
 /********************************************
@@ -128,14 +128,13 @@ FOOTER
 
 footer, #push-div
 {
-    height: 2em;
+    height: 1.5em;
     clear: both;
 }
 
 footer
 {
     width: 100%;
-    height: 2em;
     background-color: #ca6649;
 }
 
@@ -145,13 +144,12 @@ footer
     width: 750px;
     margin: 0 auto;
     text-align: center;
-    height: 2em;
+    height: 1.5em;
 }
 
 #footer-content p
 {
     display: block;
-    margin-top: 5px;
 }
 
 /********************************************
