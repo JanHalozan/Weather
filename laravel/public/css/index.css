@@ -110,13 +110,13 @@
 #frame #title-fact p
 {
 	position: relative;
+	font-size: 1em;
 	font-weight: 500;
 }
 
 #frame #fact 
 {
 	float: left;
-	height: 7%;
 	width: 100%;
 }
 
@@ -127,7 +127,5 @@
 	text-align: center;
 
 	font-weight: 300;
-	font-size: 1.7em;
-
-	letter-spacing: -0.05em;
+	font-size: 1.4em;
 }

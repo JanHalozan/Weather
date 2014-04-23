@@ -38,7 +38,8 @@ class IndexController extends BaseController
         
         // Find all facts on the first page and chose one randomly
        	$temp = $xPath->query("//div[@class='facttext']");
-        $factNumber = rand(0, $temp->length);
+        $factNumber = rand(0, $temp->length-1);
+
         // Create variable fact which is passed to the view
         $view->fact = $temp->item($factNumber)->nodeValue;
         
