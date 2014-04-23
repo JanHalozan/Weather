@@ -79,18 +79,19 @@ function owmFetch($city_data)
 
             //Read information
             $reading->city_id = $city_data['id'];
-            $reading->reading_time = date('d-m-Y H:i:s', $json_data['dt']);
+            $reading->reading_time = date('Y-m-d H:i:s', $json_data['dt']);
             $reading->temperature = floatval($json_data['main']['temp']) - 273.15;
             $reading->pressure = floatval($json_data['main']['pressure']);
             $reading->humidity = floatval($json_data['main']['humidity']);
             $reading->wind_speed = floatval($json_data['wind']['speed']);
             $reading->wind_direction = intval($json_data['wind']['deg']);
             $reading->cloudiness = intval($json_data['clouds']['all']);
-            $reading->sunrise = date('d-m-Y H:i:s', $json_data['sys']['sunrise']);
-            $reading->sunset = date('d-m-Y H:i:s', $json_data['sys']['sunset']);
+            $reading->sunrise = date('Y-m-d H:i:s', $json_data['sys']['sunrise']);
+            $reading->sunset = date('Y-m-d H:i:s', $json_data['sys']['sunset']);
 
             //Read all weather conditions
             $weather_conditions_read = array();
+            $day = true;
             foreach ($json_data['weather'] as $weather)
             {
                 $day = substr($weather['icon'], 2, 1) == 'd'? true : false;
@@ -120,16 +121,39 @@ function owmFetch($city_data)
 //Create globals and constants that will be used on the entire fetcher
 $database = new mysqli('localhost', 'developer', 'Sup3rG3sL0', 'development');
 
+//Get a list of weather conditions
+$conditions = mysqli_query($database, "SELECT * FROM weather_conditions");
+
 //Get a list of cities to fetch data for
 $cities = mysqli_query($database, "SELECT ci.id, ci.name, ci.api_id, co.name as country, co.country_code FROM cities as ci, countries as co WHERE ci.country_id = co.id");
-if ($cities)
+if ($cities && $conditions)
 {
+    //Create a friendly array of conditions
+    $conditions_array = array();
+    //$cities = mysqli_fetch_array($cities);
+    foreach ($conditions as $c)
+    {
+        $conditions_array[$c['condition']] = $c['id'];
+    }
+
+    var_dump($conditions_array);
+
     //Read information for each city and store parsed information in database
     foreach ($cities as $city)
     {
-        var_dump($city);
         $reading = owmFetch($city);
-        var_dump($reading);
+        if ($reading == null) continue;
+
+        //Get weather condition id
+        $condition_id = intval($conditions_array[$reading->weather_condition]);
+
+        //Insert into db
+        $sql = "INSERT INTO weather_current(city_id, reading_time, condition_id, temperature, pressure, humidity, wind_direction, wind_speed, sunrise, sunset, cloudiness, day)
+        VALUES(".$reading->city_id.", '".$reading->reading_time."', ".$condition_id.", ".$reading->temperature.",
+        ".$reading->pressure.", ".$reading->humidity.", ".$reading->wind_direction.", ".$reading->wind_speed.",
+        '".$reading->sunrise."', '".$reading->sunset."', ".$reading->cloudiness.", ".$reading->day.")";
+
+        mysqli_query($database, $sql);
     }
 }
 
