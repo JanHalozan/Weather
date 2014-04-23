@@ -35,6 +35,7 @@
 		</div>
 
 		<div id="title-fact">
+		<hr/>
 			<p>Did you know?</p>
 		</div>
 

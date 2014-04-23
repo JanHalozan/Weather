@@ -110,6 +110,12 @@
 }
 
 /* info-panel -> fact of the day */
+
+hr{
+	border: 0;
+	border-top: 1px solid black;
+}
+
 #frame #title-fact
 {
 	float: left;
