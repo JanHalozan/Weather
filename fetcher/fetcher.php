@@ -15,6 +15,20 @@ $owm_api_key = '65fec2c75fb2d93d3128cf9f7b38b8d0';
 //Set timezone to be sure
 date_default_timezone_set('GMT');
 
+//Weather conditions, order is priority, if a read returns more conditions, the topmost is picked
+$weather_conditions = array(
+    '09' => 'Shower rain',
+    '10' => 'Rain',
+    '11' => 'Thunderstorm',
+    '13' => 'Snow',
+    '01' => 'Sky is clear',
+    '02' => 'Few clouds',
+    '03' => 'Scattered clouds',
+    '04' => 'Broken clouds',
+    '50' => 'Mist'
+);
+
+
 //Current weather reading data structure
 class CurrentReading
 {
@@ -31,6 +45,7 @@ class CurrentReading
     public $cloudiness;
     public $sunrise;
     public $sunset;
+    public $day;
 }
 
 //Open weather map API fetch
@@ -43,7 +58,7 @@ function owmFetch($city_data)
     //TODO change to API id of city
     curl_setopt_array($curl, array(
         CURLOPT_RETURNTRANSFER => 1,
-        CURLOPT_TIMEOUT => 3,
+        CURLOPT_TIMEOUT => 5,
         CURLOPT_URL => 'http://api.openweathermap.org/data/2.5/weather?q='.$city_data['name'].','.
             $city_data['country_code'].'&APPID='.$owm_api_key,
         CURLOPT_USERAGENT => 'Weatherbound'
@@ -65,7 +80,6 @@ function owmFetch($city_data)
 
             //TODO change to id once we have that information
             $reading->city_id = $city_data['name'];
-            $reading->weather_condition = $json_data['weather'][0]['main'];
             $reading->reading_time = date('d-m-Y H:i:s', $json_data['dt']);
             $reading->temperature = floatval($json_data['main']['temp']) - 273.15;
             $reading->pressure = floatval($json_data['main']['pressure']);
@@ -76,6 +90,27 @@ function owmFetch($city_data)
             $reading->sunrise = date('d-m-Y H:i:s', $json_data['sys']['sunrise']);
             $reading->sunset = date('d-m-Y H:i:s', $json_data['sys']['sunset']);
 
+            //Read all weather conditions
+            $weather_conditions_read = array();
+            foreach ($json_data['weather'] as $weather)
+            {
+                $day = substr($weather['icon'], 2, 1) == 'd'? true : false;
+                array_push($weather_conditions_read, substr($weather['icon'], 0, 2));
+            }
+
+            //Save day information
+            $reading->day = $day;
+
+            //Pick only the topmost
+            global $weather_conditions;
+            foreach ($weather_conditions as $condition_key => $condition_value)
+            {
+                if (is_integer(array_search($condition_key, $weather_conditions_read)))
+                {
+                    $reading->weather_condition = $condition_value;
+                    break;
+                }
+            }
             return $reading;
         }
     }
