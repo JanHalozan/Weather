@@ -17,7 +17,10 @@ html, body
 /* colors */
 body
 {
-   background-color: #ffffff;
+    background: -webkit-linear-gradient(#5a8dc4 10%,  #9fbbd2 40% , #dd7f4b 70%, #F0A153 100%); /* Safari 5.1 to 6.0 and Chrome 10+ */
+    background: -o-linear-gradient(#5a8dc4 10%,  #9fbbd2 40% , #dd7f4b 70%, #F0A153 100%); /* For Opera 11.6 to 12.0 */
+    background: -moz-linear-gradient(#5a8dc4 10%,  #9fbbd2 40% , #dd7f4b 70%, #F0A153 100%); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#5a8dc4 10%,  #9fbbd2 40% , #dd7f4b 70%, #F0A153 100%); /* Standard syntax */
 }
 
 p, h1, h2, h3, h4, h5, h6, a, span, td
@@ -112,12 +115,19 @@ CONTENT
 
 #content
 {
-    /* SM4rk changed on 600px */
     width: 600px;
     margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
     color: black;
+}
+
+/* Responsive for 1920 x 1080 */
+@media screen and (max-width: 1920px){
+    #content
+    {
+        width: 800px;
+    }
 }
 
 /********************************************

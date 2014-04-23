@@ -51,7 +51,7 @@
 #frame #info-panel #first-line #icon img
 {
 	display: block;
-	float:left;
+	margin: auto;
 	height: 100%;
 }
 
@@ -67,9 +67,9 @@
 	position: relative;
 
 	font-weight: 100;
-	font-size: 9.0em;
+	font-size: 9em;
 
-	text-align: right;
+	text-align: center;
 	line-height: 0.8;
 	letter-spacing: -0.05em;
 }
@@ -141,4 +141,16 @@
 
 	font-weight: 300;
 	font-size: 1.4em;
+}
+
+@media screen and (max-width: 1920px){
+	#frame 
+	{
+		height: 600px;
+	}
+
+	#frame #info-panel #first-line #temperature p 
+	{
+		font-size: 11em;
+	}
 }
