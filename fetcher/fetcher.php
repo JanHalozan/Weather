@@ -59,8 +59,7 @@ function owmFetch($city_data)
     curl_setopt_array($curl, array(
         CURLOPT_RETURNTRANSFER => 1,
         CURLOPT_TIMEOUT => 5,
-        CURLOPT_URL => 'http://api.openweathermap.org/data/2.5/weather?q='.$city_data['name'].','.
-            $city_data['country_code'].'&APPID='.$owm_api_key,
+        CURLOPT_URL => 'http://api.openweathermap.org/data/2.5/weather?id='.$city_data['api_id'].'&APPID='.$owm_api_key,
         CURLOPT_USERAGENT => 'Weatherbound'
     ));
 
@@ -73,13 +72,13 @@ function owmFetch($city_data)
     {
         $json_data = json_decode($response, true);
 
-        if ($json_data)
+        if ($json_data && isset($json_data['dt']))
         {
             //Create reading
             $reading = new CurrentReading();
 
-            //TODO change to id once we have that information
-            $reading->city_id = $city_data['name'];
+            //Read information
+            $reading->city_id = $city_data['id'];
             $reading->reading_time = date('d-m-Y H:i:s', $json_data['dt']);
             $reading->temperature = floatval($json_data['main']['temp']) - 273.15;
             $reading->pressure = floatval($json_data['main']['pressure']);
@@ -113,40 +112,28 @@ function owmFetch($city_data)
             }
             return $reading;
         }
+        else return null;
     }
+    else return null;
 }
 
 //Create globals and constants that will be used on the entire fetcher
-//$database = new mysqli('localhost', 'developer', 'Sup3rG3sL0', 'development');
+$database = new mysqli('localhost', 'developer', 'Sup3rG3sL0', 'development');
 
 //Get a list of cities to fetch data for
-//TODO add database read
-//Temp array
-$cities = array(
-    0 => array(
-        'name' => 'Maribor',
-        'country_code' => 'SI',
-    ),
-    1 => array(
-        'name' => 'Ljubljana',
-        'country_code' => 'SI'
-    ),
-    2 => array(
-        'name' => 'Berlin',
-        'country_code' => 'DE'
-    ),
-    3 => array(
-        'name' => 'London',
-        'country_code' => 'GB'
-    ),
-);
-
-//Test calls
-foreach ($cities as $city)
+$cities = mysqli_query($database, "SELECT ci.id, ci.name, ci.api_id, co.name as country, co.country_code FROM cities as ci, countries as co WHERE ci.country_id = co.id");
+if ($cities)
 {
-    $reading = owmFetch($city);
-    var_dump($reading);
+    //Read information for each city and store parsed information in database
+    foreach ($cities as $city)
+    {
+        var_dump($city);
+        $reading = owmFetch($city);
+        var_dump($reading);
+    }
 }
+
+mysqli_close($database);
 
 
 
