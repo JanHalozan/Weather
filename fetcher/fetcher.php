@@ -23,12 +23,14 @@ class CurrentReading
     public $city_id;
     public $weather_condition;
     public $reading_time;
-    public $temp;
+    public $temperature;
     public $pressure;
     public $humidity;
     public $wind_speed;
     public $wind_direction;
-    public $clouds;
+    public $cloudiness;
+    public $sunrise;
+    public $sunset;
 }
 
 //Open weather map API fetch
@@ -65,12 +67,14 @@ function owmFetch($city_data)
             $reading->city_id = $city_data['name'];
             $reading->weather_condition = $json_data['weather'][0]['main'];
             $reading->reading_time = date('d-m-Y H:i:s', $json_data['dt']);
-            $reading->temp = floatval($json_data['main']['temp']) - 273.15;
+            $reading->temperature = floatval($json_data['main']['temp']) - 273.15;
             $reading->pressure = floatval($json_data['main']['pressure']);
             $reading->humidity = floatval($json_data['main']['humidity']);
             $reading->wind_speed = floatval($json_data['wind']['speed']);
             $reading->wind_direction = intval($json_data['wind']['deg']);
-            $reading->clouds = intval($json_data['clouds']['all']);
+            $reading->cloudiness = intval($json_data['clouds']['all']);
+            $reading->sunrise = date('d-m-Y H:i:s', $json_data['sys']['sunrise']);
+            $reading->sunset = date('d-m-Y H:i:s', $json_data['sys']['sunset']);
 
             return $reading;
         }
