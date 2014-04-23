@@ -14,6 +14,8 @@
 //Route the index page to our index controller and run the index action
 Route::get('/', 'IndexController@index');
 
+Route::get('cinema', 'CinemaController@index');
+
 //Login route
 Route::get('login', 'LoginController@index');
 

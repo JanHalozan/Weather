@@ -10,4 +10,13 @@
 
 @section('content')
 <h4>Welcome back</h4>
+
+{{ Form::open(array()) }}
+
+    <h2>Register</h2>
+
+    {{ Form::text('username'); }}
+
+{{ Form::close() }}
+
 @stop
