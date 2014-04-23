@@ -8,13 +8,13 @@
 @section('content')
 	<div id="frame">
 		<div id="weather-guy">
-			
+			<img src="images/WeatherGuy.png" alt="Weatherguy"/>
 		</div>
 		
 		<div id="info-panel">
 			<div id="first-line">
 				<div id="icon">
-					
+					<img src="images/Cloudy.png" alt="Cloudy"/>
 				</div>
 				<div id="temperature">
 					<p>{{ $temperature }}°</p>

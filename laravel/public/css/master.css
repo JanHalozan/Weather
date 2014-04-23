@@ -68,7 +68,7 @@ header
 {
     width: 750px;
     margin: 0 auto;
-    background: yellow;
+    /* background: yellow; */
     height: 50px;
 }
 
@@ -84,7 +84,7 @@ header
 {
     position: relative;
     height: 20px;
-    background: red;
+    /* background: red; */
     float: right;
     list-style: none;
     right: 10px;
@@ -95,7 +95,7 @@ header
 {
     float: left;
     margin-left: 5px;
-    background: blue;
+    /* background: blue; */
     height: 100%;
 }
 
@@ -112,8 +112,9 @@ CONTENT
 
 #content
 {
-    width: 750px;
-    margin-top: 50px;
+    /* SM4rk changed on 600px */
+    width: 600px;
+    margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
     color: black;
@@ -140,7 +141,7 @@ footer
 
 #footer-content
 {
-    background: violet;
+    /* background: violet; */
     width: 750px;
     margin: 0 auto;
     text-align: center;

@@ -10,23 +10,28 @@
 {
 	float: left;
 	height: 88%;
-	width: 40%;
-	background-color: blue;
+	width: 30%;
+}
+
+#frame #weather-guy img 
+{
+	display: block;
+	margin: 0 auto;
+	height: 100%;
 }
 
 #frame #info-panel 
 {
 	float: right;
 	height:45%;
-	width: 60%;
+	width: 65%;
 }
 
 #frame #tasks 
 {
 	float: right;
 	height: 43%;
-	width: 60%;
-	background-color: green; 
+	width: 65%;
 }
 
 /* info-panel -> first line */
@@ -41,7 +46,13 @@
 	float: left;
 	height: 100%;
 	width: 45%;
-	background-color: gray;
+}
+
+#frame #info-panel #first-line #icon img
+{
+	display: block;
+	float:left;
+	height: 100%;
 }
 
 #frame #info-panel #first-line #temperature
@@ -56,9 +67,9 @@
 	position: relative;
 
 	font-weight: 100;
-	font-size: 9.5em;
+	font-size: 9.0em;
 
-	text-align: center;
+	text-align: right;
 	line-height: 0.8;
 	letter-spacing: -0.05em;
 }
@@ -104,7 +115,9 @@
 {
 	float: left;
 	height: 5%;
-	width: 100%;	
+	width: 100%;
+	/* Push facts a bit down */
+	margin-top: 2%;	
 }
 
 #frame #title-fact p

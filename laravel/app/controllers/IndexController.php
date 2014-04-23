@@ -24,7 +24,7 @@ class IndexController extends BaseController
         $view = View::make('index');
 
         //$record = CurrentWeather::where('name', 'like', $place);
-        $record = "-40";
+        $record = "20";
         $view->temperature = $record;
 
         /* Useless Fact parse */
