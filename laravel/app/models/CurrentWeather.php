@@ -11,15 +11,5 @@
 
 class CurrentWeather extends Eloquent
 {
-    protected  $table = 'current_weather';
-
-    //Gets the current weather into for the place
-    public static function currentConditionForPlace($place)
-    {
-        //Get the data
-        $data = $place . ' is a beautiful place';
-
-
-        return $data;
-    }
+    protected  $table = 'weather_current';
 } 

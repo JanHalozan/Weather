@@ -24,12 +24,12 @@ class IndexController extends BaseController
         $view = View::make('index');
 
         //$record = CurrentWeather::where('name', 'like', $place);
-        $record = "20";
-        $view->temperature = $record;
+		$record = CurrentWeather::find(1)->pluck('temperature');
+		$view->temperature = round($record);
 
         /* Useless Fact parse */
         // Get content of html
-        $html = file_get_contents("http://uselessfacts.net/");
+        @$html = file_get_contents("http://uselessfacts.net/");
         
         // Load that content and create xPath
         $doc = new DOMDocument();

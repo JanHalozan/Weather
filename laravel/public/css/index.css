@@ -39,6 +39,7 @@
 {
 	height: 60%;
 	width: 100%;
+	margin: 0 auto;
 }
 
 #frame #info-panel #first-line #icon 
@@ -111,9 +112,10 @@
 
 /* info-panel -> fact of the day */
 
-hr{
+hr
+{
 	border: 0;
-	border-top: 1px solid black;
+	border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 #frame #title-fact
@@ -147,7 +149,7 @@ hr{
 	font-weight: 300;
 	font-size: 1.4em;
 }
-
+/*
 @media screen and (max-width: 1920px){
 	#frame 
 	{
@@ -159,3 +161,4 @@ hr{
 		font-size: 11em;
 	}
 }
+*/
