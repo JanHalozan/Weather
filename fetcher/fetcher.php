@@ -55,7 +55,6 @@ function owmFetch($city_data)
     //Create curl request
     $curl = curl_init();
 
-    //TODO change to API id of city
     curl_setopt_array($curl, array(
         CURLOPT_RETURNTRANSFER => 1,
         CURLOPT_TIMEOUT => 5,
@@ -130,13 +129,10 @@ if ($cities && $conditions)
 {
     //Create a friendly array of conditions
     $conditions_array = array();
-    //$cities = mysqli_fetch_array($cities);
     foreach ($conditions as $c)
     {
         $conditions_array[$c['condition']] = $c['id'];
     }
-
-    var_dump($conditions_array);
 
     //Read information for each city and store parsed information in database
     foreach ($cities as $city)

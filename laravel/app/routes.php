@@ -19,3 +19,6 @@ Route::get('cinema', 'CinemaController@index');
 //Login route
 Route::get('login', 'LoginController@index');
 
+//Add an add city route
+Route::get('city_add', 'CityAddController@index');
+Route::post('city_add', 'CityAddController@searchCity');
