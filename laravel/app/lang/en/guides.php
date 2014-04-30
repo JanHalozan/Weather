@@ -3,6 +3,7 @@
 return array(
 
     "login" => "Log in",
-    "signup" => "Sign up"
+    "register" => "Sign up",
+    "logout" => "Log out"
 
 );

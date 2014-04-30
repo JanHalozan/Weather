@@ -3,6 +3,7 @@
 return array(
 
     "login" => "Prijava",
-    "signup" => "Registracija"
+    "signup" => "Registracija",
+    "logout" => "Odjava"
 
 );

@@ -40,7 +40,7 @@
 		</div>
 
 		<div id="fact">
-			<p>{{$fact}}</p>
+			<p>{{ $fact }}</p>
 		</div>
 	</div>
 @stop

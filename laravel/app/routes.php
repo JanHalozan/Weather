@@ -16,8 +16,18 @@ Route::get('/', 'IndexController@index');
 
 Route::get('cinema', 'CinemaController@index');
 
-//Login route
-Route::get('login', 'LoginController@index');
+//User management logic
+Route::get('login', 'UsersController@getLogin');
+Route::post('login', 'UsersController@postLogin');
+
+Route::get('register', 'UsersController@getRegister');
+Route::post('register', 'UsersController@postRegister');
+
+Route::get('logout', function()
+{
+    Auth::logout();
+    return Redirect::to('/');
+});
 
 //Add an add city route
 Route::get('city_add', 'CityAddController@index');
