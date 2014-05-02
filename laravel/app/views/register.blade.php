@@ -8,7 +8,7 @@
 
 @section('content')
 
-<h4>{{ Lang::get('register.title') }}</h4>
+<h4 id="register-title">{{ Lang::get('register.title') }}</h4>
 <form method="post" action="/register">
     <table>
         @if(isset($errors))
@@ -20,41 +20,31 @@
         @endif
         <tr>
             <td>
-                <label>{{ Lang::get('register.username') }}</label>
-            </td>
-            <td>
-                <input type="text" name="username">
+                <input type="text" name="username" placeholder="{{ Lang::get('register.username') }}">
             </td>
         </tr>
         <tr>
             <td>
-                <label>{{ Lang::get('register.password') }}</label>
-            </td>
-            <td>
-                <input type="password" name="password">
+                <input type="password" name="password" placeholder="{{ Lang::get('register.password') }}">
             </td>
         </tr>
         <tr>
             <td>
-                <label>{{ Lang::get('register.retype') }}</label>
-            </td>
-            <td>
-                <input type="password" name="password_confirmation">
+                <input type="password" name="password_confirmation" placeholder="{{ Lang::get('register.retype') }}">
             </td>
         </tr>
         <tr>
             <td>
-                <label>{{ Lang::get('register.language') }}</label>
-            </td>
-            <td>
+                {{-- TODO fix the select so that the first option is unselectable --}}
                 <select name="locale">
+                    <option>{{ Lang::get('register.language') }}</option>
                     <option value="en">{{ Lang::get('register.languages.en') }}</option>
                     <option value="si">{{ Lang::get('register.languages.si') }}</option>
                 </select>
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td>
                 <input type="submit" name="submit" value="{{ Lang::get('register.button') }}">
             </td>
         </tr>
