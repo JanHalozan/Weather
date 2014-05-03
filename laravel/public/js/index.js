@@ -1,5 +1,13 @@
 $(document).ready(function()
 {
+	setupPage();
+	
+	$( window ).resize(function() {
+		setupPage();
+	});
+});
+
+function setupPage(){
 	var marBottom = 2;
 	var overflow = 6;
 
@@ -25,5 +33,5 @@ $(document).ready(function()
 		marLeft /= 2;
 		$("#title-fact p").css({marginLeft: marLeft});
 		$("#fact p").css({marginLeft: marLeft});
-});
+}
 

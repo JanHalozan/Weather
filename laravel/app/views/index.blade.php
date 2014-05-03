@@ -7,7 +7,24 @@
 
 @section('content')
 	<div id="frame">
-		<div id="weather-guy">
+		<div id="weather-guy">			
+
+			<div id="pants">
+				<img src="images/jeans.png"/>
+			</div>
+
+			<div id="body">
+				<img src="images/hoodie.png"/>
+			</div>
+
+			<div id="head">
+				<img src="images/hair1.png"/>
+			</div>
+
+			<div id="boots">
+				<img src="images/shoes1.png"/>
+			</div>
+
 			<img src="images/WeatherGuy.png" alt="Weatherguy"/>
 		</div>
 		
@@ -35,7 +52,7 @@
 		</div>
 
 		<div id="title-fact">
-		<hr/>
+			<hr/>
 			<p>Did you know?</p>
 		</div>
 
