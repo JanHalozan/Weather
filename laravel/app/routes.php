@@ -13,6 +13,8 @@
 
 //Route the index page to our index controller and run the index action
 Route::get('/', 'IndexController@index');
+Route::get('city', 'IndexController@cityPicker');
+Route::get('city/{cityName}', 'IndexController@cityWeather');
 
 Route::get('cinema', 'CinemaController@index');
 

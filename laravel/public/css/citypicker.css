@@ -1,0 +1,15 @@
+select
+{
+    width: 50%;
+    position: relative;
+    left: 25%;
+    border: 2px solid #ccc !important;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: #fff url('https://www.jabongworld.com/skin/frontend/default/blank/images/arrow-black-down.png') no-repeat 97% center;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    height: 25px;
+    color: #aaa;
+    padding-left: 5px
+}
