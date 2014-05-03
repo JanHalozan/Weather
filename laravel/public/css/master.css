@@ -1,1 +1,199 @@
-/********************************************CSS RESET AND NORMALIZE*********************************************/*{    margin: 0;    padding: 0;}html, body{    height: 100%;}/* colors */body{    background-color: #ffffff;}p, h1, h2, h3, h4, h5, h6, a, span, td, label{    color: black;    font-family: 'Roboto', sans-serif;}p, h1{    color: black;}/* links-decoration */a{    text-decoration: none;}h1{    font-size: 2em;    font-weight: 300;}#wrapper{    min-height: 100%;    height: auto !important;    height: 100%;    margin: 0 auto -1.5em;}/********************************************HEADER*********************************************/header{    width: 100%;    background-color: #4a708b;}#header-content{    width: 750px;    margin: 0 auto;    /* background: yellow; */    height: 50px;}/* title */#header-content h1{    padding: 5px;    float: left;}/* navigation links */#header-content ul{    position: relative;    height: 20px;    /* background: red; */    float: right;    list-style: none;    right: 10px;    top: 14px;}#header-content ul li{    float: left;    margin-left: 5px;    /* background: blue; */    height: 100%;}#header-content ul li:hover{    background: orange;}#master-message{    clear: both;    width: 100%;    text-align: center;    background: #e74c3c;}#master-message p{    text-align: center;    width: 100%;}#master-message a{    float: right;    margin-right: 1em;}/********************************************CONTENT*********************************************/#content{    /* Width is set below in @media */    margin-top: 100px;    margin-left: auto;    margin-right: auto;    color: black;}/********************************************FOOTER*********************************************/footer, #push-div{    height: 1.5em;    clear: both;}footer{    width: 100%;    background-color: #ca6649;}#footer-content{    /* background: violet; */    width: 750px;    margin: 0 auto;    text-align: center;    height: 1.5em;}#footer-content p{    display: block;}/********************************************OTHER*********************************************/@media screen and (max-width: 1920px) and (max-height: 1080px){    #content    {        width: 800px;    }}@media screen and (max-width: 1280px) and (max-height: 800px){    #content    {        width: 600px;    }}@media screen and (max-width: 1366px) and (max-height: 768px){    #content    {        width: 600px;    }}
+/********************************************
+
+CSS RESET AND NORMALIZE
+
+*********************************************/
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+html, body
+{
+    height: 100%;
+}
+
+/* colors */
+body
+{
+    background-color: #ffffff;
+}
+
+p, h1, h2, h3, h4, h5, h6, a, span, td, label
+{
+    color: black;
+    font-family: 'Roboto', sans-serif;
+}
+
+p, h1
+{
+    color: black;
+}
+
+/* links-decoration */
+a
+{
+    text-decoration: none;
+}
+
+h1
+{
+    font-size: 2em;
+    font-weight: 300;
+}
+
+#wrapper
+{
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -1.5em;
+}
+
+/********************************************
+
+HEADER
+
+*********************************************/
+
+header
+{
+    width: 100%;
+    background-color: #4a708b;
+}
+
+#header-content
+{
+    width: 750px;
+    margin: 0 auto;
+    /* background: yellow; */
+    height: 50px;
+}
+
+/* title */
+#header-content h1
+{
+    padding: 5px;
+    float: left;
+}
+
+/* navigation links */
+#header-content ul
+{
+    position: relative;
+    height: 20px;
+    /* background: red; */
+    float: right;
+    list-style: none;
+    right: 10px;
+    top: 14px;
+}
+
+#header-content ul li
+{
+    float: left;
+    margin-left: 5px;
+    /* background: blue; */
+    height: 100%;
+}
+
+#header-content ul li:hover
+{
+    background: orange;
+}
+
+#master-message
+{
+    clear: both;
+    width: 100%;
+    text-align: center;
+    background: #e74c3c;
+}
+
+#master-message p
+{
+    text-align: center;
+    width: 100%;
+}
+
+#master-message a
+{
+    float: right;
+    margin-right: 1em;
+}
+
+/********************************************
+
+CONTENT
+
+*********************************************/
+
+#content
+{
+    /* Width is set below in @media */
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+}
+
+/********************************************
+
+FOOTER
+
+*********************************************/
+
+footer, #push-div
+{
+    height: 1.5em;
+    clear: both;
+}
+
+footer
+{
+    width: 100%;
+    background-color: #ca6649;
+}
+
+#footer-content
+{
+    /* background: violet; */
+    width: 750px;
+    margin: 0 auto;
+    text-align: center;
+    height: 1.5em;
+}
+
+#footer-content p
+{
+    display: block;
+}
+
+/********************************************
+
+OTHER
+
+*********************************************/
+
+@media screen and (max-width: 1920px) and (max-height: 1080px){
+    #content
+    {
+        width: 800px;
+    }
+}
+
+@media screen and (max-width: 1280px) and (max-height: 800px){
+    #content
+    {
+        width: 600px;
+    }
+
+}
+
+@media screen and (max-width: 1366px) and (max-height: 768px){
+    #content
+    {
+        width: 600px;
+    }
+}
