@@ -11,11 +11,11 @@ include_once "information_gain.php";
 //Some testing examples with no meaning, just to test tree
 $base_examples = array(
     new Example(20, 20, 4, 60, true, true, false, false, false, 1),
-    new Example(18, 30, 3, 50, true, false, true, false, false, 2),
-    new Example(5, 20, 2, 20, false, true, false, true, false, 3),
-    new Example(0, 0, 2, 30, true, false, false, true, false, 4),
-    new Example(35, 80, 2, 10, true, false, false, true, true, 5),
-    new Example(40, 80, 2, 10, true, false, true, false, false, 5),
+    new Example(18, 30, 3, 50, true, false, true, false, false, 1),
+    new Example(5, 20, 2, 20, true, true, false, true, false, 1),
+    new Example(0, 0, 2, 30, false, false, false, true, false, 4),
+    new Example(35, 80, 2, 10, false, false, false, true, true, 5),
+    new Example(40, 80, 2, 10, false, false, true, false, false, 5),
 );
 
 function findMostCommonClass(&$data_set)
@@ -86,6 +86,7 @@ function buildDecisionTree($examples, $attributes)
 {
     $node = new TreeNode();
 
+    var_dump($examples);
     //Check if there is only one class left in examples
     $class_list = array();
     foreach ($examples as $e)
@@ -163,7 +164,7 @@ function buildDecisionTree($examples, $attributes)
     else if ($best_pick[1] == "day")
     {
         foreach ($examples as $e) {
-            if ($e->temperature == true)
+            if ($e->day == true)
                 array_push($first_set, $e);
             else
                 array_push($second_set, $e);
@@ -173,7 +174,7 @@ function buildDecisionTree($examples, $attributes)
     else if ($best_pick[1] == "rain")
     {
         foreach ($examples as $e) {
-            if ($e->temperature == true)
+            if ($e->rain == true)
                 array_push($first_set, $e);
             else
                 array_push($second_set, $e);
