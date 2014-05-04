@@ -86,7 +86,6 @@ function buildDecisionTree($examples, $attributes)
 {
     $node = new TreeNode();
 
-    var_dump($examples);
     //Check if there is only one class left in examples
     $class_list = array();
     foreach ($examples as $e)
