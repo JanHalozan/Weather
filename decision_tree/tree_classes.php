@@ -7,6 +7,7 @@
  */
 
 //Classes used for creating decision tree
+//Learning example containing information for decision tree
 class Example
 {
     public $temperature;
@@ -35,6 +36,7 @@ class Example
     }
 }
 
+//Node in decision tree, contains information about the split
 class TreeNode
 {
     public $split_variable;
