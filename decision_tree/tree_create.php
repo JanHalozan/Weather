@@ -13,11 +13,12 @@ $base_examples = array(
     new Example(20, 20, 4, 60, true, true, false, false, false, 1),
     new Example(18, 30, 3, 50, true, false, true, false, false, 1),
     new Example(5, 20, 2, 20, true, true, false, true, false, 1),
-    new Example(0, 0, 2, 30, false, false, false, true, false, 4),
-    new Example(35, 80, 2, 10, false, false, false, true, true, 5),
-    new Example(40, 80, 2, 10, false, false, true, false, false, 5),
+    new Example(0, 0, 2, 30, false, false, false, false, false, 4),
+    new Example(-10, 80, 2, 10, false, false, false, true, true, 5),
+    new Example(40, 80, 2, 10, false, false, true, true, false, 5),
 );
 
+//Finds most common class in data set
 function findMostCommonClass(&$data_set)
 {
     //Count the number of each class
@@ -82,6 +83,7 @@ function calculateEntropy(&$data_set)
     return $entropy;
 }
 
+//Recursive function that build the decision tree based on examples and a list of attributes to be decided upon
 function buildDecisionTree($examples, $attributes)
 {
     $node = new TreeNode();
@@ -96,18 +98,21 @@ function buildDecisionTree($examples, $attributes)
         }
     }
 
+    //Check if only one class left in examples
     if (count($class_list) == 1)
     {
         $node->class = $class_list[0];
         return $node;
     }
 
+    //If no more attributes to split, use the most common class in examples
     if (count($attributes) == 0)
     {
         $node->class = findMostCommonClass($examples);
         return $node;
     }
 
+    //Current entropy
     $entropy = calculateEntropy($examples);
 
     //Get all information gains
@@ -121,16 +126,55 @@ function buildDecisionTree($examples, $attributes)
                 $info[0], "temperature", $info[1]
             ));
         }
+        elseif ($a == "humidity")
+        {
+            $info = temperatureInformationGain($examples, $entropy);
+            array_push($gain_array, array(
+                $info[0], "humidity", $info[1]
+            ));
+        }
+        elseif ($a == "wind_speed")
+        {
+            $info = temperatureInformationGain($examples, $entropy);
+            array_push($gain_array, array(
+                $info[0], "wind_speed", $info[1]
+            ));
+        }
+        elseif ($a == "cloudiness")
+        {
+            $info = temperatureInformationGain($examples, $entropy);
+            array_push($gain_array, array(
+                $info[0], "cloudiness", $info[1]
+            ));
+        }
         elseif ($a == "day")
         {
             array_push($gain_array, array(
                 dayInformationGain($examples, $entropy), "day"
             ));
         }
+        elseif ($a == "clear")
+        {
+            array_push($gain_array, array(
+                dayInformationGain($examples, $entropy), "clear"
+            ));
+        }
         elseif ($a == "rain")
         {
             array_push($gain_array, array(
                 rainInformationGain($examples, $entropy), "rain"
+            ));
+        }
+        elseif ($a == "snow")
+        {
+            array_push($gain_array, array(
+                rainInformationGain($examples, $entropy), "snow"
+            ));
+        }
+        elseif ($a == "clouds")
+        {
+            array_push($gain_array, array(
+                rainInformationGain($examples, $entropy), "clouds"
             ));
         }
     }
@@ -145,15 +189,46 @@ function buildDecisionTree($examples, $attributes)
         }
     }
 
-    //Split at the variable and create two subsets of examples
+    //Split at the best variable and create two subsets of examples
     $node->split_variable = $best_pick[1];
     $first_set = array();
     $second_set = array();
     $split_value = null;
+    //All the possible splits
     if ($best_pick[1] == "temperature")
     {
         foreach ($examples as $e) {
             if ($e->temperature <= $best_pick[2])
+                array_push($first_set, $e);
+            else
+                array_push($second_set, $e);
+        }
+        $split_value = $best_pick[2];
+    }
+    else if ($best_pick[1] == "humidity")
+    {
+        foreach ($examples as $e) {
+            if ($e->humidity <= $best_pick[2])
+                array_push($first_set, $e);
+            else
+                array_push($second_set, $e);
+        }
+        $split_value = $best_pick[2];
+    }
+    else if ($best_pick[1] == "wind_speed")
+    {
+        foreach ($examples as $e) {
+            if ($e->wind_speed <= $best_pick[2])
+                array_push($first_set, $e);
+            else
+                array_push($second_set, $e);
+        }
+        $split_value = $best_pick[2];
+    }
+    else if ($best_pick[1] == "cloudiness")
+    {
+        foreach ($examples as $e) {
+            if ($e->cloudiness <= $best_pick[2])
                 array_push($first_set, $e);
             else
                 array_push($second_set, $e);
@@ -170,10 +245,40 @@ function buildDecisionTree($examples, $attributes)
         }
         $split_value = true;
     }
+    else if ($best_pick[1] == "clear")
+    {
+        foreach ($examples as $e) {
+            if ($e->clear == true)
+                array_push($first_set, $e);
+            else
+                array_push($second_set, $e);
+        }
+        $split_value = true;
+    }
     else if ($best_pick[1] == "rain")
     {
         foreach ($examples as $e) {
             if ($e->rain == true)
+                array_push($first_set, $e);
+            else
+                array_push($second_set, $e);
+        }
+        $split_value = true;
+    }
+    else if ($best_pick[1] == "snow")
+    {
+        foreach ($examples as $e) {
+            if ($e->snow == true)
+                array_push($first_set, $e);
+            else
+                array_push($second_set, $e);
+        }
+        $split_value = true;
+    }
+    else if ($best_pick[1] == "clouds")
+    {
+        foreach ($examples as $e) {
+            if ($e->clouds == true)
                 array_push($first_set, $e);
             else
                 array_push($second_set, $e);
@@ -189,17 +294,20 @@ function buildDecisionTree($examples, $attributes)
     $attributes = array_values($attributes);
 
     //Create subtree
+    //If there are no examples in first child, create a leaf
     if (count($first_set) == 0)
     {
         $left_tree = new TreeNode();
         $left_tree->class = findMostCommonClass($examples);
         array_push($node->childs, $left_tree);
     }
+    //or recursively call subtree
     else
     {
         array_push($node->childs, buildDecisionTree($first_set, $attributes));
     }
 
+    //Same for second child
     if (count($second_set) == 0)
     {
         $right_tree = new TreeNode();
@@ -211,11 +319,12 @@ function buildDecisionTree($examples, $attributes)
         array_push($node->childs, buildDecisionTree($second_set, $attributes));
     }
 
+    //Return current node
     return $node;
 }
 
 $attributes = array(
-    "temperature", "day", "rain"
+    "temperature", "humidity", "wind_speed", "cloudiness", "day", "clear", "rain", "snow", "clouds"
 );
 
 $tree_root = buildDecisionTree($base_examples, $attributes);
