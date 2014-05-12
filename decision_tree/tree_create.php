@@ -11,8 +11,8 @@ include_once "information_gain.php";
 //Some testing examples with no meaning, just to test tree
 $base_examples = array(
     new Example(20, 20, 4, 60, true, true, false, false, false, 1),
-    new Example(18, 30, 3, 50, true, false, true, false, false, 1),
-    new Example(5, 20, 2, 20, true, true, false, true, false, 1),
+    new Example(18, 30, 3, 50, true, false, true, false, false, 2),
+    new Example(5, 20, 2, 20, true, true, false, true, false, 3),
     new Example(0, 0, 2, 30, false, false, false, false, false, 4),
     new Example(-10, 80, 2, 10, false, false, false, true, true, 5),
     new Example(40, 80, 2, 10, false, false, true, true, false, 5),
@@ -323,11 +323,17 @@ function buildDecisionTree($examples, $attributes)
     return $node;
 }
 
+//Attributes used for splits
 $attributes = array(
     "temperature", "humidity", "wind_speed", "cloudiness", "day", "clear", "rain", "snow", "clouds"
 );
 
+//Build tree, then serialize it (to be saved into DB), and prints the data as json for easy reading
 $tree_root = buildDecisionTree($base_examples, $attributes);
 
+//This to be put into DB
+$data = serialize($tree_root);
+$tree_root = unserialize($data);
+
 echo "<pre>";
-print_r($tree_root);
+echo json_encode($tree_root, JSON_PRETTY_PRINT);
