@@ -41,7 +41,6 @@ body
 {
 	position: absolute;	
 	width: 100%;
-	top: -23px;
 }
 
 #head img 
@@ -53,7 +52,6 @@ body
 {
 	position: absolute;
 	width: 100%;
-	top: 82px;
 }
 
 #body img 
@@ -65,7 +63,6 @@ body
 {
 	position: absolute;
 	width: 100%;
-	top: 276px;
 }
 
 #pants img 
@@ -77,7 +74,6 @@ body
 {
 	position: absolute;
 	width: 100%;
-	top: 490px;
 }
 
 #boots img
@@ -252,25 +248,6 @@ hr
 		font-size: 1.5em;
 	}
 
-	#head 
-	{
-		top: -18px;
-	}
-
-	#body 
-	{
-		top: 62px;
-	}
-
-	#pants 
-	{
-		top: 207px;
-	}
-
-	#boots 
-	{
-		top: 369px;
-	}
 }
 
 @media screen and (max-width: 1366px) and (max-height: 768px){
@@ -298,25 +275,5 @@ hr
 	#weather-guy 
 	{
 		width: 26%;
-	}
-
-	#head 
-	{
-		top: -16px;
-	}
-
-	#body 
-	{
-		top: 54px;
-	}
-
-	#pants 
-	{
-		top: 180px;
-	}
-
-	#boots 
-	{
-		top: 320px;
 	}
 }
