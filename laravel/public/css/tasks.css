@@ -1,0 +1,10 @@
+.dayContainer {
+	width: 200px;
+	height: 250px;
+	border: solid 1px black;
+}
+
+.dayContainer ul{
+	width: 150px;
+	margin: 5px auto 0 auto;
+}

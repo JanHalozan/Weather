@@ -34,3 +34,7 @@ Route::get('logout', function()
 //Add an add city route
 Route::get('city_add', 'CityAddController@index');
 Route::post('city_add', 'CityAddController@searchCity');
+
+//Tasks route
+Route::get('tasks','TasksController@index');
+Route::post('tasks','TasksController@addTask');
