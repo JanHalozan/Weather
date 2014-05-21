@@ -26,6 +26,7 @@ class IndexController extends BaseController
         else //There is no city in the cookie yet, get an approximate user location
         {
             $ip = $_SERVER['REMOTE_ADDR'];
+            //$ip = "92.53.136.233";
             $url = "https://freegeoip.net/xml/" . $ip;
 
             $ch = curl_init();
@@ -44,13 +45,12 @@ class IndexController extends BaseController
             if ($status == 200)
             {
                 $dom = new DOMDocument('1.0', 'utf-8');
-                @$dom->loadHTML($response);
+                $dom->loadXML($response);
 
-                $xPath = new DomXPath($dom);
+                $xPath = new DOMXPath($dom);
 
-                //TODO check query correctness
-                $lat = $xPath->query('//Latitude')->item(0)->nodeValue;
-                $lon = $xPath->query('//Longitude')->item(0)->nodeValue;
+                $lat = $xPath->query('//Latitude')->item(0)->textContent;
+                $lon = $xPath->query('//Longitude')->item(0)->textContent;
 
                 $city = Cities::findNearest($lat, $lon);
 
@@ -59,14 +59,16 @@ class IndexController extends BaseController
             else
             {
                 $view->message = "We were unable to find a nearby location, using Maribor as a fallback.";
-            }
 
-            //TODO find maribor or make sure that it will always be the first one or change the message
-            $city = Cities::first();
+                $city = Cities::first();
+            }
         }
 
         //TODO use the place in temperature query
         $place = $city->name;
+
+        //Populate the view with city metadata
+        $view->cityName = $city->name;
 
         //TEMPERATURE
         $record = CurrentWeather::first()->temperature;

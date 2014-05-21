@@ -20,7 +20,7 @@
                     </a>
                     <ul id="navigation">
                         @if(Auth::check())
-                        <li>{{ Auth::user()->username }}</li>
+                        <a href="me"><li>{{ Auth::user()->username }}</li></a>
                         <a href="logout"><li>{{ Lang::get('guides.logout') }}</li></a>
                         @else
                         <a href="register"><li>{{ Lang::get('guides.register') }}</li></a>

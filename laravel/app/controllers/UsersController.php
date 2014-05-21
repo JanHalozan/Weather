@@ -60,4 +60,13 @@ class UsersController extends BaseController
             return View::make('register')->with('errors', $validator->errors());
         }
     }
+
+    public static function getMe()
+    {
+        $view = View::make('user');
+
+
+
+        return $view;
+    }
 } 

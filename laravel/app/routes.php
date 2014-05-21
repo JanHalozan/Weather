@@ -31,6 +31,14 @@ Route::get('logout', function()
     return Redirect::to('/');
 });
 
+Route::get('me', function()
+{
+    if (Auth::check())
+        return UsersController::getMe();
+    else
+        return App::abort(404);
+});
+
 //Add an add city route
 Route::get('city_add', 'CityAddController@index');
 Route::post('city_add', 'CityAddController@searchCity');

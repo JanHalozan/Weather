@@ -43,7 +43,13 @@
 			</div>
 
 			<div id="third-line">
-				<p>Maribor Slovenia</p>
+				<p>
+                    @if (isset($countryName))
+                        {{ $cityName }}, {{ $countryName }}
+                    @else
+                        {{ $cityName }}
+                    @endif
+                </p>
 			</div>
 		</div>
 
