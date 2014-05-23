@@ -17,15 +17,15 @@ date_default_timezone_set('GMT');
 
 //Weather conditions, order is priority, if a read returns more conditions, the topmost is picked
 $weather_conditions = array(
-    '09' => 'Shower rain',
-    '10' => 'Rain',
-    '11' => 'Thunderstorm',
-    '13' => 'Snow',
-    '01' => 'Sky is clear',
-    '02' => 'Few clouds',
-    '03' => 'Scattered clouds',
-    '04' => 'Broken clouds',
-    '50' => 'Mist'
+    '09' => 'shower_rain',
+    '10' => 'rain',
+    '11' => 'thunderstorm',
+    '13' => 'snow',
+    '01' => 'clear_sky',
+    '02' => 'few_clouds',
+    '03' => 'scattered_clouds',
+    '04' => 'broken_clouds',
+    '50' => 'mist'
 );
 
 
@@ -93,7 +93,7 @@ function owmFetch($city_data)
             $day = true;
             foreach ($json_data['weather'] as $weather)
             {
-                $day = substr($weather['icon'], 2, 1) == 'd'? true : false;
+                $day = substr($weather['icon'], 2, 1) == 'd'? '1' : '0';
                 array_push($weather_conditions_read, substr($weather['icon'], 0, 2));
             }
 
