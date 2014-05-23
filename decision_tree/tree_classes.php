@@ -46,7 +46,7 @@ class TreeNode
 
     function __construct()
     {
-        $this->class = -1;
+        $this->class = null;
         $this->childs = array();
     }
 }

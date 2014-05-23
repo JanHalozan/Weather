@@ -19,13 +19,15 @@ $base_examples = array(
 );
 
 //Finds most common class in data set
-function findMostCommonClass(&$data_set)
+function calculateClasses(&$data_set)
 {
-    //Count the number of each class
+    //Count the number of each class and total
     $class_list = array();
     $class_count = array();
+    $total = 0;
     foreach ($data_set as $d)
     {
+        ++$total;
         if (!is_integer(array_search($d->class, $class_list)))
         {
             array_push($class_list, $d->class);
@@ -37,20 +39,27 @@ function findMostCommonClass(&$data_set)
         }
     }
 
-    //Find the class with highest count
-    $max_class = $class_list[0];
-    $max_count = $class_count[strval($max_class)];
-
-    foreach ($class_list as $c)
+    //Crapsort the classes
+    for ($i = 0; $i < count($class_list); ++$i)
     {
-        if ($class_count[strval($c)] > $max_count)
+        for ($j = $i+1; $j < count($class_list); ++$j)
         {
-            $max_class = $c;
-            $max_count = $class_count[strval($c)];
+            if ($class_count[strval($class_list[$j])] > $class_count[strval($class_list[$i])])
+            {
+                $temp = $class_list[$i];
+                $class_list[$i] = $class_list[$j];
+                $class_list[$j] = $temp;
+            }
         }
     }
 
-    return $max_class;
+    //Generate percentage for each class
+    $return_list = array();
+    foreach ($class_list as $c)
+    {
+        array_push($return_list, array($c, doubleval($class_count[strval($c)] / $total)));;
+    }
+    return $return_list;
 }
 
 function calculateEntropy(&$data_set)
@@ -101,14 +110,14 @@ function buildDecisionTree($examples, $attributes)
     //Check if only one class left in examples
     if (count($class_list) == 1)
     {
-        $node->class = $class_list[0];
+        $node->class = array(array($class_list[0], 1.0));
         return $node;
     }
 
     //If no more attributes to split, use the most common class in examples
     if (count($attributes) == 0)
     {
-        $node->class = findMostCommonClass($examples);
+        $node->class = calculateClasses($examples);
         return $node;
     }
 
@@ -298,7 +307,7 @@ function buildDecisionTree($examples, $attributes)
     if (count($first_set) == 0)
     {
         $left_tree = new TreeNode();
-        $left_tree->class = findMostCommonClass($examples);
+        $left_tree->class = calculateClasses($examples);
         array_push($node->childs, $left_tree);
     }
     //or recursively call subtree
@@ -311,7 +320,7 @@ function buildDecisionTree($examples, $attributes)
     if (count($second_set) == 0)
     {
         $right_tree = new TreeNode();
-        $right_tree->class = findMostCommonClass($examples);
+        $right_tree->class = calculateClasses($examples);
         array_push($node->childs, $right_tree);
     }
     else
@@ -333,7 +342,15 @@ $tree_root = buildDecisionTree($base_examples, $attributes);
 
 //This to be put into DB
 $data = serialize($tree_root);
-$tree_root = unserialize($data);
 
-echo "<pre>";
-echo json_encode($tree_root, JSON_PRETTY_PRINT);
+//Save tree into database
+$database = new mysqli('localhost', 'developer', 'Sup3rG3sL0', 'development');
+
+//Delete old tree and insert new one
+mysqli_query($database, "DELETE FROM decision_trees WHERE part = 'torso'");
+mysqli_query($database, "INSERT INTO decision_trees(part, data) VALUES('torso', '$data');");
+
+mysqli_close($database);
+
+//echo "<pre>";
+//echo json_encode($tree_root, JSON_PRETTY_PRINT);
