@@ -11,7 +11,11 @@ class CityAddController extends BaseController
     function index()
     {
         $view = View::make('city_add');
-
+        $tree_controller = new TreeController();
+        $tree_controller->loadTrees();
+        $reading = CurrentWeather::first();
+        $reading = $tree_controller->transformReading($reading);
+        var_dump($tree_controller->classifyReading($reading));
         return $view;
     }
 
