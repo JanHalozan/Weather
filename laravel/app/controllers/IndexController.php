@@ -64,15 +64,20 @@ class IndexController extends BaseController
             }
         }
 
-        //TODO use the place in temperature query
-        $place = $city->name;
+        //TODO finish the population of view with weather data
+        //Populate the view with weather data
+        $weatherInfo = CurrentWeather::where('city_id', '=', $city->id)->firstOrFail();
+        $view->temperature = $weatherInfo->temperature;
 
-        //Populate the view with city metadata
+        //Get the condition string
+        $condition = Conditions::find($weatherInfo->condition_id)->condition;
+        $view->condition = Lang::get('conditions.' . $condition);
+
+        //Populate the view with city & country data
         $view->cityName = $city->name;
 
-        //TEMPERATURE
-        $record = CurrentWeather::first()->temperature;
-        $view->temperature = round($record);
+        $country = Countries::find($city->country_id);
+        $view->countryName = $country->name;
 
         //FACT
         try

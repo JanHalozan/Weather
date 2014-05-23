@@ -34,12 +34,12 @@
 					<img src="images/Cloudy.png" alt="Cloudy"/>
 				</div>
 				<div id="temperature">
-					<p>{{ $temperature }}°</p>
+					<p>{{ round($temperature) }}°</p>
 				</div>
 			</div>
 			
 			<div id="second-line">
-				<p>Mostly cloudy</p>
+				<p>{{ $condition }}</p>
 			</div>
 
 			<div id="third-line">
