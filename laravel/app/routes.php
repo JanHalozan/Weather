@@ -49,3 +49,4 @@ Route::post('tasks','TasksController@addTask');
 
 //Route for example generator
 Route::get('example_generator', 'ExampleGeneratorController@index');
+Route::post('example_generator', 'ExampleGeneratorController@saveExample');

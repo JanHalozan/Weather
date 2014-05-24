@@ -1,0 +1,27 @@
+body
+{
+    background: -webkit-linear-gradient(#5a8dc4 10%,  #9fbbd2 40% , #dd7f4b 70%, #F0A153 100%);
+    background: -o-linear-gradient(#5a8dc4 10%,  #9fbbd2 40% , #dd7f4b 70%, #F0A153 100%);
+    background: -moz-linear-gradient(#5a8dc4 10%,  #9fbbd2 40% , #dd7f4b 70%, #F0A153 100%); 
+    background: linear-gradient(#5a8dc4 10%,  #9fbbd2 40% , #dd7f4b 70%, #F0A153 100%);
+}
+
+select
+{
+    width: 100px;
+}
+
+#cloth_picker tr td:first-child, #detail_table tr td:first-child
+{
+    text-align: right;
+}
+
+#cloth_picker tr td:nth-child(2)
+{
+    padding-left: 10px;
+}
+
+#submit_button
+{
+    width: 100%;
+}
