@@ -1,0 +1,19 @@
+HEAD     IMAGE          FORM TEXT
+    1 -> hair1          "Short hair"
+    2 -> hair2          "Hair2"
+    3 -> hat            "Hat"
+    4 -> hat-scarf      "Hat & scarf"
+
+TORSO
+    1 -> t-shirt        "T-Shirt"
+    2 -> hoodie         "Hoodie"
+    3 -> jacket         "Jacket"
+
+LEGS
+    1 -> jeans          "Jeans"
+    2 -> shorts         "Shorts"
+    3 -> swimsuit       "Swimsuit"
+
+FEET
+    1 -> shoes1         "Trainers"
+    2 -> shoes_winter   "Winter shoes"
