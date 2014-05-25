@@ -90,4 +90,5 @@
         	}
         }       
     }
+    mysqli_close($con);
 ?>

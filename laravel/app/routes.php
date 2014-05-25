@@ -47,6 +47,10 @@ Route::post('city_add', 'CityAddController@searchCity');
 Route::get('tasks','TasksController@index');
 Route::post('tasks','TasksController@addTask');
 
+//TasksGenerator route
+Route::get('tasks_generator','TasksGeneratorController@index');
+Route::post('tasks_generator','TasksGeneratorController@save');
+
 //Route for example generator
 Route::get('example_generator', 'ExampleGeneratorController@index');
 Route::post('example_generator', 'ExampleGeneratorController@saveExample');
