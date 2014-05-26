@@ -89,22 +89,27 @@ class ExampleGeneratorController extends BaseController
     function saveExample()
     {
         //Save example to database
-
-        //Create globals and constants that will be used on the entire fetcher
-        $database = new mysqli('localhost', 'developer', 'Sup3rG3sL0', 'development');
-
         //Get condition id from database
-        $query = "SELECT id FROM weather_conditions WHERE weather_conditions.condition='".$_POST['condition']."';";
-        $condition_id = mysqli_query($database, $query)->fetch_object()->id;
+        $condition_id = DB::table('weather_conditions')->where('condition', Input::get('condition'))->pluck('id');
 
         //Insert
-        $query = "INSERT INTO weather_examples(condition_id, temperature, pressure, humidity, wind_direction, wind_speed,
-                              sunrise, sunset, class_head, class_torso, class_legs, class_feet)
-                  VALUES ($condition_id,".$_POST['temperature'].",".$_POST['pressure'].",".$_POST['humidity'].",
-                  ".$_POST['wind_direction'].",".$_POST['wind_speed'].",'".$_POST['sunrise']."','".$_POST['sunset']."',
-                  ".$_POST['head'].",".$_POST['torso'].",".$_POST['legs'].",".$_POST['feet'].");";
-
-        mysqli_query($database, $query);
+        DB::table('weather_examples')->insert(
+            array('condition_id' => $condition_id,
+                'temperature' => Input::get('temperature'),
+                'pressure' => Input::get('pressure'),
+                'humidity' => Input::get('humidity'),
+                'wind_direction' => Input::get('wind_direction'),
+                'wind_speed' => Input::get('wind_speed'),
+                'sunrise' => Input::get('sunrise'),
+                'sunset' => Input::get('sunset'),
+                'day' => Input::get('day'),
+                'cloudiness' => Input::get('cloudiness'),
+                'class_head' => Input::get('head'),
+                'class_torso' => Input::get('torso'),
+                'class_legs' => Input::get('legs'),
+                'class_feet' => Input::get('feet'),
+            )
+        );
 
         $view = View::make('example_generator');
         return $view;

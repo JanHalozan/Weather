@@ -71,6 +71,7 @@
                 <input type="hidden" name="cloudiness" value="{{$cloudiness}}"/>
                 <input type="hidden" name="sunrise" value="{{$sunrise}}"/>
                 <input type="hidden" name="sunset" value="{{$sunset}}"/>
+                <input type="hidden" name="day" value="{{$day}}"/>
             </form>
         </td>
         <td>
