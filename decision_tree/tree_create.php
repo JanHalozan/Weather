@@ -379,7 +379,8 @@ foreach ($examples_result as $r)
 
 //Attributes used for splits
 $attributes = array(
-    "temperature", "humidity", "wind_speed", "cloudiness", "day", "clear", "rain", "snow", "clouds"
+    "temperature", "temperature", "temperature", "humidity", "wind_speed", "cloudiness", "day", "clear", "rain",
+        "snow", "clouds"
 );
 
 //Build tree and serialize it, then change class and build other trees
