@@ -27,7 +27,7 @@ class TasksExamplesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tasksExamples');
+		Schema::drop('tasks_examples');
 	}
 
 }
