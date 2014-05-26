@@ -87,7 +87,7 @@ class TreeController
             {
                 $this->head_tree = unserialize($tree->data);
             }
-            elseif ($tree->part == 'leg')
+            elseif ($tree->part == 'legs')
             {
                 $this->leg_tree = unserialize($tree->data);
             }

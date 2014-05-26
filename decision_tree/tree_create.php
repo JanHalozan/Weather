@@ -9,6 +9,7 @@
 include_once "information_gain.php";
 
 //Some testing examples with no meaning, just to test tree
+/*
 $base_examples = array(
     new Example(20, 20, 4, 60, true, true, false, false, false, 1),
     new Example(18, 30, 3, 50, true, false, true, false, false, 2),
@@ -17,6 +18,7 @@ $base_examples = array(
     new Example(-10, 80, 2, 10, false, false, false, true, true, 5),
     new Example(40, 80, 2, 10, false, false, true, true, false, 5),
 );
+*/
 
 //Finds most common class in data set
 function calculateClasses(&$data_set)
@@ -332,23 +334,88 @@ function buildDecisionTree($examples, $attributes)
     return $node;
 }
 
+//Connect to database for examples and to save built trees
+$database = new mysqli('localhost', 'developer', 'Sup3rG3sL0', 'development');
+
+//Fetch examples from database
+$examples_result = mysqli_query($database, 'SELECT w.*, c.condition FROM weather_examples AS w, weather_conditions AS c
+    WHERE w.condition_id = c.id');
+
+//Transform them info tree friendly structures
+$condition_values = array(
+    "clear_sky" => array(true, false, false, false),
+    "few_clouds" => array(true, true, false, false),
+    "scattered_clouds" => array(false, true, false, false),
+    "broken_clouds" => array(false, true, false, false),
+    "shower_rain" => array(false, true, true, false),
+    "rain" => array(false, true, true, false),
+    "thunderstorm" => array(false, true, true, false),
+    "snow" => array(false, true, false, true),
+    "mist" => array(false, true, false, false),
+);
+
+$examples = array();
+foreach ($examples_result as $r)
+{
+    //Basic information
+    $reading = new Example($r['temperature'], $r['humidity'], $r['wind_speed'], $r['cloudiness'], $r['day'],
+        false, false, false, false);
+    //Boolean values based on condition
+    $values = $condition_values[$r['condition']];
+    $reading->clear = $values[0];
+    $reading->clouds = $values[1];
+    $reading->rain = $values[2];
+    $reading->snow = $values[3];
+
+    //Classes
+    $reading->class_head = intval($r['class_head']);
+    $reading->class_torso = intval($r['class_torso']);
+    $reading->class_legs = intval($r['class_legs']);
+    $reading->class_shoe = intval($r['class_feet']);
+    $reading->class = $reading->class_head;
+
+    array_push($examples, $reading);
+}
+
 //Attributes used for splits
 $attributes = array(
     "temperature", "humidity", "wind_speed", "cloudiness", "day", "clear", "rain", "snow", "clouds"
 );
 
-//Build tree, then serialize it (to be saved into DB), and prints the data as json for easy reading
-$tree_root = buildDecisionTree($base_examples, $attributes);
+//Build tree and serialize it, then change class and build other trees
+$tree_head = buildDecisionTree($examples, $attributes);
+$tree_head = serialize($tree_head);
 
-//This to be put into DB
-$data = serialize($tree_root);
+//Change class and build tree
+foreach ($examples as $e)
+{
+    $e->class = $e->class_torso;
+}
+$tree_torso = buildDecisionTree($examples, $attributes);
+$tree_torso = serialize($tree_torso);
 
-//Save tree into database
-$database = new mysqli('localhost', 'developer', 'Sup3rG3sL0', 'development');
+foreach ($examples as $e)
+{
+    $e->class = $e->class_legs;
+}
+$tree_legs = buildDecisionTree($examples, $attributes);
+$tree_legs = serialize($tree_legs);
+
+foreach ($examples as $e)
+{
+    $e->class = $e->class_shoe;
+}
+$tree_shoe = buildDecisionTree($examples, $attributes);
+$tree_shoe = serialize($tree_shoe);
+
+
 
 //Delete old tree and insert new one
-mysqli_query($database, "DELETE FROM decision_trees WHERE part = 'torso'");
-mysqli_query($database, "INSERT INTO decision_trees(part, data) VALUES('torso', '$data');");
+mysqli_query($database, "DELETE FROM decision_trees");
+mysqli_query($database, "INSERT INTO decision_trees(part, data) VALUES('head', '$tree_head');");
+mysqli_query($database, "INSERT INTO decision_trees(part, data) VALUES('torso', '$tree_torso');");
+mysqli_query($database, "INSERT INTO decision_trees(part, data) VALUES('legs', '$tree_legs');");
+mysqli_query($database, "INSERT INTO decision_trees(part, data) VALUES('shoe', '$tree_shoe');");
 
 mysqli_close($database);
 

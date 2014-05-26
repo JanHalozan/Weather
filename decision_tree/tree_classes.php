@@ -20,8 +20,12 @@ class Example
     public $snow;
     public $clouds;
     public $class;
+    public $class_head;
+    public $class_torso;
+    public $class_legs;
+    public $class_shoe;
 
-    function __construct($t, $h, $w, $c, $d, $clear, $clouds, $rain, $snow, $class)
+    function __construct($t, $h, $w, $c, $d, $clear, $clouds, $rain, $snow)
     {
         $this->temperature = intval($t);
         $this->humidity = intval($h);
@@ -32,7 +36,6 @@ class Example
         $this->clouds = $clouds;
         $this->rain = $rain;
         $this->snow = $snow;
-        $this->class = intval($class);
     }
 }
 

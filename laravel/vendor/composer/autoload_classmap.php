@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddColumnsToWeatherExamples' => $baseDir . '/app/database/migrations/2014_05_26_162107_add_columns_to_weather_examples.php',
     'AddTableWeatherExamples' => $baseDir . '/app/database/migrations/2014_05_23_063953_add_table_weather_examples.php',
     'AlterUsersTable' => $baseDir . '/app/database/migrations/2014_04_30_091234_alter_users_table.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
