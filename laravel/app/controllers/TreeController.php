@@ -55,15 +55,15 @@ class TreeController
     public $shoe_tree;
 
     private $condition_values = array(
-        "Sky is clear" => array(true, false, false, false),
-        "Few clouds" => array(true, true, false, false),
-        "Scattered clouds" => array(false, true, false, false),
-        "Broken clouds" => array(false, true, false, false),
-        "Shower rain" => array(false, true, true, false),
-        "Rain" => array(false, true, true, false),
-        "Thunderstorm" => array(false, true, true, false),
-        "Snow" => array(false, true, false, true),
-        "Mist" => array(false, true, false, false),
+        "clear_sky" => array(true, false, false, false),
+        "few_clouds" => array(true, true, false, false),
+        "scattered_clouds" => array(false, true, false, false),
+        "broken_clouds" => array(false, true, false, false),
+        "shower_rain" => array(false, true, true, false),
+        "rain" => array(false, true, true, false),
+        "thunderstorm" => array(false, true, true, false),
+        "snow" => array(false, true, false, true),
+        "mist" => array(false, true, false, false),
     );
 
     function __construct()
