@@ -12,7 +12,7 @@ class TasksGeneratorController extends BaseController
     function save()
     {
 
-        if(isset($_POST['activity1']) && isset($_POST['activity2']) && isset($_POST['activity3'])&& isset($_POST['maxT'])&& isset($_POST['maxT'])&& isset($_POST['condition'])){
+        if(Input::has('activity1') && Input::has('activity2') && Input::has('activity3') && Input::has('maxT') && Input::has('maxT') && Input::has('condition')){
             
             generate("quantity1","activity1");
             generate("quantity2","activity2");
@@ -24,52 +24,52 @@ class TasksGeneratorController extends BaseController
         {
             echo "Something is not set";
         }
-        
 
-        return;
-        //return Redirect::to('tasks_generator');
+        return Redirect::to('tasks-generator');
     }
 
     
 }
 
 function generate($quantity, $activity){
-        
-        $databaseCon = new mysqli('localhost', 'developer', 'Sup3rG3sL0', 'development');
 
-        $minT = $_POST['minT'];
-        $maxT = $_POST['maxT'];
+        $minT = Input::get('minT');
+        $maxT = Input::get('maxT');
 
         // Increment and decrement min and max temperature until they meet
         // Create example for each temperature created this way
         // Example structure => temperature / condition / activityType
-        for($i = 1; $i <= $_POST[$quantity]; $i++) {
+        for($i = 1; $i <= Input::get($quantity); $i++) {
 
             if($i % 2 == 0){
                 //Insert
-                $query = "INSERT INTO tasks_examples(temperature, weatherCondition, activityType) 
-                VALUES ($minT,'".$_POST['condition']."',". $_POST[$activity] .");";
-
-                mysqli_query($databaseCon, $query);
+                DB::table('tasks_examples')->insert(
+                    array('temperature' => $minT,
+                        'weatherCondition' => Input::get('condition'),
+                        'activityType' => Input::get($activity)
+                    )
+                );
 
                 $minT += 1;
             } 
             else 
             {
-                //Insert
-                $query = "INSERT INTO tasks_examples(temperature, condition, activityType)
-                          VALUES ($maxT,'".$_POST['condition']."',". $_POST[$activity] .");";
 
-                mysqli_query($databaseCon, $query);
+                //Insert
+                DB::table('tasks_examples')->insert(
+                    array(
+                        'temperature' => $maxT,
+                        'weatherCondition' => Input::get('condition'),
+                        'activityType' => Input::get($activity)
+                         )
+                );
 
                 $maxT -= 1;
 
                 if($i % 11 == 0){
-                    $minT = $_POST['minT'];
-                    $maxT = $_POST['maxT'];
+                    $minT = Input::get('minT');
+                    $maxT = Input::get('maxT');
                 }
             }
         }
-
-        mysqli_close($databaseCon);
     }
