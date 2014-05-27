@@ -95,15 +95,27 @@ class IndexController extends BaseController
         $reading = $treeController->transformReading($weatherInfo);
         $output = $treeController->classifyReading($reading);
 
-        $view->head = $output[0];
-        $view->body = $output[1];
-        $view->pants = $output[2];
-        $view->boots = $output[3];
+        //We could not figure out something, fallback
+        if (in_array(-1, $output))
+        {
+            $view->message = Lang::get('guides.clothes_error');
+            $view->head = 1;
+            $view->body = 1;
+            $view->pants = 1;
+            $view->boots = 1;
+        }
+        else
+        {
+            $view->head = $output[0];
+            $view->body = $output[1];
+            $view->pants = $output[2];
+            $view->boots = $output[3];
+        }
 
         //Get a fact from our base
         try
         {
-            $randomFact = rand(0, 127);
+            $randomFact = rand(0, Facts::all()->count());
             $lastFactId = Facts::orderBy('id', 'desc')->first()->id;
             $view->fact = Facts::find($lastFactId - $randomFact)->fact;
         }

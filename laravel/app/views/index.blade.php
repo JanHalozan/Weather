@@ -8,25 +8,20 @@
 @section('content')
 	<div id="frame">
 		<div id="weather-guy">			
-
 			<div id="pants">
-				{{ $pants . '_pants.png' }}
-				<img src="images/jeans.png"/>
+				<img src="images/{{ $pants . '_pants.png' }}"/>
 			</div>
 
 			<div id="body">
-				{{ $body . '_body.png' }}
-				<img src="images/hoodie.png"/>
+				<img src="images/{{ $body . '_body.png' }}"/>
 			</div>
 
 			<div id="head">
-				{{ $head . '_head.png' }}
-				<img src="images/hair1.png"/>
+				<img src="images/{{ $head . '_head.png' }}"/>
 			</div>
 
 			<div id="boots">
-				{{ $boots . '_boots.png' }}
-				<img src="images/shoes1.png"/>
+				<img src="images/{{ $boots . '_boots.png' }}"/>
 			</div>
 
 			<img src="images/WeatherGuy.png" alt="Weatherguy"/>
