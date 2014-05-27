@@ -49,10 +49,19 @@ class IndexController extends BaseController
 
                 $xPath = new DOMXPath($dom);
 
-                $lat = $xPath->query('//Latitude')->item(0)->textContent;
-                $lon = $xPath->query('//Longitude')->item(0)->textContent;
+                //Check if we have an entry for the city name
+                $cityName = $xPath->query('//City')->item(0)->textContent;
 
-                $city = Cities::findNearest($lat, $lon);
+                $city = Cities::where('name', $cityName)->first();
+
+                //TODO check if where actually returns null
+                if (!$city)
+                {
+                    $lat = $xPath->query('//Latitude')->item(0)->textContent;
+                    $lon = $xPath->query('//Longitude')->item(0)->textContent;
+
+                    $city = Cities::findNearest($lat, $lon);
+                }
 
                 Cookie::forever('city_id', $city->id);
             }
