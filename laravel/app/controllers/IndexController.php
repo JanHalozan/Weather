@@ -100,7 +100,7 @@ class IndexController extends BaseController
         {
             $view->message = Lang::get('guides.clothes_error');
             $view->head = 1;
-            $view->body = 1;
+            $view->body = 3;
             $view->pants = 1;
             $view->boots = 1;
         }

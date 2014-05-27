@@ -40,17 +40,17 @@ Route::get('me', function()
 });
 
 //Add an add city route
-Route::get('city_add', 'CityAddController@index');
-Route::post('city_add', 'CityAddController@searchCity');
+Route::get('city-add', 'CityAddController@index');
+Route::post('city-add', 'CityAddController@searchCity');
 
 //Tasks route
 Route::get('tasks','TasksController@index');
 Route::post('tasks','TasksController@addTask');
 
 //TasksGenerator route
-Route::get('tasks_generator','TasksGeneratorController@index');
-Route::post('tasks_generator','TasksGeneratorController@save');
+Route::get('tasks-generator','TasksGeneratorController@index');
+Route::post('tasks-generator','TasksGeneratorController@save');
 
 //Route for example generator
-Route::get('example_generator', 'ExampleGeneratorController@index');
-Route::post('example_generator', 'ExampleGeneratorController@saveExample');
+Route::get('example-generator', 'ExampleGeneratorController@index');
+Route::post('example-generator', 'ExampleGeneratorController@saveExample');

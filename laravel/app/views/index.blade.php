@@ -9,11 +9,11 @@
 	<div id="frame">
 		<div id="weather-guy">			
 			<div id="pants">
-				<img src="images/{{ $pants . '_pants.png' }}"/>
+				<img src="images/{{ $pants . '_legs.png' }}"/>
 			</div>
 
 			<div id="body">
-				<img src="images/{{ $body . '_body.png' }}"/>
+				<img src="images/{{ $body . '_torso.png' }}"/>
 			</div>
 
 			<div id="head">
