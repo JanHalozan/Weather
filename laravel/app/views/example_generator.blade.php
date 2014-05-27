@@ -15,7 +15,7 @@
     <tr>
         <td style='vertical-align: top; padding-left: 25px'>
             <b>Cloth picker</b> <br>
-            <form method="post" action="/example_generator">
+            <form method="post" action="/example-generator">
                 <table id="cloth_picker">
                     <tr>
                         <td>Head:</td>
@@ -118,7 +118,7 @@
 @else
 
 <div>Example successfully saved!</div>
-<button onclick="location.href='example_generator'">Make another example</button>
+<button onclick="location.href='/example-generator'">Make another example</button>
 
 @endif
 @stop

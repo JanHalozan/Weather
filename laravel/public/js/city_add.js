@@ -16,7 +16,7 @@ $(document).ready(function(){
         $("#search_button").text("Searching");
         $.ajax({
             type: "POST",
-            url: "city_add",
+            url: "city-add",
             data: { "search_text": $("#search").val()}
         })
             .done(function(data){

@@ -43,7 +43,6 @@
 		<br>
 
 		<input type="submit" value="Generate">
-
 	</form>
 
 @stop
