@@ -112,6 +112,11 @@ class IndexController extends BaseController
             $view->boots = $output[3];
         }
 
+        //Get some tasks suitable
+        $view->task1 = "Jogging";
+        $view->task2 = "Playing football";
+        $view->task3 = "Napping ^^";
+
         //Get a fact from our base
         try
         {

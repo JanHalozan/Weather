@@ -53,7 +53,12 @@
 		</div>
 
 		<div id="tasks">
-			
+            <h2 id="tasks-title">Today looks suitable for:</h2>
+			<ul id="tasks-list">
+                <li><p>{{ $task1 }}</p></li>
+                <li><p>{{ $task2 }}</p></li>
+                <li><p>{{ $task3 }}</p></li>
+			</ul>
 		</div>
 
 		<div id="title-fact">

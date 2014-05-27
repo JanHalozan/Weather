@@ -94,6 +94,28 @@ body
 	float: right;
 	height: 43%;
 	width: 65%;
+    text-align: center;
+}
+
+#frame #tasks-title
+{
+    font-weight: normal;
+    margin-top: 10%;
+    height: 10%;
+}
+
+#frame #tasks-list
+{
+    margin-top: 5%;
+    height: 75%;
+    vertical-align: middle;
+    list-style-type: none;
+}
+
+#frame #tasks-list li
+{
+    padding: 5px 0;
+    width: 100%;
 }
 
 /* info-panel -> first line */
