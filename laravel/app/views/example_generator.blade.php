@@ -21,8 +21,7 @@
                         <td>Head:</td>
                         <td>
                             <select name="head">
-                                <option value="1">Short hair</option>
-                                <option value="2">Hair2</option>
+                                <option value="1">Hair</option>
                                 <option value="3">Hat</option>
                                 <option value="4">Hat & scarf</option>
                             </select>
