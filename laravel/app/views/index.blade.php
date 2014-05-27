@@ -10,18 +10,22 @@
 		<div id="weather-guy">			
 
 			<div id="pants">
+				{{ $pants . '_pants.png' }}
 				<img src="images/jeans.png"/>
 			</div>
 
 			<div id="body">
+				{{ $body . '_body.png' }}
 				<img src="images/hoodie.png"/>
 			</div>
 
 			<div id="head">
+				{{ $head . '_head.png' }}
 				<img src="images/hair1.png"/>
 			</div>
 
 			<div id="boots">
+				{{ $boots . '_boots.png' }}
 				<img src="images/shoes1.png"/>
 			</div>
 

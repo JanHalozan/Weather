@@ -88,7 +88,19 @@ class IndexController extends BaseController
         $country = Countries::find($city->country_id);
         $view->countryName = $country->name;
 
-        //FACT
+
+        //Get the decision tree and process the needed clothes
+        $treeController = new TreeController();
+        $treeController->loadTrees();
+        $reading = $treeController->transformReading($weatherInfo);
+        $output = $treeController->classifyReading($reading);
+
+        $view->head = $output[0];
+        $view->body = $output[1];
+        $view->pants = $output[2];
+        $view->boots = $output[3];
+
+        //Get a fact from our base
         try
         {
             $randomFact = rand(0, 127);

@@ -11,7 +11,7 @@ class UsersController extends BaseController
     {
         if (Auth::attempt(array('username' => Input::get('username'), 'password' => Input::get('password'))))
         {
-            App::setLocale(Auth::user()->locale);
+            Session::put('locale', Auth::user()->locale);
 
             return Redirect::intended();
         }
@@ -50,7 +50,7 @@ class UsersController extends BaseController
             Auth::login($user);
 
             //Set the locale
-            App::setLocale($user->locale);
+            Session::put('locale', Auth::user()->locale);
 
             //Redirect him to the index page
             return Redirect::intended()->with('message', Lang::get('register.confirm'));

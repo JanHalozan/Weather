@@ -1,6 +1,18 @@
 <?php
 
 /*
+
+Added by Jan on 27 May 2014
+
+Get the session locale and apply it
+
+*/
+
+if (Session::has('locale'))
+	App::setLocale(Session::get('locale'));
+
+
+/*
 |--------------------------------------------------------------------------
 | Register The Laravel Class Loader
 |--------------------------------------------------------------------------

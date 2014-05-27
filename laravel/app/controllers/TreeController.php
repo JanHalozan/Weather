@@ -135,6 +135,7 @@ class TreeController
         if ($this->shoe_tree != null)
             array_push($classes, $this->traverseTree($reading, $this->shoe_tree));
         else array_push($classes, -1);
+        
         return $classes;
     }
 
