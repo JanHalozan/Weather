@@ -75,7 +75,7 @@ class IndexController extends BaseController
 
         //TODO finish the population of view with weather data
         //Populate the view with weather data
-        $weatherInfo = CurrentWeather::where('city_id', '=', $city->id)->firstOrFail();
+        $weatherInfo = CurrentWeather::where('city_id', '=', $city->id)->orderBy('reading_time', 'desc')->firstOrFail();
         $view->temperature = $weatherInfo->temperature;
 
         //Get the condition string
