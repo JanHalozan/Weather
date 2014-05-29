@@ -107,7 +107,7 @@ class ExampleGeneratorController extends BaseController
                 'class_head' => Input::get('head'),
                 'class_torso' => Input::get('torso'),
                 'class_legs' => Input::get('legs'),
-                'class_feet' => Input::get('feet'),
+                'class_feet' => Input::get('boots'),
             )
         );
 

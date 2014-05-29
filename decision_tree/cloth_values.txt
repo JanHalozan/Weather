@@ -14,6 +14,6 @@ LEGS
     2 -> shorts         "Shorts"
     3 -> swimsuit       "Swimsuit"
 
-FEET
+BOOTS
     1 -> shoes1         "Trainers"
     2 -> shoes_winter   "Winter shoes"

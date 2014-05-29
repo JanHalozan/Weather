@@ -11,6 +11,16 @@ select
     width: 100px;
 }
 
+#main_div
+{
+    margin-left: 0px;
+}
+
+#example_table
+{
+    margin-left: -100px;
+}
+
 #cloth_picker tr td:first-child, #detail_table tr td:first-child
 {
     text-align: right;
@@ -22,6 +32,76 @@ select
 }
 
 #submit_button
+{
+    width: 100%;
+}
+
+table tr td
+{
+    vertical-align: top;
+}
+
+.caption
+{
+    font-weight: bold;
+    padding-left: 30px;
+}
+
+/* WEATHER GUY - SAŠO */
+#weather-guy
+{
+    position: relative;
+    float: left;
+    width: 125px;
+}
+
+#weather-guy img
+{
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+
+#head
+{
+    position: absolute;
+    width: 100%;
+}
+
+#head img
+{
+    width:100%;
+}
+
+#torso
+{
+    position: absolute;
+    width: 100%;
+}
+
+#torso img
+{
+    width: 100%;
+}
+
+#legs
+{
+    position: absolute;
+    width: 100%;
+}
+
+#legs img
+{
+    width: 100%;
+}
+
+#boots
+{
+    position: absolute;
+    width: 100%;
+}
+
+#boots img
 {
     width: 100%;
 }
