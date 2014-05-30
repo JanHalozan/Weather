@@ -3,16 +3,20 @@ HEAD     IMAGE          FORM TEXT
     2 -> hair2          "Hair2"
     3 -> hat            "Hat"
     4 -> hat-scarf      "Hat & scarf"
+    5 -> hair1-umbrella "Hair & umbrella"
+    6 -> hat-baseball   "Hat2"
 
 TORSO
     1 -> t-shirt        "T-Shirt"
     2 -> hoodie         "Hoodie"
     3 -> jacket         "Jacket"
+    4 -> raincoat       "Raincoat"
 
 LEGS
     1 -> jeans          "Jeans"
     2 -> shorts         "Shorts"
     3 -> swimsuit       "Swimsuit"
+    4 -> pants-winter   "pants-winter"
 
 BOOTS
     1 -> shoes1         "Trainers"
