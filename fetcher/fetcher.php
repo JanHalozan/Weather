@@ -6,8 +6,6 @@
  * Time: 11:47 AM
  */
 
-//TODO seperate code into more files once more APIs are used
-
 //API keys
 //Open weather map
 $owm_api_key = '65fec2c75fb2d93d3128cf9f7b38b8d0';
