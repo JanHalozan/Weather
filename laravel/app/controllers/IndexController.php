@@ -1,16 +1,13 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: janhalozan
- * Date: 4/15/14
- * Time: 2:37 PM
- *
- * Route: /
- * Model: <none - yet>
- *
- *
- */
+function getTask($type){
+    // Get all tasks with activiti that has requiered posibility
+    $tmp = Activities::where('activity_type',$type)->get();
+    // Pick one task randomli among those chosen tasks
+    $randTask = rand(0, Activities::where('activity_type',$type)->count()-1);
+
+    return $tmp[$randTask]->name;
+}
 class IndexController extends BaseController 
 {
 
@@ -123,19 +120,52 @@ class IndexController extends BaseController
         else
         {
             //Get some tasks suitable
-            $view->task1 = $outputTasks[0][0] . " " . $outputTasks[0][1];
-            $view->task2 = $outputTasks[1][0] . " " . $outputTasks[1][1];
-            $view->task3 = $outputTasks[2][0] . " " . $outputTasks[2][1];
-        }
 
-        
+            //Deffine posibilities
+            $posibility = array($outputTasks[0][1],$outputTasks[0][1]+$outputTasks[1][1],$outputTasks[0][1]+$outputTasks[1][1]+$outputTasks[2][1]);
+            
+            // Number of tasks on index page
+            $numberOfTasks = 3;
+
+            // For each task
+            for($i = 0; $i < $numberOfTasks; $i++){
+
+                // Generate random value
+                $rand = rand(0,100);
+                $rand = $rand / 100;
+
+                // Check which type was chosen and get out task
+                if($rand <= $posibility[0]){
+                    $tasks[$i] = getTask($outputTasks[0][0]);
+                }
+                else if($rand <= $posibility[1])
+                {
+                    $tasks[$i] = getTask($outputTasks[1][0]);
+                }
+                else if($rand <= $posibility[2])
+                {
+                    $tasks[$i] = getTask($outputTasks[2][0]);
+                }
+
+                // Prevents picking same task
+                for($j = 0; $j < $i; $j++){
+                    if($tasks[$i] == $tasks[$j]){
+                        $i--;
+                    }
+                }
+            }
+            
+            $view->task1 = $tasks[0];
+            $view->task2 = $tasks[1];
+            $view->task3 = $tasks[2];
+        }       
 
         //Get a fact from our base
         try
         {
             $randomFact = rand(0, Facts::all()->count());
-            $lastFactId = Facts::orderBy('id', 'desc')->first()->id;
-            $view->fact = Facts::find($lastFactId - $randomFact)->fact;
+            $facts = Facts::all();
+            $view->fact = $facts[$randomFact]->fact;
         }
         catch (Exception $e)
         {
