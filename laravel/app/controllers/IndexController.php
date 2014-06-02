@@ -112,10 +112,23 @@ class IndexController extends BaseController
             $view->boots = $output[3];
         }
 
-        //Get some tasks suitable
-        $view->task1 = "Jogging";
-        $view->task2 = "Playing football";
-        $view->task3 = "Napping ^^";
+        $outputTasks = $treeController->classifyTasks($reading);
+
+        if (in_array(-1, $outputTasks))
+        {
+            $view->task1 = "Error";
+            $view->task2 = "Error";
+            $view->task3 = "Error";  
+        }
+        else
+        {
+            //Get some tasks suitable
+            $view->task1 = $outputTasks[0][0] . " " . $outputTasks[0][1];
+            $view->task2 = $outputTasks[1][0] . " " . $outputTasks[1][1];
+            $view->task3 = $outputTasks[2][0] . " " . $outputTasks[2][1];
+        }
+
+        
 
         //Get a fact from our base
         try
