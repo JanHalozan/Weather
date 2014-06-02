@@ -53,6 +53,7 @@ class TreeController
     public $torso_tree;
     public $leg_tree;
     public $shoe_tree;
+    public $tasks_tree;
 
     private $condition_values = array(
         "clear_sky" => array(true, false, false, false),
@@ -72,6 +73,7 @@ class TreeController
         $this->torso_tree = null;
         $this->leg_tree = null;
         $this->shoe_tree = null;
+        $this->tasks_tree = null;
     }
 
     public function loadTrees()
@@ -94,6 +96,10 @@ class TreeController
             elseif ($tree->part == 'shoe')
             {
                 $this->shoe_tree = unserialize($tree->data);
+            }
+            elseif ($tree->part == 'tasks')
+            {
+                $this->tasks_tree = unserialize($tree->data);
             }
         }
     }
@@ -139,8 +145,17 @@ class TreeController
         return $classes;
     }
 
+    public function classifyTasks(&$reading)
+    {
+        if ($this->tasks_tree != null)
+        {
+            return $this->traverseTree($reading, $this->tasks_tree, false);
+        }
+        else return -1;
+    }
+
     //Move through the tree to first node with a class and return it
-    private function traverseTree(&$reading, &$selected_tree)
+    private function traverseTree(&$reading, &$selected_tree, $select_class = true)
     {
         $current_node = $selected_tree;
         while ($current_node->class == null)
@@ -201,26 +216,33 @@ class TreeController
             }
         }
 
-        //Random class pick
-        //Only one class
-        if (count($current_node->class) == 1)
+        if ($select_class == true)
         {
-            return $current_node->class[0][0];
+            //Random class pick
+            //Only one class
+            if (count($current_node->class) == 1)
+            {
+                return $current_node->class[0][0];
+            }
+            //Random class pick
+            else
+            {
+                $sum = 0.0;
+                $rand_value = mt_rand() / mt_getrandmax();
+                foreach ($current_node->class as $c)
+                {
+                    $sum += $c[1];
+                    if ($sum >= $rand_value)
+                    {
+                        return $c[0];
+                    }
+                }
+                return  $current_node->class[0][0];
+            }
         }
-        //Random class pick
         else
         {
-            $sum = 0.0;
-            $rand_value = mt_rand() / mt_getrandmax();
-            foreach ($current_node->class as $c)
-            {
-                $sum += $c[1];
-                if ($sum >= $rand_value)
-                {
-                    return $c[0];
-                }
-            }
-            return  $current_node->class[0][0];
+            return $current_node->class;
         }
 
     }

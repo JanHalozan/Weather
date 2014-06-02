@@ -15,7 +15,8 @@ class CityAddController extends BaseController
         $tree_controller->loadTrees();
         $reading = CurrentWeather::first();
         $reading = $tree_controller->transformReading($reading);
-        var_dump($tree_controller->classifyReading($reading));
+        //var_dump($tree_controller->classifyReading($reading));
+        var_dump($tree_controller->classifyTasks($reading));
         return $view;
     }
 
