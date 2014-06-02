@@ -10,8 +10,8 @@
 
 		<input type="number" name="minT" min="-60" max="60">
 		<input type="number" name="maxT" min="-50" max="70">
-		<input type="radio" name="condition" value="clear">Clear 
-		<input type="radio" name="condition" value="cloud">Cloudy 
+		<input type="radio" name="condition" value="clear_sky">Clear 
+		<input type="radio" name="condition" value="scattered_clouds">Cloudy 
 		<input type="radio" name="condition" value="rain">Rainy 
 		<input type="radio" name="condition" value="snow">Snowy 
 		<input type="radio" name="condition" value="wind">Windy 
