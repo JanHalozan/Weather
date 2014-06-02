@@ -418,7 +418,38 @@ mysqli_query($database, "INSERT INTO decision_trees(part, data) VALUES('torso', 
 mysqli_query($database, "INSERT INTO decision_trees(part, data) VALUES('legs', '$tree_legs');");
 mysqli_query($database, "INSERT INTO decision_trees(part, data) VALUES('shoe', '$tree_shoe');");
 
-mysqli_close($database);
+//Tasks tree building
+$examples_result = mysqli_query($database, "SELECT * FROM tasks_examples");
+$examples = array();
+foreach ($examples_result as $r)
+{
+    //Basic information
+    $reading = new Example($r['temperature'], 0, 0, 0, true,
+        false, false, false, false);
+    //Boolean values based on condition
+    $values = $condition_values[$r['weatherCondition']];
+    $reading->clear = $values[0];
+    $reading->clouds = $values[1];
+    $reading->rain = $values[2];
+    $reading->snow = $values[3];
 
-//echo "<pre>";
-//echo json_encode($tree_root, JSON_PRETTY_PRINT);
+    //Classes
+    $reading->class = $r['activityType'];
+
+    array_push($examples, $reading);
+}
+
+//Attributes used for splits
+$attributes = array(
+    "temperature", "temperature", "temperature", "clear", "rain",
+    "snow", "clouds"
+);
+echo "<pre>";
+print_r($examples);
+$tree_tasks = buildDecisionTree($examples, $attributes);
+
+print_r($tree_tasks);
+$tree_tasks = serialize($tree_tasks);
+mysqli_query($database, "INSERT INTO decision_trees(part, data) VALUES('tasks', '$tree_tasks');");
+
+mysqli_close($database);
