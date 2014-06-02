@@ -167,8 +167,8 @@ class IndexController extends BaseController
         //Get a fact from our base
         try
         {
-            $randomFact = rand(0, Facts::all()->count());
             $facts = Facts::all();
+            $randomFact = rand(0, count($facts));
             $view->fact = $facts[$randomFact]->fact;
         }
         catch (Exception $e)
