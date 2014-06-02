@@ -73,17 +73,17 @@ class ActivitiesSeeder extends Seeder
 	            // Type 5 - Events aka. movies, concerts ...
 	            array(
 	            	'name' => 'Go to the movies',
-	                'activity_type' => '4',
+	                'activity_type' => '5',
 	                'user_id' => '-1'
 	            ),
 	            array(
 	            	'name' => 'Go to a concert',
-	                'activity_type' => '4',
+	                'activity_type' => '5',
 	                'user_id' => '-1'
 	            ),
 	            array(
 	            	'name' => 'Invite someone to coffe',
-	                'activity_type' => '4',
+	                'activity_type' => '5',
 	                'user_id' => '-1'
 	            )
 	        )

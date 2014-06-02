@@ -6,6 +6,20 @@ class TasksGeneratorController extends BaseController
     {
         $view = View::make('tasks_generator');
 
+        try{
+            $view->type1 = Activities::where('activity_type',1)->get();
+            $view->type2 = Activities::where('activity_type',2)->get();
+            $view->type3 = Activities::where('activity_type',3)->get();
+            $view->type4 = Activities::where('activity_type',4)->get();
+            $view->type5 = Activities::where('activity_type',5)->get();
+        } catch(Exception $e) {
+            $view->type1 = "Error";
+            $view->type2 = "Error";
+            $view->type3 = "Error";
+            $view->type4 = "Error";
+            $view->type5 = "Napolni activitije!";
+        }
+
         return $view;
     }
 

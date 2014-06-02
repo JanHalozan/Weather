@@ -1,6 +1,7 @@
 <?php
 
-function getTask($type){
+function getTask($type)
+{
     // Get all tasks with activiti that has requiered posibility
     $tmp = Activities::where('activity_type',$type)->get();
     // Pick one task randomli among those chosen tasks
@@ -8,6 +9,7 @@ function getTask($type){
 
     return $tmp[$randTask]->name;
 }
+
 class IndexController extends BaseController 
 {
 
@@ -148,8 +150,10 @@ class IndexController extends BaseController
                 }
 
                 // Prevents picking same task
-                for($j = 0; $j < $i; $j++){
-                    if($tasks[$i] == $tasks[$j]){
+                for($j = 0; $j < $i; $j++)
+                {
+                    if($tasks[$i] == $tasks[$j])
+                    {
                         $i--;
                     }
                 }
