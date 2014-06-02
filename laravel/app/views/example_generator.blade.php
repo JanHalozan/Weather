@@ -48,6 +48,8 @@
                                     <option value="1">Hair</option>
                                     <option value="3">Hat</option>
                                     <option value="4">Hat & scarf</option>
+                                    <option value="5">Umbrella</option>
+                                    <option value="6">Cap</option>
                                 </select>
                             </td>
                         </tr>
@@ -58,6 +60,7 @@
                                     <option value="1">T-shirt</option>
                                     <option value="2">Hoodie</option>
                                     <option value="3">Jacket</option>
+                                    <option value="4">Raincoat</option>
                                 </select>
                             </td>
                         </tr>
@@ -67,7 +70,8 @@
                                 <select name="legs" onchange="onClothChanged('legs')">
                                     <option value="1">Jeans</option>
                                     <option value="2">Shorts</option>
-                                    <option value="3">Swimsuit</option>
+                                    <option value="3">Swim Shorts</option>
+                                    <option value="4">Trousers</option>
                                 </select>
                             </td>
                         </tr>
