@@ -1440,6 +1440,7 @@ return array(
     'TableCountryAddCountryCode' => $baseDir . '/app/database/migrations/2014_04_23_082800_table_country_add_country_code.php',
     'TasksController' => $baseDir . '/app/controllers/TasksController.php',
     'TasksExamplesTable' => $baseDir . '/app/database/migrations/2014_05_25_124431_tasks_examples_table.php',
+    'TasksExamplesTableFix' => $baseDir . '/app/database/migrations/2014_06_02_121439_tasks_examples_table_fix.php',
     'TasksGeneratorController' => $baseDir . '/app/controllers/TasksGeneratorController.php',
     'TestCase' => $baseDir . '/app/tests/TestCase.php',
     'TreeController' => $baseDir . '/app/controllers/TreeController.php',
