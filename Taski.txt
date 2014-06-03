@@ -1,0 +1,115 @@
+TIP 1:
+	- Aktivnosti ko si doma v bajti
+
+		- Watch TV
+		- Clean
+		- Take a nap
+
+TIP 2:
+	
+	- Športne aktivnosti zunaj
+
+		- Go running
+		- Take a walk
+		- Sport with friends
+
+TIP 3:
+
+	- Zimske radosti
+
+		- Build a snowman
+		- Go skiing
+		- Drink a cup of tea
+
+TIP 4:
+
+	- Športne aktivnosti noter
+
+		- Visit a fitnes studio
+		- Work out at home
+		- Play squash
+
+TIP 5:
+
+	- Dogodki aka kino, party, gledališèe ...
+
+		- Go to the movies
+		- Go to a concert
+		- Invite someone to coffe
+
+
+0 - 9 Clear
+TIP 2 = 10
+TIP 4 = 45
+TIP 5 = 45
+
+0 - 9 Clouds
+TIP 1 = 30
+TIP 4 = 30
+TIP 5 = 40
+
+0 - 9 Rain
+TIP 1 = 33
+TIP 4 = 33
+TIP 5 = 33
+
+0 - 9 Snow
+TIP 1 = 10
+TIP 3 = 80
+TIP 5 = 10
+
+10 - 19 Clear
+TIP 1 = 30
+TIP 2 = 30
+TIP 5 = 40
+
+10 - 19 Clouds
+TIP 1 = 50
+TIP 4 = 20
+TIP 5 = 30
+
+10 - 19 Rain
+TIP 1 = 60
+TIP 4 = 20
+TIP 5 = 20
+
+20 - 29 Clear
+TIP 1 = 5
+TIP 2 = 60
+TIP 5 = 35
+
+20 - 29 Clouds
+TIP 1 = 5
+TIP 2 = 50
+TIP 5 = 45
+
+20 - 29 Rain
+TIP 1 = 45
+TIP 4 = 5
+TIP 5 = 50
+
+30 - 39 Clear
+TIP 1 = 50
+TIP 2 = 10
+TIP 5 = 40
+
+30 - 39 Clouds
+TIP 1 = 40
+TIP 2 = 30
+TIP 5 = 30
+
+30 - 39 Rain
+TIP 1 = 70
+TIP 4 = 5
+TIP 5 = 25
+
+
+
+
+
+
+
+
+		
+
+		
