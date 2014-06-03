@@ -23,7 +23,7 @@
                     </div>
 
                     <div id="torso">
-                        <img id="torsoImg" src="images/1_torso.png" alt="" />
+                        <img id="torsoImg" src="images/1_torso.png"/>
                     </div>
 
                     <div id="head">
@@ -34,7 +34,7 @@
                         <img id="bootsImg" src="images/1_boots.png"/>
                     </div>
 
-                    <img src="images/WeatherGuy.png" alt="Weatherguy"/>
+                    <img src="images/WeatherGuy.png" alt="Weather guy"/>
                 </div>
             </td>
             <td style='vertical-align: top; padding-left: 25px'>
@@ -61,7 +61,6 @@
                                     <option value="2">Hoodie</option>
                                     <option value="3">Jacket</option>
                                     <option value="4">Raincoat</option>
-                                    <option value="0">None</option>
                                 </select>
                             </td>
                         </tr>
@@ -82,6 +81,7 @@
                                 <select name="boots" onchange="onClothChanged('boots')">
                                     <option value="1">Trainers</option>
                                     <option value="2">Winter shoes</option>
+                                    <option value="3">Sandals</option>
                                 </select>
                             </td>
                         </tr>
