@@ -383,40 +383,44 @@ $attributes = array(
         "snow", "clouds"
 );
 
-//Build tree and serialize it, then change class and build other trees
-$tree_head = buildDecisionTree($examples, $attributes);
-$tree_head = serialize($tree_head);
-
-//Change class and build tree
-foreach ($examples as $e)
-{
-    $e->class = $e->class_torso;
-}
-$tree_torso = buildDecisionTree($examples, $attributes);
-$tree_torso = serialize($tree_torso);
-
-foreach ($examples as $e)
-{
-    $e->class = $e->class_legs;
-}
-$tree_legs = buildDecisionTree($examples, $attributes);
-$tree_legs = serialize($tree_legs);
-
-foreach ($examples as $e)
-{
-    $e->class = $e->class_shoe;
-}
-$tree_shoe = buildDecisionTree($examples, $attributes);
-$tree_shoe = serialize($tree_shoe);
-
-
-
-//Delete old tree and insert new one
 mysqli_query($database, "DELETE FROM decision_trees");
-mysqli_query($database, "INSERT INTO decision_trees(part, data) VALUES('head', '$tree_head');");
-mysqli_query($database, "INSERT INTO decision_trees(part, data) VALUES('torso', '$tree_torso');");
-mysqli_query($database, "INSERT INTO decision_trees(part, data) VALUES('legs', '$tree_legs');");
-mysqli_query($database, "INSERT INTO decision_trees(part, data) VALUES('shoe', '$tree_shoe');");
+
+if (count($examples) > 0)
+{
+    //Build tree and serialize it, then change class and build other trees
+    $tree_head = buildDecisionTree($examples, $attributes);
+    $tree_head = serialize($tree_head);
+
+    //Change class and build tree
+    foreach ($examples as $e)
+    {
+        $e->class = $e->class_torso;
+    }
+    $tree_torso = buildDecisionTree($examples, $attributes);
+    $tree_torso = serialize($tree_torso);
+
+    foreach ($examples as $e)
+    {
+        $e->class = $e->class_legs;
+    }
+    $tree_legs = buildDecisionTree($examples, $attributes);
+    $tree_legs = serialize($tree_legs);
+
+    foreach ($examples as $e)
+    {
+        $e->class = $e->class_shoe;
+    }
+    $tree_shoe = buildDecisionTree($examples, $attributes);
+    $tree_shoe = serialize($tree_shoe);
+
+
+
+    //Delete old tree and insert new one
+    mysqli_query($database, "INSERT INTO decision_trees(part, data) VALUES('head', '$tree_head');");
+    mysqli_query($database, "INSERT INTO decision_trees(part, data) VALUES('torso', '$tree_torso');");
+    mysqli_query($database, "INSERT INTO decision_trees(part, data) VALUES('legs', '$tree_legs');");
+    mysqli_query($database, "INSERT INTO decision_trees(part, data) VALUES('shoe', '$tree_shoe');");
+}
 
 //Tasks tree building
 $examples_result = mysqli_query($database, "SELECT * FROM tasks_examples");
@@ -444,12 +448,13 @@ $attributes = array(
     "temperature", "temperature", "temperature", "clear", "rain",
     "snow", "clouds"
 );
-echo "<pre>";
-print_r($examples);
-$tree_tasks = buildDecisionTree($examples, $attributes);
 
-print_r($tree_tasks);
-$tree_tasks = serialize($tree_tasks);
-mysqli_query($database, "INSERT INTO decision_trees(part, data) VALUES('tasks', '$tree_tasks');");
+if (count($examples) > 0)
+{
+    $tree_tasks = buildDecisionTree($examples, $attributes);
+    $tree_tasks = serialize($tree_tasks);
+    mysqli_query($database, "INSERT INTO decision_trees(part, data) VALUES('tasks', '$tree_tasks');");
+
+}
 
 mysqli_close($database);
