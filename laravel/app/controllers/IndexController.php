@@ -177,6 +177,7 @@ class IndexController extends BaseController
                     $tasks[$i] = getTask($outputTasks[2][0]);
                 }
 
+                /*
                 // Prevents picking same task
                 for($j = 0; $j < $i; $j++)
                 {
@@ -185,6 +186,7 @@ class IndexController extends BaseController
                         $i--;
                     }
                 }
+                */
             }
             
             $view->task1 = $tasks[0];
