@@ -189,9 +189,12 @@ class IndexController extends BaseController
                 */
             }
             
+            echo var_dump($tasks);
+            /*
             $view->task1 = $tasks[0];
             $view->task2 = $tasks[1];
-            $view->task3 = $tasks[2];  
+            $view->task3 = $tasks[2]; 
+            */ 
         //}
         //catch (Exception $e)
         //{
