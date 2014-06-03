@@ -23,7 +23,7 @@
                     </div>
 
                     <div id="torso">
-                        <img id="torsoImg" src="images/1_torso.png"/>
+                        <img id="torsoImg" src="images/1_torso.png" alt="" />
                     </div>
 
                     <div id="head">
@@ -61,6 +61,7 @@
                                     <option value="2">Hoodie</option>
                                     <option value="3">Jacket</option>
                                     <option value="4">Raincoat</option>
+                                    <option value="0">None</option>
                                 </select>
                             </td>
                         </tr>
