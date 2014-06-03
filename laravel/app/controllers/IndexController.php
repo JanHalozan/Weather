@@ -84,34 +84,34 @@ class IndexController extends BaseController
         // Decide which icon is picked
         switch ($condition) {
             case 'clear_sky':
-                $view->ikon = 'Sun.png';
+                $view->icon = 'Sun.png';
                 break;
             case 'few_clouds':
-                $view->ikon = 'Cloud.png';
+                $view->icon = 'Cloud.png';
                 break;
             case 'scattered_clouds':
-                $view->ikon = 'Cloud.png';
+                $view->icon = 'Cloud.png';
                 break;
             case 'broken_clouds':
-                $view->ikon = 'Cloud.png';
+                $view->icon = 'Cloud.png';
                 break;
             case 'shower_rain':
-                $view->ikon = 'Rain.png';
+                $view->icon = 'Rain.png';
                 break;
             case 'rain':
-                $view->ikon = 'Rain.png';
+                $view->icon = 'Rain.png';
                 break;
             case 'thunderstorm':
-                $view->ikon = 'Tunder.png';
+                $view->icon = 'Tunder.png';
                 break;
             case 'snow':
-                $view->ikon = 'Snow.png';
+                $view->icon = 'Snow.png';
                 break;
             case 'mist':
-                $view->ikon = 'Fogg.png';
+                $view->icon = 'Fogg.png';
                 break;
             default:
-                $view->ikon = 'Cloud.png';
+                $view->icon = 'Cloud.png';
                 break;
         }
 
@@ -172,7 +172,7 @@ class IndexController extends BaseController
                 {
                     $tasks[$i] = getTask($outputTasks[1][0]);
                 }
-                else if($rand <= $posibility[2])
+                else
                 {
                     $tasks[$i] = getTask($outputTasks[2][0]);
                 }
@@ -198,9 +198,9 @@ class IndexController extends BaseController
         //}
         //catch (Exception $e)
         //{
-        //    $view->task1 = "Error";
-        //    $view->task2 = "Error";
-        //    $view->task3 = "Error";
+            $view->task1 = "Error";
+            $view->task2 = "Error";
+            $view->task3 = "Error";
         //}       
 
         //Get a fact from our base

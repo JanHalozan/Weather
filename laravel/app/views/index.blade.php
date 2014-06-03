@@ -30,7 +30,7 @@
 		<div id="info-panel">
 			<div id="first-line">
 				<div id="icon">
-					<img src="images/{{$ikon}}" alt="Cloudy"/>
+					<img src="images/{{$icon}}" alt="Cloudy"/>
 				</div>
 				<div id="temperature">
 					<p>{{ round($temperature) }}°</p>
