@@ -1,7 +1,31 @@
-table {
+body
+{
+	background-color: #9fbbd2;
+}
+
+/* Divs with class floatLeft */
+.floatLeft {
+	float: left;
+	width: 20%;
+}
+
+#typesTable
+{
+	width: 100%;
+	padding-top: 20px;
+}
+
+#conditionsTable 
+{
 	width: 100%;
 }
 
-ul {
+ul 
+{
 	list-style-type: none;
+}
+
+#submitButton 
+{
+	width: 100%;
 }

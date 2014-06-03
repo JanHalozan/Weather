@@ -7,55 +7,119 @@
 @section('content')
 
 	<form method="post">
+		<div class="floatLeft">
+			<table>
+				<tr>
 
-		<input type="number" name="minT" min="-60" max="60" placeholder="T MIN">
-		<input type="number" name="maxT" min="-50" max="70" placeholder="T MAX">
-		<br>
-		<br>
-		<input type="radio" name="condition" value="clear_sky">Clear | 
-		<input type="radio" name="condition" value="few_clouds">FewClouds |
-		<input type="radio" name="condition" value="scattered_clouds">ScatteredClouds |
-		<input type="radio" name="condition" value="rain">Rainy |
-		<input type="radio" name="condition" value="snow">Snowy 
-		<br>
-		<br>
+					<td>
+						<input type="number" name="minT" min="-60" max="60" placeholder="T MIN">
+					</td>
+					
+					<td>
+						<input type="number" name="maxT" min="-50" max="70" placeholder="T MAX">
+					</td>
 
-		<select name="activity1">
-			<option value="1">type 1</option>
-			<option value="2">type 2</option>
-			<option value="3">type 3</option>
-			<option value="4">type 4</option>
-			<option value="5">type 5</option>
-		</select>
-		<input type="number" name="quantity1" min="1" max="100" placeholder="%">
-		<br>
+				</tr>
 
-		<select name="activity2">
-			<option value="1">type 1</option>
-			<option value="2">type 2</option>
-			<option value="3">type 3</option>
-			<option value="4">type 4</option>
-			<option value="5">type 5</option>
-		</select>
-		<input type="number" name="quantity2" min="1" max="100" placeholder="%">
-		<br>
+				<tr>
 
-		<select name="activity3">
-			<option value="1">type 1</option>
-			<option value="2">type 2</option>
-			<option value="3">type 3</option>
-			<option value="4">type 4</option>
-			<option value="5">type 5</option>
-		</select>
-		<input type="number" name="quantity3" min="1" max="100" placeholder="%">
-		<br>
-		<br>
+					<td>
+						<select name="activity1">
+							<option value="1">type 1</option>
+							<option value="2">type 2</option>
+							<option value="3">type 3</option>
+							<option value="4">type 4</option>
+							<option value="5">type 5</option>
+						</select>
+					</td>
+						
+					<td>
+						<input type="number" name="quantity1" min="1" max="100" placeholder="%">
+					</td>
+				</tr>
 
-		<input type="submit" value="Generate">
-		<br>
-		<br>
+				<tr>
 
-		<table>
+					<td>
+						<select name="activity2">
+							<option value="1">type 1</option>
+							<option value="2">type 2</option>
+							<option value="3">type 3</option>
+							<option value="4">type 4</option>
+							<option value="5">type 5</option>
+						</select>
+					</td>
+						
+					<td>
+						<input type="number" name="quantity2" min="1" max="100" placeholder="%">
+					</td>
+
+				</tr>
+
+				<tr>
+
+					<td>
+						<select name="activity3">
+							<option value="1">type 1</option>
+							<option value="2">type 2</option>
+							<option value="3">type 3</option>
+							<option value="4">type 4</option>
+							<option value="5">type 5</option>
+						</select>
+					</td>
+						
+					<td>
+						<input type="number" name="quantity3" min="1" max="100" placeholder="%">
+					</td>
+
+				</tr>
+
+				<tr>
+
+					<td colspan="2">
+						<input id="submitButton" type="submit" value="Generate">
+					</td>
+
+				</tr>
+			</table>
+		</div>
+
+		<div class="floatLeft">
+			<table id="conditionsTable">
+				<tr>
+					<td>
+						<input type="radio" name="condition" value="clear_sky">Clear
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<input type="radio" name="condition" value="few_clouds">FewClouds
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<input type="radio" name="condition" value="scattered_clouds">ScatteredClouds
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<input type="radio" name="condition" value="rain">Rainy
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<input type="radio" name="condition" value="snow">Snowy 
+					</td>
+				</tr>
+				
+			</table>
+		</div>
+
+		<table id = "typesTable">
 			<tr>
 				<td>
 					<ul>TYPE 1: 
