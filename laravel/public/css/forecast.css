@@ -1,0 +1,15 @@
+ul
+{
+	list-style-type: none;
+}
+
+li
+{
+	float: left;
+}
+
+.forecast-frame
+{
+	width: 20%;
+	background: red;
+}

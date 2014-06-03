@@ -16,6 +16,9 @@ Route::get('/', 'IndexController@index');
 Route::get('city', 'IndexController@cityPicker');
 Route::get('city/{cityName}', 'IndexController@cityWeather');
 
+//Forecast logic
+Route::get('forecast', 'ForecastController@index');
+
 Route::get('cinema', 'CinemaController@index');
 
 //User management logic

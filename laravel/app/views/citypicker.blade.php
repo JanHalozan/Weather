@@ -12,7 +12,7 @@
 <select>
     <option>Click to select</option>
     @foreach ($cities as $city)
-        <option value="{{ urlencode($city->name) }}">{{ $city->name }}</option>
+        <option value="{{ urlencode($city->id) }}">{{ $city->name }}</option>
     @endforeach
 </select>
 

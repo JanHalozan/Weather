@@ -25,7 +25,7 @@ class IndexController extends BaseController
         else //There is no city in the cookie yet, get an approximate user location
         {
             $ip = $_SERVER['REMOTE_ADDR'];
-            //$ip = "92.53.136.233";
+            
             $url = "https://freegeoip.net/xml/" . $ip;
 
             $ch = curl_init();
@@ -188,16 +188,8 @@ class IndexController extends BaseController
         //TODO implement a nice city picker
         $view = View::make('citypicker');
 
-        $view->cities = Cities::all(array('name'));
+        $view->cities = Cities::all(array('id', 'name'));
 
         return $view;
-    }
-
-    public function cityWeather($cityName)
-    {
-        //TODO implement logic
-        $cityName = urldecode($cityName);
-
-        return "Requesting data for " . $cityName;
     }
 }

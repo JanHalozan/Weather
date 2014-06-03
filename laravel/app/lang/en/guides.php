@@ -6,5 +6,6 @@ return array(
     'register' => 'Sign up',
     'logout' => 'Log out',
 
-    'clothes_error' => 'There was a problem suiting you up. Using fallback clothes.'
+    'clothes_error' => 'There was a problem suiting you up. Using fallback clothes.',
+    'forecast_error' => 'No city was detected, please try again.'
 );
