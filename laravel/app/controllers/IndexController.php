@@ -81,6 +81,40 @@ class IndexController extends BaseController
         $condition = Conditions::find($weatherInfo->condition_id)->condition;
         $view->condition = Lang::get('conditions.' . $condition);
 
+        // Decide which icon is picked
+        switch ($condition) {
+            case 'clear_sky':
+                $view->ikon = 'Sun.png';
+                break;
+            case 'few_clouds':
+                $view->ikon = 'Cloud.png';
+                break;
+            case 'scattered_clouds':
+                $view->ikon = 'Cloud.png';
+                break;
+            case 'broken_clouds':
+                $view->ikon = 'Cloud.png';
+                break;
+            case 'shower_rain':
+                $view->ikon = 'Rain.png';
+                break;
+            case 'rain':
+                $view->ikon = 'Rain.png';
+                break;
+            case 'thunderstorm':
+                $view->ikon = 'Tunder.png';
+                break;
+            case 'snow':
+                $view->ikon = 'Snow.png';
+                break;
+            case 'mist':
+                $view->ikon = 'Fogg.png';
+                break;
+            default:
+                $view->ikon = 'Cloud.png';
+                break;
+        }
+
         //Populate the view with city & country data
         $view->cityName = $city->name;
 
