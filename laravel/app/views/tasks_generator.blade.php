@@ -94,25 +94,19 @@
 
 				<tr>
 					<td>
-						<input type="radio" name="condition" value="few_clouds">FewClouds
+						<input type="radio" name="condition" value="scattered_clouds">Clouds
 					</td>
 				</tr>
 
 				<tr>
 					<td>
-						<input type="radio" name="condition" value="scattered_clouds">ScatteredClouds
+						<input type="radio" name="condition" value="rain">Rain
 					</td>
 				</tr>
 
 				<tr>
 					<td>
-						<input type="radio" name="condition" value="rain">Rainy
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-						<input type="radio" name="condition" value="snow">Snowy 
+						<input type="radio" name="condition" value="snow">Snow 
 					</td>
 				</tr>
 				

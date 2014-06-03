@@ -17,7 +17,7 @@ class TasksGeneratorController extends BaseController
             $view->type2 = "Error";
             $view->type3 = "Error";
             $view->type4 = "Error";
-            $view->type5 = "Napolni activitije!";
+            $view->type5 = "Error";
         }
 
         return $view;

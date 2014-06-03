@@ -3,9 +3,9 @@
 function getTask($type)
 {
     // Get all tasks with activiti that has requiered posibility
-    $tmp = Activities::where('activity_type',$type)->get();
+    $tmp = Activities::where('activity_type', $type)->get();
     // Pick one task randomli among those chosen tasks
-    $randTask = rand(0, Activities::where('activity_type',$type)->count()-1);
+    $randTask = rand(0, Activities::where('activity_type', $type)->where('user_id',-1)->count()-1);
 
     return $tmp[$randTask]->name;
 }
