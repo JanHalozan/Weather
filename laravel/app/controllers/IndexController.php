@@ -147,8 +147,8 @@ class IndexController extends BaseController
 
         $outputTasks = $treeController->classifyTasks($reading);
 
-        //try
-        //{
+        try
+        {
             //Get some tasks suitable
 
             //Deffine posibilities
@@ -177,7 +177,7 @@ class IndexController extends BaseController
                     $tasks[$i] = getTask($outputTasks[2][0]);
                 }
 
-                /*
+                
                 // Prevents picking same task
                 for($j = 0; $j < $i; $j++)
                 {
@@ -186,22 +186,20 @@ class IndexController extends BaseController
                         $i--;
                     }
                 }
-                */
+                
             }
             
-            echo var_dump($tasks);
-            /*
             $view->task1 = $tasks[0];
             $view->task2 = $tasks[1];
             $view->task3 = $tasks[2]; 
-            */ 
-        //}
-        //catch (Exception $e)
-        //{
+            
+        }
+        catch (Exception $e)
+        {
             $view->task1 = "Error";
             $view->task2 = "Error";
             $view->task3 = "Error";
-        //}       
+        }       
 
         //Get a fact from our base
         try
