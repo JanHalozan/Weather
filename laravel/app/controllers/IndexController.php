@@ -5,7 +5,8 @@ function getTask($type)
     // Get all tasks with activiti that has requiered posibility
     $tmp = Activities::where('activity_type', $type)->get();
     // Pick one task randomli among those chosen tasks
-    $randTask = rand(0, Activities::where('activity_type', $type)->where('user_id',-1)->count()-1);
+    $max = Activities::where('activity_type', $type)->where('user_id',-1)->count();
+    $randTask = rand(0, $max-1);
 
     return $tmp[$randTask]->name;
 }
@@ -152,7 +153,11 @@ class IndexController extends BaseController
             //Get some tasks suitable
 
             //Deffine posibilities
-            $posibility = array($outputTasks[0][1],$outputTasks[0][1]+$outputTasks[1][1],$outputTasks[0][1]+$outputTasks[1][1]+$outputTasks[2][1]);
+            $posibility = array(
+                $outputTasks[0][1],
+                $outputTasks[0][1]+$outputTasks[1][1],
+                $outputTasks[0][1]+$outputTasks[1][1]+$outputTasks[2][1]
+            );
             
             // Number of tasks on index page
             $numberOfTasks = 3;
