@@ -1,14 +1,6 @@
 body
 {
-
-    /* Sonce ideja */
-    /*
-    background: -webkit-radial-gradient(10% 0%, circle,#dd7f4b 10% , #F0A153 20%, #9fbbd2 20%);
-    */
-    background: -webkit-linear-gradient(#5a8dc4 40%,  #9fbbd2 100%);   
-    background: -o-linear-gradient(#5a8dc4 40%,  #9fbbd2 100%);
-    background: -moz-linear-gradient(#5a8dc4 40%,  #9fbbd2 100%); 
-    background: linear-gradient(#5a8dc4 40%,  #9fbbd2 100%);
+    background-color: #9fbbd2;   
 }
 
 #frame 
