@@ -12,8 +12,7 @@
 @if(isset($temp))
 
 <div id="main_div">
-    <h1>Example generator</h1><br>
-    <table id="example_table">
+    <table id="main_table" style="margin: 0 auto">
         <tr>
             <td>
                 <div id="weather-guy">
@@ -37,8 +36,41 @@
                     <img src="images/WeatherGuy.png" alt="Weather guy"/>
                 </div>
             </td>
-            <td style='vertical-align: top; padding-left: 25px'>
-                <span class="caption">Cloth picker</span> <br>
+            <td>
+                <span class="caption">Weather details</span>
+                <table id="details_table" style="border-spacing: 15px 0px">
+                    <tr>
+                        <td style="vertical-align: top">Condition:</td>
+                        <td>{{$condition_text}}</td>
+                    </tr>
+                    <tr><td>Temperature:</td>
+                        <td>{{round($temp,1)}}°C</td>
+                    </tr>
+                    <tr>
+                        <td>Pressure:</td>
+                        <td>{{round($press)}} kPa</td>
+                    </tr>
+                    <tr>
+                        <td>Humidity:</td>
+                        <td>{{$humid}}</td>
+                    </tr>
+                    <tr>
+                        <td>Wind speed:</td>
+                        <td>{{$wind_sp}} m/s</td>
+                    </tr>
+                    <tr>
+                        <td>Cloudiness:</td>
+                        <td>{{$cloudiness}}%</td>
+                    </tr>
+                    <tr>
+                        <td>Daytime:</td>
+                        <td>{{$day=='1' ? "Day" : "Night"}}</td>
+                    </tr>
+                </table>
+
+                <br>
+
+                <span class="caption">Cloth picker</span>
                 <form method="post" action="/example-generator">
                     <table id="cloth_picker">
                         <tr>
@@ -102,54 +134,16 @@
                     <input type="hidden" name="day" value="{{$day}}"/>
                 </form>
             </td>
-            <td>
-                <span class="caption">Weather details</span>
-                <table id="detail_table" style="border-spacing: 15px 0px">
-                    <tr>
-                        <td>City:</td>
-                        <td>{{$json_data['name'].", ".$json_data['sys']['country']}}</td>
-                    </tr>
-                    <tr>
-                        <td style="vertical-align: top">Condition:</td>
-                        <td>
-                            {{$json_data['weather']['0']['main']}} <br>
-                            {{" => detailed: " . $json_data['weather']['0']['description']}} <br>
-                            {{" => database: '" . $condition . "'"}}
-                        </td>
-                    </tr>
-                    <tr><td>Temperature:</td>
-                        <td>{{round($temp,1)}}°C</td>
-                    </tr>
-                    <tr>
-                        <td>Pressure:</td>
-                        <td>{{round($press)}} kPa</td>
-                    </tr>
-                    <tr>
-                        <td>Humidity:</td>
-                        <td>{{$humid}}</td>
-                    </tr>
-                    <tr>
-                        <td>Wind speed:</td>
-                        <td>{{$wind_sp}} meters/second</td>
-                    </tr>
-                    <tr>
-                        <td>Cloudiness:</td>
-                        <td>{{$cloudiness}}%</td>
-                    </tr>
-                    <tr>
-                        <td>Daytime:</td>
-                        <td>{{$day=='1' ? "Day" : "Night"}}</td>
-                    </tr>
-                </table>
-            </td>
         </tr>
     </table>
 </div>
 
 @else
 
-<div>Example successfully saved!</div>
-<button onclick="location.href='/example-generator'">Make another example</button>
+<div id="success_div" style="width: 300px">
+    <span class="caption">Example successfully saved!</span>
+    <button id="submit_button" onclick="location.href='/example-generator'">Make another example</button>
+</div>
 
 @endif
 @stop

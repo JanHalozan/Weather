@@ -80,6 +80,8 @@ class ExampleGeneratorController extends BaseController
                         break;
                     }
                 }
+
+                $view->condition_text = Lang::get('conditions.' . $view->condition);
             }
         }
 

@@ -5,20 +5,38 @@ body
 
 select
 {
+    border: 2px solid #ccc !important;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: #fff url('https://www.jabongworld.com/skin/frontend/default/blank/images/arrow-black-down.png') no-repeat 97% center;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    height: 25px;
+    color: #202020;
+    padding-left: 5px;
     width: 100px;
 }
 
 #main_div
 {
-    margin-left: 0px;
+    margin-top: -60px;
 }
 
-#example_table
+#title_text
 {
-    margin-left: -100px;
+    font-family: cursive;
+    font-size: 25px;
+    display: block;
+    text-align: center;
+    margin-bottom: -20px;
 }
 
-#cloth_picker tr td:first-child, #detail_table tr td:first-child
+#main_table, #cloth_picker, #success_div
+{
+    margin: 0 auto;
+}
+
+#cloth_picker tr td:first-child, #details_table tr td:first-child
 {
     text-align: right;
 }
@@ -30,6 +48,9 @@ select
 
 #submit_button
 {
+    border-color: lightgrey;
+    border-radius: 20px;
+    color: #202020;
     width: 100%;
 }
 
@@ -40,16 +61,19 @@ table tr td
 
 .caption
 {
-    font-weight: bold;
-    padding-left: 30px;
+    display: block;
+    color: #202020;
+    font-size: 22px;
+    font-family: cursive;
+    text-align: center;
 }
 
-/* WEATHER GUY - SAŠO */
+/* WEATHER GUY STYLING */
 #weather-guy
 {
     position: relative;
     float: left;
-    width: 125px;
+    width: 200px;
 }
 
 #weather-guy img
@@ -59,46 +83,13 @@ table tr td
     width: 100%;
 }
 
-#head
+#head, #torso, #legs, #boots
 {
     position: absolute;
     width: 100%;
 }
 
-#head img
+#head img, #torso img, #legs img, #boots img
 {
     width:100%;
-}
-
-#torso
-{
-    position: absolute;
-    width: 100%;
-}
-
-#torso img
-{
-    width: 100%;
-}
-
-#legs
-{
-    position: absolute;
-    width: 100%;
-}
-
-#legs img
-{
-    width: 100%;
-}
-
-#boots
-{
-    position: absolute;
-    width: 100%;
-}
-
-#boots img
-{
-    width: 100%;
 }
