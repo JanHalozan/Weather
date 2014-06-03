@@ -88,10 +88,10 @@ class IndexController extends BaseController
                 $view->icon = 'Sun.png';
                 break;
             case 'few_clouds':
-                $view->icon = 'Cloud.png';
+                $view->icon = 'MostlyCloudy.png';
                 break;
             case 'scattered_clouds':
-                $view->icon = 'Cloud.png';
+                $view->icon = 'MostlyCloudy.png';
                 break;
             case 'broken_clouds':
                 $view->icon = 'Cloud.png';
