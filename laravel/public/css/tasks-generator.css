@@ -3,12 +3,6 @@ body
 	background-color: #9fbbd2;
 }
 
-/* Divs with class floatLeft */
-.floatLeft {
-	float: left;
-	width: 20%;
-}
-
 #typesTable
 {
 	width: 100%;
@@ -23,6 +17,11 @@ body
 ul 
 {
 	list-style-type: none;
+}
+
+ul li
+{
+	display: inline;
 }
 
 #submitButton 
