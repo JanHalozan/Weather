@@ -7,20 +7,48 @@
 
 @section('content')
 	<div class="dayContainer">
-		<ul id="monday">
-			<li>Ena</li>
-			<li>Dva</li>
-			<li>Tri</li>	
+		<ul id="c1">
+	
+		</ul>
+	</div>
+
+	<div class="dayContainer">
+		<ul id="c2">
+	
+		</ul>
+	</div>
+
+	<div class="dayContainer">
+		<ul id="c3">
+	
+		</ul>
+	</div>
+
+	<div class="dayContainer">
+		<ul id="c4">
+	
+		</ul>
+	</div>
+
+	<div class="dayContainer">
+		<ul id="c5">
+
+		</ul>
+	</div>
+
+	<div class="dayContainer r">
+		<ul id="c6">
+
 		</ul>
 	</div>
 	</br>
 	
 	<select id="comboBox">
-		<option value="0">-</option>
-		<option value="1">Go running</option>
-		<option value="2">Go jogging</option>
-		<option value="3">Take a nap</option>
-		<option value="4">Spank Fras</option>
+		<?php
+			for($i = 0; $i < count($tasks); $i++){
+				echo "<option value='".$tasks[$i]->activity_type."'>".$tasks[$i]->name."</option>";
+			}
+		?>
 	</select>
 
 	<button id="addButton">Add task</button>	
