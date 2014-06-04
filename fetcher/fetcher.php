@@ -13,6 +13,9 @@ $owm_api_key = '65fec2c75fb2d93d3128cf9f7b38b8d0';
 //Set timezone to be sure
 date_default_timezone_set('GMT');
 
+//No time limits
+set_time_limit(0);
+
 //Weather conditions, order is priority, if a read returns more conditions, the topmost is picked
 $weather_conditions = array(
     '09' => 'shower_rain',
