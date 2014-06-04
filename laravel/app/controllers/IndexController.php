@@ -63,7 +63,7 @@ class IndexController extends BaseController
                     $city = Cities::findNearest($lat, $lon);
                 }
 
-                Cookie::forever('city_id', $city->id);
+                Cookie::queue('city_id', $city->id, 60 * 24 * 3000);
             }
             else
             {
