@@ -22,15 +22,15 @@
                             <li><a href="/">{{ Lang::get('guides.home') }}</a></li>
                             <li><a href="forecast">{{ Lang::get('guides.forecast') }}</a></li>
                             <li>
-                                <a href="#">{{ Lang::get('guides.language') }}</a>
+                                <a href="lang-select/en">{{ Lang::get('guides.language') }}</a>
                                 <ul>
-                                    <li><a href="#">{{ Lang::get('guides.slovene') }}</a></li>
-                                    <li><a href="#">{{ Lang::get('guides.english') }}</a></li> 
+                                    <li><a href="lang-select/si">{{ Lang::get('guides.slovene') }}</a></li>
+                                    <li><a href="lang-select/en">{{ Lang::get('guides.english') }}</a></li> 
                                 </ul>
                             </li>
                             @if(Auth::check())
                                 <li>
-                                    <a href="#">{{ Lang::get('guides.options') }}</a>
+                                    <a href="me">{{ Lang::get('guides.options') }}</a>
                                     <ul>
                                         <li><a href="me">{{ Auth::user()->username }}</a></li>
                                         <li><a href="logout">{{ Lang::get('guides.logout') }}</a></li>
@@ -38,7 +38,7 @@
                                 </li>
                             @else
                                 <li>
-                                    <a href="#">{{ Lang::get('guides.access') }}</a>
+                                    <a href="login">{{ Lang::get('guides.access') }}</a>
                                     <ul>
                                         <li><a href="login">{{ Lang::get('guides.login') }}</a></li>
                                         <li><a href="register">{{ Lang::get('guides.register') }}</a></li>
@@ -67,7 +67,7 @@
             @section('footer')
             <div id="footer-content">
                 <p>
-                    Copyright &copy; Weatherbound.
+                    {{ Lang::get('other.copyright') }}
                 </p>
             </div>
             @show

@@ -245,4 +245,12 @@ class IndexController extends BaseController
                 Cookie::queue('city_id', $id, 60 * 24 * 3000);
         }
     }
+
+    public function setLang($locale_id)
+    {
+        if (isset($locale_id))
+            Session::put('locale', $locale_id);
+
+        return Redirect::intended();
+    }
 }
