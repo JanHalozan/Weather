@@ -90,11 +90,12 @@ class ExampleGeneratorController extends BaseController
 
     function saveExample()
     {
-        //Save example to database
+        $view = $this->index();
+
         //Get condition id from database
         $condition_id = DB::table('weather_conditions')->where('condition', Input::get('condition'))->pluck('id');
 
-        //Insert
+        //Insert example to database
         DB::table('weather_examples')->insert(
             array('condition_id' => $condition_id,
                 'temperature' => Input::get('temperature'),
@@ -113,7 +114,7 @@ class ExampleGeneratorController extends BaseController
             )
         );
 
-        $view = View::make('example_generator');
+        $view->post = true;
         return $view;
     }
 }

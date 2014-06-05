@@ -31,9 +31,14 @@ select
     margin-bottom: -20px;
 }
 
-#main_table, #cloth_picker, #success_div
+#main_table, #cloth_picker
 {
     margin: 0 auto;
+}
+
+#details_table
+{
+    margin: 0px 0px 0px 60px;
 }
 
 #cloth_picker tr td:first-child, #details_table tr td:first-child
@@ -59,6 +64,16 @@ table tr td
     vertical-align: top;
 }
 
+#first_cell
+{
+    width: 200px;
+}
+
+#second_cell
+{
+    width: 340px;
+}
+
 .caption
 {
     display: block;
@@ -66,6 +81,14 @@ table tr td
     font-size: 22px;
     font-family: cursive;
     text-align: center;
+}
+
+#post_cell
+{
+    text-align: center !important;
+    font-size: 16px;
+    font-family: cursive;
+    color: #aa0000;
 }
 
 /* WEATHER GUY STYLING */

@@ -12,9 +12,9 @@
 @if(isset($temp))
 
 <div id="main_div">
-    <table id="main_table" style="margin: 0 auto">
+    <table id="main_table">
         <tr>
-            <td>
+            <td id="first_cell">
                 <div id="weather-guy">
                     <span class="caption">Preview</span>
                     <div id="legs">
@@ -36,7 +36,7 @@
                     <img src="images/WeatherGuy.png" alt="Weather guy"/>
                 </div>
             </td>
-            <td>
+            <td id="second_cell">
                 <span class="caption">Weather details</span>
                 <table id="details_table" style="border-spacing: 15px 0px">
                     <tr>
@@ -121,6 +121,15 @@
                             <td colspan="2"><button id="submit_button" type="submit">Save example</button></td>
                             <td></td>
                         </tr>
+
+                        @if(isset($post) && $post === true)
+
+                        <tr>
+                            <td id="post_cell" colspan="2">Example saved!</td>
+                        </tr>
+
+                        @endif
+
                     </table>
                     <input type="hidden" name="temperature" value="{{$temp}}"/>
                     <input type="hidden" name="pressure" value="{{$press}}"/>
@@ -138,12 +147,6 @@
     </table>
 </div>
 
-@else
-
-<div id="success_div" style="width: 300px">
-    <span class="caption">Example successfully saved!</span>
-    <button id="submit_button" onclick="location.href='/example-generator'">Make another example</button>
-</div>
-
 @endif
+
 @stop
