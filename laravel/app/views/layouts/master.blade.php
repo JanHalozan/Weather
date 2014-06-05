@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        {{ HTML::style('//fonts.googleapis.com/css?family=Roboto:400,100,300,500') }}
+        {{ HTML::style('//fonts.googleapis.com/css?family=Roboto:400,100,300,500&subset=latin,latin-ext') }}
         {{ HTML::style('css/master.css') }}
         {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js') }}
         {{ HTML::script('/js/master.js') }}
