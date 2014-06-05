@@ -20,7 +20,7 @@ body
     background-color: #ffffff;
 }
 
-p, h1, h2, h3, h4, h5, h6, a, span, td, label
+p, h1, h2, h3, h4, h5, h6, a, span, td, label, li
 {
     color: black;
     font-family: 'Roboto', sans-serif;

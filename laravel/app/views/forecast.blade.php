@@ -11,16 +11,19 @@
 			<div class="forecast-frame">
 
 				<div class="weather">
-					<img class="weather-icon" src="">
-					<h2>{{ round($day['temperature']) }}</h2>
-					<span>Hi: {{ $day['high'] }}</span>
-					<span>Lo: {{ $day['low'] }}</span>
+					<img class="weather-icon" src="/images/Sun.png">
+					<div class="weather-info">
+						<h2>{{ round($day['temperature']) }}°C</h2>
+						<span>Hi: {{ round($day['high']) }}°C</span><br>
+						<span>Lo: {{ round($day['low']) }}°C</span>
+					</div>
+					<div style="clear: both;"></div>
 				</div>
-				<div class="clothes">
+				<div class="weather-guy">
+					jaka
 					{{-- TODO implement the dude --}}
 				</div>
-
-				{{--Only if we're logged in we show the tasks --}}
+				{{-- Only if we're logged in we show the tasks --}}
 				@if(Auth::check())
 				<div class="tasks">
 					<ul class="tasks-list">
