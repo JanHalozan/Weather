@@ -56,7 +56,7 @@ function fetchData($city_data)
     curl_setopt_array($curl, array(
         CURLOPT_RETURNTRANSFER => 1,
         CURLOPT_TIMEOUT => 5,
-        CURLOPT_URL => 'http://api.openweathermap.org/data/2.5/forecast/daily?id='.$city_data['api_id'].'&mode=json&units=metric&cnt=5&APPID='.$owm_api_key,
+        CURLOPT_URL => 'http://api.openweathermap.org/data/2.5/forecast/daily?id='.$city_data['api_id'].'&mode=json&units=metric&cnt=6&APPID='.$owm_api_key,
         CURLOPT_USERAGENT => 'Weatherbound'
     ));
 
@@ -72,8 +72,17 @@ function fetchData($city_data)
         if ($json_data && isset($json_data['city']))
         {
             $reading_array = array();
+            //Skip first forecast (today)
+            $first_skip = false;
+
             foreach($json_data['list'] as $daily)
             {
+                if ($first_skip == false)
+                {
+                    $first_skip = true;
+                    continue;
+                }
+
                 //Create reading
                 $reading = new ForecastReading();
 
@@ -133,15 +142,15 @@ if ($cities && $conditions)
         $conditions_array[$c['condition']] = $c['id'];
     }
 
-    //Clear db
-    mysqli_query($database, "DELETE FROM weather_forecast");
-
     //Fetch data for each city
     foreach ($cities as $city)
     {
         $readings = fetchData($city);
 
         if ($readings == null) continue;
+
+        //Clear db
+        mysqli_query($database, "DELETE FROM weather_forecast WHERE city_id = ". $readings[0]->city_id);
 
         //Save readings into DB
         foreach ($readings as $reading)
