@@ -65,7 +65,11 @@ class UsersController extends BaseController
     {
         $view = View::make('user');
 
+        $user = User::find(Auth::User()->id);
 
+        $view->user = $user;
+        $view->city = Cities::find($user->city_id);
+        $view->cities = Cities::all();
 
         return $view;
     }
