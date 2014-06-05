@@ -21,6 +21,13 @@
                     <ul id="navigation">
                             <li><a href="/">{{ Lang::get('guides.home') }}</a></li>
                             <li><a href="forecast">{{ Lang::get('guides.forecast') }}</a></li>
+                            <li>
+                                <a href="#">{{ Lang::get('guides.language') }}</a>
+                                <ul>
+                                    <li><a href="#">{{ Lang::get('guides.slovene') }}</a></li>
+                                    <li><a href="#">{{ Lang::get('guides.english') }}</a></li> 
+                                </ul>
+                            </li>
                             @if(Auth::check())
                                 <li>
                                     <a href="#">{{ Lang::get('guides.options') }}</a>
