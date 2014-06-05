@@ -24,7 +24,7 @@
             $xPath = new DomXPath($doc);
             
             foreach($xPath->query("//div[@class='facttext']") as $fact){
-                if(strlen($fact->nodeValue) < 100){
+                if(strlen($fact->nodeValue) < 80){
                     mysqli_query($con, "INSERT INTO facts(fact) VALUES ('$fact->nodeValue')");
                 }
             }
@@ -47,7 +47,7 @@
             $xPath = new DomXPath($doc);
             
             foreach($xPath->query("//div[@class='facttext']") as $fact){
-                if(strlen($fact->nodeValue) < 100){
+                if(strlen($fact->nodeValue) < 80){
                     mysqli_query($con, "INSERT INTO facts(fact) VALUES ('$fact->nodeValue')");
                 }
             }
@@ -92,7 +92,7 @@
 
             for($j = 0; $j < 5; $j++) {        
 
-                if(strlen($firstPageFacts->item($i)->nodeValue) < 100){
+                if(strlen($firstPageFacts->item($i)->nodeValue) < 80){
                     // If they are still old       
                     if($firstPageFacts->item($i)->nodeValue === $array[$j])
                     {

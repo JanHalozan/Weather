@@ -93,7 +93,7 @@ body
 	text-align: left;
     font-weight: 500;
     font-size: 1.1em;
-    margin-top: 12%;
+    margin-top: 80px;
     height: 10%;
 
     margin-left: 20%;
@@ -238,17 +238,22 @@ hr
 @media screen and (max-width: 1920px) and (max-height: 1080px){
 	#frame 
 	{
-		height: 580px;
+		height: 650px;
 		width: 100%;
 	}
 
 	#frame #info-panel #first-line #temperature p 
 	{
-		font-size: 11em;
+		font-size: 12.7em;
+	}
+
+	#weather-guy 
+	{
+		width: 26%;
 	}
 }
 
-@media screen and (max-width: 1280px) and (max-height: 800px){
+@media screen and (max-width: 1366px) and (max-height: 768px){
 	#frame 
 	{
 		height: 500px;
@@ -257,31 +262,7 @@ hr
 
 	#frame #info-panel #first-line #temperature p 
 	{
-		font-size: 8.5em;
-	}
-
-	#frame #info-panel #second-line p 
-	{
-		font-size: 2.5em;
-	}
-
-	#frame #info-panel #third-line p 
-	{
-		font-size: 1.5em;
-	}
-
-}
-
-@media screen and (max-width: 1366px) and (max-height: 768px){
-	#frame 
-	{
-		height: 400px;
-		width: 100%;
-	}
-
-	#frame #info-panel #first-line #temperature p 
-	{
-		font-size: 8em;
+		font-size: 9.9em;
 	}
 
 	#frame #info-panel #second-line p 
@@ -297,5 +278,27 @@ hr
 	#weather-guy 
 	{
 		width: 26%;
+	}
+
+	#frame #title-fact p 
+	{
+		font-size: 1em;
+	}
+
+	#frame #fact p 
+	{
+		font-size: 1.2em;
+	}
+
+	#frame #tasks-title
+	{
+		font-size: 1em;
+		margin-top: 60px;
+	}
+
+	#frame #tasks-list
+	{
+		margin-top: 6px;
+		font-size: 1.2em;
 	}
 }

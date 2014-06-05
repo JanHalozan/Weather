@@ -26,9 +26,9 @@ p, h1, h2, h3, h4, h5, h6, a, span, td, label
     font-family: 'Roboto', sans-serif;
 }
 
-p, h1
+header h1, header a, footer p
 {
-    color: black;
+    color: white;
 }
 
 /* links-decoration */
@@ -165,7 +165,6 @@ CONTENT
 #content
 {
     /* Width is set below in @media */
-    margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
     color: black;
@@ -212,33 +211,21 @@ OTHER
 @media screen and (max-width: 1920px) and (max-height: 1080px){
     #content
     {
-        width: 800px;
+        width: 980px;
     }
     #header-content
     {
-        width: 800px
+        width: 980px
     }
-}
-
-@media screen and (max-width: 1280px) and (max-height: 800px){
-    #content
-    {
-        width: 600px;
-    }
-    #header-content
-    {
-        width: 600px
-    }
-
 }
 
 @media screen and (max-width: 1366px) and (max-height: 768px){
     #content
     {
-        width: 600px;
+        width: 780px;
     }
     #header-content
     {
-        width: 600px
+        width: 780px
     }
 }
