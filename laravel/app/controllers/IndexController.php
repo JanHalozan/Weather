@@ -5,8 +5,8 @@ function getTask($type)
     // Get all tasks with activiti that has requiered posibility
     $tmp = Activities::where('activity_type', $type)->get();
     // Pick one task randomli among those chosen tasks
-    $max = Activities::where('activity_type', $type)->where('user_id',-1)->count();
-    $randTask = rand(0, $max-1);
+    $max = Activities::where('activity_type', $type)->where('user_id', -1)->count();
+    $randTask = rand(0, $max - 1);
 
     return $tmp[$randTask]->name;
 }
@@ -55,7 +55,7 @@ class IndexController extends BaseController
                 $city = Cities::where('name', $cityName)->first();
 
                 //TODO check if where actually returns null
-                if (!$city)
+                if (!isset($city))
                 {
                     $lat = $xPath->query('//Latitude')->item(0)->textContent;
                     $lon = $xPath->query('//Longitude')->item(0)->textContent;
