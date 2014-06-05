@@ -5,24 +5,6 @@
 	{{HTML::script('js/index.js')}}
 @stop
 
-@section('header')
-<a href="/">
-    <h1 id="title">
-        Weatherbound
-    </h1>
-</a>
-<ul id="navigation">
-	<a href="forecast"><li>Forecast</li></a>
-    @if(Auth::check())
-    <a href="me"><li>{{ Auth::user()->username }}</li></a>
-    <a href="logout"><li>{{ Lang::get('guides.logout') }}</li></a>
-    @else
-    <a href="register"><li>{{ Lang::get('guides.register') }}</li></a>
-    <a href="login"><li>{{ Lang::get('guides.login') }}</li></a>
-    @endif
-</ul>
-@stop
-
 @section('content')
 	<div id="frame">
 		<div id="weather-guy">			

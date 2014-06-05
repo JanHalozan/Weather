@@ -19,13 +19,24 @@
                         </h1>
                     </a>
                     <ul id="navigation">
-                        @if(Auth::check())
-                        <a href="me"><li>{{ Auth::user()->username }}</li></a>
-                        <a href="logout"><li>{{ Lang::get('guides.logout') }}</li></a>
-                        @else
-                        <a href="register"><li>{{ Lang::get('guides.register') }}</li></a>
-                        <a href="login"><li>{{ Lang::get('guides.login') }}</li></a>
-                        @endif
+                            <a href="forecast"><li><img src="images/ForecastIcon2.png"></li></a>
+                            @if(Auth::check())
+                                <li class="dropDown">
+                                    <img src="images/SettingsIcon.png">
+                                    <ul>
+                                        <li><a href="me">{{ Auth::user()->username }}</a></li>
+                                        <li><a href="logout">{{ Lang::get('guides.logout') }}</a></li>
+                                    </ul>
+                                </li>
+                            @else
+                                <li class="dropDown">
+                                    <img src="images/LoginIcon.png">
+                                    <ul>
+                                        <li><a href="login">{{ Lang::get('guides.login') }}</a></li>
+                                        <li><a href="register">{{ Lang::get('guides.register') }}</a></li>
+                                    </ul>
+                                </li>
+                            @endif
                     </ul>
                     @show
                 </div>

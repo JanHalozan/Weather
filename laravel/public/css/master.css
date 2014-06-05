@@ -65,7 +65,7 @@ header
 
 #header-content
 {
-    width: 750px;
+    width: 800px;
     margin: 0 auto;
     /* background: yellow; */
     height: 50px;
@@ -79,28 +79,70 @@ header
 }
 
 /* navigation links */
-#header-content ul
+#navigation
 {
-    position: relative;
-    height: 20px;
-    /* background: red; */
     float: right;
-    list-style: none;
-    right: 10px;
-    top: 14px;
+    position: relative;    
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
-#header-content ul li
+#navigation li
 {
     float: left;
-    margin-left: 5px;
-    /* background: blue; */
-    height: 100%;
 }
 
-#header-content ul li:hover
+#navigation li a
 {
-    background: orange;
+    /* link fit li */
+    display: block;
+
+    padding: 5px;
+    cursor: pointer;
+}
+
+#navigation li img
+{
+    display: block;
+    padding-top: 6px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    color: gray;
+}
+
+#navigation ul
+{
+    display: none;
+    position: absolute;
+    list-style: none;
+    width: 150px;
+    padding-left: 10px;
+    padding-bottom: 3px;
+
+    background: #3e5770;    
+}
+
+#navigation ul li
+{
+    display: block;
+    width: 100%;
+}
+
+#navigation li:hover > ul
+{
+    display: block;
+}
+
+#navigation li:hover
+{
+    background: #3e5770;
+}
+#navigation a:hover
+{
+    color: #9fbbd2;
 }
 
 #master-message
@@ -181,12 +223,20 @@ OTHER
     {
         width: 800px;
     }
+    #header-content
+    {
+        width: 800px
+    }
 }
 
 @media screen and (max-width: 1280px) and (max-height: 800px){
     #content
     {
         width: 600px;
+    }
+    #header-content
+    {
+        width: 600px
     }
 
 }
@@ -195,5 +245,9 @@ OTHER
     #content
     {
         width: 600px;
+    }
+    #header-content
+    {
+        width: 600px
     }
 }
