@@ -45,6 +45,7 @@ Route::get('me', function()
 //Add an add city route
 Route::get('city-add', 'CityAddController@index');
 Route::post('city-add', 'CityAddController@searchCity');
+Route::put('city-add', 'CityAddController@addCity');
 
 //Tasks route
 Route::get('tasks','TasksController@index');
