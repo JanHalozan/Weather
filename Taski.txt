@@ -2,8 +2,11 @@ TIP 1:
 	- Aktivnosti ko si doma v bajti
 
 		- Watch TV
-		- Clean
+		- Clean room
 		- Take a nap
+		- Play video games
+		- Play an instrument
+		- Read a book
 
 TIP 2:
 	
@@ -12,6 +15,8 @@ TIP 2:
 		- Go running
 		- Take a walk
 		- Sport with friends
+		- Go biking
+		- Picnic in park
 
 TIP 3:
 
@@ -20,6 +25,9 @@ TIP 3:
 		- Build a snowman
 		- Go skiing
 		- Drink a cup of tea
+		- Make a snow fort
+		- Have a snow fight
+		- Clear snow
 
 TIP 4:
 
@@ -28,6 +36,8 @@ TIP 4:
 		- Visit a fitnes studio
 		- Work out at home
 		- Play squash
+		- Do some push ups
+		- Do joga
 
 TIP 5:
 
@@ -36,6 +46,8 @@ TIP 5:
 		- Go to the movies
 		- Go to a concert
 		- Invite someone to coffe
+		- Throw a party
+		- Go to a meetup
 
 
 0 - 9 Clear
