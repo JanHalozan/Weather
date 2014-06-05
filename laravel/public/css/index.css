@@ -17,7 +17,6 @@ body
 {
 	position: relative;
 	float: left;
-	height: 88%;
 	width: 29%;
 }
 
@@ -150,7 +149,7 @@ body
 	position: relative;
 
 	font-weight: 100;
-	/* font-size: 9em; */
+	font-size: 9em;
 
 	text-align: center;
 	line-height: 0.8;
@@ -300,5 +299,62 @@ hr
 	{
 		margin-top: 6px;
 		font-size: 1.2em;
+	}
+}
+
+@media screen and (max-height: 600px){
+
+	#frame 
+	{
+		height: 300px;
+		width: 100%;
+	}
+
+	#frame #info-panel #first-line #temperature p 
+	{
+		font-size: 5em;
+	}
+
+	#frame #info-panel #second-line p 
+	{
+		font-size: 1.5em;
+	}
+
+	#frame #info-panel #third-line p 
+	{
+		font-size: 1em;
+	}
+
+	#weather-guy 
+	{
+		width: 28%;
+	}
+
+	#frame #title-fact p 
+	{
+		font-size: 0.7em;
+	}
+
+	#frame #fact p 
+	{
+		font-size: 0.8em;
+	}
+
+	#frame #tasks-title
+	{
+		font-size: 0.7em;
+		margin-top: 20px;
+	}
+
+	#frame #tasks-list
+	{
+		margin-top: 3px;
+		font-size: 0.8em;
+	}
+
+	#frame #title-fact
+	{
+		/* Push facts a bit down */
+		margin-top: 0px;	
 	}
 }

@@ -65,7 +65,7 @@ header
 
 #header-content
 {
-    width: 800px;
+    width: 780px;
     margin: 0 auto;
     /* background: yellow; */
     height: 50px;
@@ -165,6 +165,7 @@ CONTENT
 #content
 {
     /* Width is set below in @media */
+    width: 780px;
     margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
@@ -228,5 +229,33 @@ OTHER
     #header-content
     {
         width: 780px
+    }
+}
+
+@media screen and (max-height: 600px){
+    #content
+    {
+        width: 400px;
+    }
+
+    #header-content
+    {
+        width: 400px;
+    }
+
+    #header-content h1 
+    {
+        display: none;
+    }
+
+    #footer-content
+    {
+        /* background: violet; */
+        width: 400px;
+    }
+
+    #navigation
+    {
+        float: left;
     }
 }
