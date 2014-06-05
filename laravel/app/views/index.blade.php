@@ -53,7 +53,7 @@
 		</div>
 
 		<div id="tasks">
-            <p id="tasks-title">Today we recommend you:</p>
+            <p id="tasks-title">{{ Lang::get('other.tasks_recommendation') }}</p>
 			<ul id="tasks-list">
                 <li><p>{{ $task1 }}</p></li>
                 <li><p>{{ $task2 }}</p></li>
@@ -63,7 +63,7 @@
 
 		<div id="title-fact">
 			<hr/>
-			<p>Did you know?</p>
+			<p>{{ Lang::get('other.fact_title') }}</p>
 		</div>
 
 		<div id="fact">
