@@ -86,22 +86,29 @@ body
 	float: right;
 	height: 43%;
 	width: 65%;
-    text-align: center;
 }
 
 #frame #tasks-title
 {
-    font-weight: normal;
-    margin-top: 10%;
+	text-align: left;
+    font-weight: 500;
+    font-size: 1.1em;
+    margin-top: 12%;
     height: 10%;
+
+    margin-left: 20%;
 }
 
 #frame #tasks-list
 {
-    margin-top: 5%;
     height: 75%;
     vertical-align: middle;
-    list-style-type: none;
+
+    font-weight: 300;
+    font-size: 1.4em;
+
+    margin-top: 10px;
+    margin-left: 28%;
 }
 
 #frame #tasks-list li
@@ -200,11 +207,12 @@ hr
 	height: 5%;
 	width: 100%;
 	/* Push facts a bit down */
-	margin-top: 30px;	
+	margin-top: 35px;	
 }
 
 #frame #title-fact p
 {
+	margin-top: 4px;
 	position: relative;
 	font-size: 1em;
 	font-weight: 500;
@@ -214,6 +222,7 @@ hr
 {
 	float: left;
 	width: 100%;
+	margin-top: 3px;
 }
 
 #frame #fact p 
