@@ -27,6 +27,8 @@ $(document).ready(function(){
                     $('#data').val(data);
                     $("#input_div").hide('medium');
                     $("#show_div").show('medium');
+                    $("#add_button").show();
+                    $("#search_button").hide();
                 }
                 else
                 {
@@ -38,6 +40,7 @@ $(document).ready(function(){
 
     //City add function
     $('#add_button').click(function(){
+        $('#add_button').text(adding_text);
         $.ajax({
             type: 'PUT',
             url: 'city-add',

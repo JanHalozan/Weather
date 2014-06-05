@@ -2,7 +2,7 @@
 
 return array(
 
-    'title' => "Dodajanje mesta",
+    'title' => "Dodaj mesto",
     'city' => "Mesto: ",
     'search' => "Poišči mesto",
     'warning' => "Prosim vpiši v formatu mesto, država",
@@ -10,5 +10,5 @@ return array(
     'add_button' => "Dodaj zdaj",
     'javascript_code' => "searching_text = \"Iščem\"; no_find_text = \"Ne najdem mesta\";
         warning_text = \"Prosim vpiši v formatu mesto, država\"; search_text = \"Poišči mesto\";
-        add_text = \"Dodaj zdaj\"; adding_text = \"Dodajam mesto, prosim počakaj\"; complete_text = \"Mesto dodano\""
+        add_text = \"Dodaj zdaj\"; adding_text = \"Dodajam\"; complete_text = \"Mesto dodano\""
 );
