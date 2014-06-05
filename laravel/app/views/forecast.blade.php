@@ -9,7 +9,6 @@
 		@foreach($days as $day)
 		<li class="days-item">
 			<div class="forecast-frame">
-
 				<div class="weather">
 					<img class="weather-icon" src="images/{{$day['icon']}}">
 					<div class="weather-info">

@@ -15,7 +15,7 @@
 Route::get('/', 'IndexController@index');
 Route::get('city', 'IndexController@cityPicker');
 Route::put('city', 'IndexController@setCookie');
-Route::get('city/{cityName}', 'IndexController@cityWeather');
+Route::get('lang-select/{local_identifier}', 'IndexController@setLang');
 
 //Forecast logic
 Route::get('forecast', 'ForecastController@index');
@@ -35,10 +35,19 @@ Route::get('logout', function()
     return Redirect::to('/');
 });
 
+//Proceed
 Route::get('me', function()
 {
     if (Auth::check())
         return UsersController::getMe();
+    else
+        return App::abort(404);
+});
+
+Route::post('me', function()
+{
+	if (Auth::check())
+        return UsersController::postMe();
     else
         return App::abort(404);
 });

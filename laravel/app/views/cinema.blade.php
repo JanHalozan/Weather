@@ -2,15 +2,22 @@
 
 @section('content')
 
-<h1>Howdy</h1>
-
-@foreach($schedule as $item)
-<a href="{{ $item['link'] }}" target="_blank">
-    <div>
-        <p>{{ $item['name'] }}</p>
-        <img src="{{ $item['image'] }}">
-    </div>
-</a>
-@endforeach
+<table>
+	@foreach($schedule as $item)
+	<tr>
+		<a href="{{ $item['link'] }}" target="_blank">
+	    	<td>
+	    		<img src="{{ $item['image'] }}">
+	    	</td>
+	    	<td>
+	    		<div>
+	    			<h4>{{ $item['name'] }}</h4>
+	    			<p>{{ $item['description'] }}</p>
+	    		</div>
+	    	</td>
+		</a>
+	</tr>
+	@endforeach
+</table>
 
 @stop

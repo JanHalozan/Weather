@@ -73,4 +73,9 @@ class UsersController extends BaseController
 
         return $view;
     }
+
+    public static function postMe()
+    {
+        var_dump(Input::all());
+    }
 } 
