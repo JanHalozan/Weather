@@ -1,0 +1,58 @@
+#user-title
+{
+	text-align: center;
+}
+
+table
+{
+	width: 50%;
+	margin: 25px auto 0 auto;
+}
+
+td:first-child
+{
+	text-align: right;
+	padding-right: 20px;
+}
+
+td:last-child
+{
+	text-align: left;
+	padding-left: 20px;
+}
+
+input[type=text], input[type=password]
+{
+    padding: 5px;
+    border: 2px solid #ccc;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    width: 250px;
+}
+
+select
+{
+    border: 2px solid #ccc !important;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: #fff url('https://www.jabongworld.com/skin/frontend/default/blank/images/arrow-black-down.png') no-repeat 97% center;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    width: 265px;
+    height: 25px;
+    padding-left: 5px
+}
+
+input[type=submit]
+{
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    color: white;
+    background-color: #aaa;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.8em;
+    width: 100px;
+    height: 25px;
+    margin-top: 20px;
+}

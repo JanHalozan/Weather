@@ -27,6 +27,51 @@
 	background: red;
 }
 
+/*
+WEATHER INFO RELATED
+ */
+
+.weather
+{
+	float: left;
+	width: 100%;
+	background: purple;
+}
+
+.weather-icon
+{
+	margin-top: 0.5em;
+	width: 40%;
+	float: left;
+	background: green;
+}
+
+.weather-info
+{
+	width: 60%;
+	float: right;
+	background: yellow;
+}
+
+.weather-info *
+{
+	padding-left: 5px;
+}
+
+/*
+WEATHER GUY RELATED
+ */
+
+.weather-guy
+{
+	height: 100%;
+	background: magenta;
+}
+
+/*
+TASKS RELATED
+ */
+
 .tasks
 {
 	height: 20%;
@@ -39,6 +84,7 @@
 
 .tasks-list
 {
+	margin-top: 0.2em;
 	text-align: center;
 	list-style-type: none;
 }
