@@ -5,18 +5,20 @@
 
 table
 {
-	width: 50%;
+	width: 75%;
 	margin: 25px auto 0 auto;
 }
 
 td:first-child
 {
+    width: 50%;
 	text-align: right;
 	padding-right: 20px;
 }
 
 td:last-child
 {
+    width: 50%;
 	text-align: left;
 	padding-left: 20px;
 }

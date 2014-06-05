@@ -35,10 +35,19 @@ Route::get('logout', function()
     return Redirect::to('/');
 });
 
+//Proceed
 Route::get('me', function()
 {
     if (Auth::check())
         return UsersController::getMe();
+    else
+        return App::abort(404);
+});
+
+Route::post('me', function()
+{
+	if (Auth::check())
+        return UsersController::postMe();
     else
         return App::abort(404);
 });
