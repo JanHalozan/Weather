@@ -9,7 +9,6 @@
 		@foreach($days as $day)
 		<li class="days-item">
 			<div class="forecast-frame">
-
 				<div class="weather">
 					<img class="weather-icon" src="/images/Sun.png">
 					<div class="weather-info">
@@ -24,19 +23,19 @@
 						<div id="pants">
 							<img src="images/{{ $pants . '_legs.png' }}"/>
 						</div>
-
+						
 						<div id="body">
 							<img src="images/{{ $body . '_torso.png' }}"/>
 						</div>
-
+						
 						<div id="head">
 							<img src="images/{{ $head . '_head.png' }}"/>
 						</div>
-
+						
 						<div id="boots">
 							<img src="images/{{ $boots . '_boots.png' }}"/>
 						</div>
-
+						
 						<img src="images/WeatherGuy.png" alt="Weatherguy"/>
 					</div>
 				{{-- Only if we're logged in we show the tasks --}}
