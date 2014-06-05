@@ -14,6 +14,7 @@
 //Route the index page to our index controller and run the index action
 Route::get('/', 'IndexController@index');
 Route::get('city', 'IndexController@cityPicker');
+Route::put('city', 'IndexController@setCookie');
 Route::get('city/{cityName}', 'IndexController@cityWeather');
 
 //Forecast logic

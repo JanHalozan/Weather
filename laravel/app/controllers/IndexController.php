@@ -233,4 +233,16 @@ class IndexController extends BaseController
 
         return $view;
     }
+
+    public function setCookie()
+    {
+        if (Request::ajax())
+        {
+            //Get data
+            $id = Input::get('city_id');
+
+            if ($id)
+                Cookie::queue('city_id', $id, 60 * 24 * 3000);
+        }
+    }
 }
