@@ -13,7 +13,7 @@ class ExampleGeneratorController extends BaseController
         $view = View::make('example_generator');
 
         //Generate random latitude and longitude
-        $lat = rand(-9000,9000) / 100;
+        $lat = rand(-5500,7500) / 100;
         $lon = rand(-18000,18000) / 100;
 
         //Api key
