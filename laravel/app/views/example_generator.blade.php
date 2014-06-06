@@ -52,7 +52,7 @@
                     </tr>
                     <tr>
                         <td>Humidity:</td>
-                        <td>{{$humid}}</td>
+                        <td>{{$humid}}%</td>
                     </tr>
                     <tr>
                         <td>Wind speed:</td>
