@@ -85,17 +85,17 @@ class ForecastController extends BaseController
 	        if (in_array(-1, $output))
 	        {
 	            $view->message = Lang::get('guides.clothes_error');
-	            $view->head = 1;
-	            $view->body = 3;
-	            $view->pants = 1;
-	            $view->boots = 1;
+	            $days[$i]['head'] = 1;
+	            $days[$i]['body'] = 3;
+	            $days[$i]['pants'] = 1;
+	            $days[$i]['boots'] = 1;
 	        }
 	        else
 	        {
-	            $view->head = $output[0];
-	            $view->body = $output[1];
-	            $view->pants = $output[2];
-	            $view->boots = $output[3];
+	            $days[$i]['head'] = $output[0];
+	            $days[$i]['body'] = $output[1];
+	            $days[$i]['pants'] = $output[2];
+	            $days[$i]['boots'] = $output[3];
 	        }	        
 
 

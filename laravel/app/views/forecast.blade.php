@@ -22,19 +22,19 @@
 				<div style="clear: both;"></div>
 				<div id="weather-guy">			
 					<div id="pants">
-						<img src="images/{{ $pants . '_legs.png' }}"/>
+						<img src="images/{{ $day['pants'] . '_legs.png' }}"/>
 					</div>
 
 					<div id="body">
-						<img src="images/{{ $body . '_torso.png' }}"/>
+						<img src="images/{{ $day['body'] . '_torso.png' }}"/>
 					</div>
 
 					<div id="head">
-						<img src="images/{{ $head . '_head.png' }}"/>
+						<img src="images/{{ $day['head'] . '_head.png' }}"/>
 					</div>
 
 					<div id="boots">
-						<img src="images/{{ $boots . '_boots.png' }}"/>
+						<img src="images/{{ $day['boots'] . '_boots.png' }}"/>
 					</div>
 
 					<img src="images/WeatherGuy.png" alt="Weatherguy"/>

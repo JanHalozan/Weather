@@ -26,7 +26,6 @@
 
 			<img src="images/WeatherGuy.png" alt="Weatherguy"/>
 		</div>
-		
 		<div id="info-panel">
 			<div id="first-line">
 				<div id="icon">
@@ -60,7 +59,7 @@
                 <li><p>{{ $task3 }}</p></li>
 			</ul>
 		</div>
-
+		
 		<div id="title-fact">
 			<hr/>
 			<p>{{ Lang::get('other.fact_title') }}</p>
