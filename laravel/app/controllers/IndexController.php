@@ -246,6 +246,23 @@ class IndexController extends BaseController
         }
     }
 
+    public function getCity()
+    {
+        if (Request::ajax())
+        {
+            $lat = Input::get('lat');
+            $lon = Input::get('lon');
+
+            if($lat && $lon)
+            {
+                $nearest_city = Cities::findNearest($lat, $lon);
+                return $nearest_city['id'];
+            }
+
+            return "NULL";
+        }
+    }
+
     public function setLang($locale_id)
     {
         if (isset($locale_id))

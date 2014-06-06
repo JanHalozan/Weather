@@ -9,11 +9,19 @@
 
 @section('content')
 
-<select>
-    <option>Click to select</option>
-    @foreach ($cities as $city)
-        <option value="{{ urlencode($city->id) }}">{{ $city->name }}</option>
-    @endforeach
-</select>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+<div id="main-div">
+    <div id="city-picker-div">
+        <h1>{{ Lang::get('other.city_pick_title') }}</h1>
+        <div id="maps-div">Google Maps</div>
+        <input type="hidden" name="latitude" id="latitude" value="46.55"/>
+        <input type="hidden" name="longitude" id="longitude" value="15.63"/>
+        <button id="submit-button">{{ Lang::get('other.city_pick_accept') }}</button>
+    </div>
+    <div id="success-div">
+        <h1 id="success-text">{{ Lang::get('other.city_pick_success') }}</h1>
+    </div>
+</div>
 
 @stop
