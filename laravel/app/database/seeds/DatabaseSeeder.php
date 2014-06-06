@@ -53,7 +53,7 @@ class CitiesSeeder extends Seeder
             array('name' => 'Johannesburg', 'country_id' => DB::table('countries')->where('name', 'South Africa')->pluck('id'),
                 'latitude' => -26.2, 'longitude' => 28.04, 'api_id' => '993800'),
             array('name' => 'Sydney', 'country_id' => DB::table('countries')->where('name', 'Australia')->pluck('id'),
-                'latitude' => 46.14, 'longitude' => -60.18, 'api_id' => '6354908'),
+                'latitude' => -33.87, 'longitude' => 151.21, 'api_id' => '6354908'),
             array('name' => 'Berlin', 'country_id' => DB::table('countries')->where('name', 'Germany')->pluck('id'),
                 'latitude' => 52.52, 'longitude' => 13.41, 'api_id' => '2950159'),
             array('name' => 'Tokyo', 'country_id' => DB::table('countries')->where('name', 'Japan')->pluck('id'),
