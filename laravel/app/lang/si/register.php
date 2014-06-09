@@ -3,7 +3,7 @@
 return array(
 
     'title' => 'Registracija',
-    'username' => 'Uporabniško ime',
+    'username' => 'Email',
     'password' => 'Geslo',
     'retype' => 'Ponovite geslo',
     'button' => 'Registracija',

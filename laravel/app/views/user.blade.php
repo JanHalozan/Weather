@@ -10,7 +10,7 @@
 
 @section('content')
 
-<h1 id="user-title">Welcome back <b>{{ $user->username }}</b></h1>
+<h1 id="user-title">{{ Lang::get('guides.welcome') }} <b>{{ $user->username }}</b></h1>
 <table>
     <tr>
         <td>
@@ -58,7 +58,7 @@
     </tr>
     <tr>
         <td colspan="2" id="button_row">
-            <button id="save-button" class="green-sea-flat-button">Save</button>
+            <button id="save-button" class="green-sea-flat-button">{{ Lang::get('cityAdd.save'); }}</button>
             <button type="button" id="search_button" class="green-sea-flat-button">{{ Lang::get('cityAdd.search'); }}</button>
             <button type="button" id="add_button" class="green-sea-flat-button">{{ Lang::get('cityAdd.add_button'); }}</button>
         </td>

@@ -3,7 +3,7 @@
 return array(
 
     'title' => 'Prijava',
-    'username' => 'Uporabniško ime',
+    'username' => 'Email',
     'password' => 'Geslo',
     'incorrect_credentials' => 'Uporabniško ime ali geslo ni pravilno.',
     'button' => 'Prijava'

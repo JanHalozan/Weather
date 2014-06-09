@@ -3,7 +3,7 @@
 return array(
 
     'title' => 'Register',
-    'username' => 'Username',
+    'username' => 'Email',
     'password' => 'Password',
     'retype' => 'Re-type',
     'button' => 'Register',

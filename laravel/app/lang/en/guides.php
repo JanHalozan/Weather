@@ -13,6 +13,7 @@ return array(
     'language' => 'Language',
     'slovene' => 'Slovenian',
     'english' => 'English',
+    'welcome' => 'Welcome back',
 
 
     'clothes_error' => 'There was a problem suiting you up. Using fallback clothes.',
