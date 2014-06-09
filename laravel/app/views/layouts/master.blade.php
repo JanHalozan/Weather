@@ -21,18 +21,23 @@
                     <ul id="navigation">
                             <li><a href="/">{{ Lang::get('guides.home') }}</a></li>
                             <li><a href="forecast">{{ Lang::get('guides.forecast') }}</a></li>
-                            <li>
-                                <a href="lang-select/en">{{ Lang::get('guides.language') }}</a>
+                            <li tabindex="1">
+                                <a>{{ Lang::get('guides.language') }}</a>
                                 <ul>
                                     <li><a href="lang-select/si">{{ Lang::get('guides.slovene') }}</a></li>
                                     <li><a href="lang-select/en">{{ Lang::get('guides.english') }}</a></li> 
                                 </ul>
                             </li>
                             @if(Auth::check())
-                                <li>
-                                    <a href="me">{{ Lang::get('guides.options') }}</a>
+                                <li tabindex="2">
+                                    <a>{{ Lang::get('guides.options') }}</a>
                                     <ul>
                                         <li><a href="me">{{ Lang::get('guides.profile') }}</a></li>
+                                        <li><a href="city">{{ Lang::get('guides.city') }}</a></li>
+                                        @if (Auth::user()->is_admin)
+                                        <li><a href="example-generator">{{ Lang::get('guides.example_generator') }}</a></li>
+                                        <li><a href="tasks-generator">{{ Lang::get('guides.tasks_generator') }}</a></li>
+                                        @endif
                                         <li><a href="logout">{{ Lang::get('guides.logout') }}</a></li>
                                     </ul>
                                 </li>

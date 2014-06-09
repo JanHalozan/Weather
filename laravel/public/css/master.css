@@ -91,6 +91,7 @@ header
 #navigation li
 {
     float: left;
+    cursor: pointer;
 }
 
 #navigation li a
@@ -106,7 +107,7 @@ header
     display: none;
     position: absolute;
     list-style: none;
-    width: 150px;
+    width: 190px;
     padding-left: 10px;
     padding-bottom: 3px;
 
@@ -135,6 +136,21 @@ header
 {
     color: #9fbbd2;
 }
+
+#navigation li:focus > ul
+{
+    display: block;
+}
+
+#navigation li:focus
+{
+    background: #3e5770;
+}
+#navigation ul a:focus
+{
+    color: #9fbbd2;
+}
+
 
 #master-message
 {

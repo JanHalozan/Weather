@@ -14,6 +14,10 @@ return array(
     'slovene' => 'Slovenian',
     'english' => 'English',
     'welcome' => 'Welcome back',
+    'example_generator' => 'Clothes generator',
+    'tasks_generator' => 'Tasks generator',
+    'city' => 'Select city',
+    
 
 
     'clothes_error' => 'There was a problem suiting you up. Using fallback clothes.',

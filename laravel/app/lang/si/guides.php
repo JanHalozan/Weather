@@ -14,6 +14,9 @@ return array(
     'slovene' => 'Slovenski',
     'english' => 'Angleški',
     'welcome' => 'Dobrodošli nazaj',
+    'example_generator' => 'Generator oblačil',
+    'tasks_generator' => 'Generator aktivnosti',
+    'city' => 'Izberi mesto',
 
     'clothes_error' => 'Težava pri oblačenju, uporabljam privzeta oblačila.',
     'forecast_error' => 'Zaznali nismo nobenega mesta, prosim poskusite ponovno.',
