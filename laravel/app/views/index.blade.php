@@ -54,9 +54,9 @@
 		<div id="tasks">
             <p id="tasks-title">{{ Lang::get('other.tasks_recommendation') }}</p>
 			<ul id="tasks-list">
-                <li><p>{{ $task1 }}</p></li>
-                <li><p>{{ $task2 }}</p></li>
-                <li><p>{{ $task3 }}</p></li>
+                <li><p>{{ Lang::get($task1); }}</p></li>
+                <li><p>{{ Lang::get($task2); }}</p></li>
+                <li><p>{{ Lang::get($task3); }}</p></li>
 			</ul>
 		</div>
 		

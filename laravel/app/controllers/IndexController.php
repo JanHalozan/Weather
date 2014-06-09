@@ -194,16 +194,16 @@ class IndexController extends BaseController
                 
             }
             
-            $view->task1 = $tasks[0];
-            $view->task2 = $tasks[1];
-            $view->task3 = $tasks[2]; 
+            $view->task1 = 'activities.' . $tasks[0];
+            $view->task2 = 'activities.' . $tasks[1];
+            $view->task3 = 'activities.' . $tasks[2];
             
         }
         catch (Exception $e)
         {
-            $view->task1 = "Error";
-            $view->task2 = "Error";
-            $view->task3 = "Error";
+            $view->task1 = "activities.error";
+            $view->task2 = "activities.error";
+            $view->task3 = "activities.error";
         }       
 
         //Get a fact from our base

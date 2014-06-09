@@ -1,0 +1,32 @@
+<?php
+
+return array(
+    'watch_tv' => 'Watch TV',
+    'clean_room' => 'Clean your room',
+    'take_nap' => 'Take a nap',
+    'video_games' => 'Play video games',
+    'play_instrument' => 'Play an instrument',
+    'read_book' => 'Read a book',
+    'go_run' => 'Go running',
+    'take_walk' => 'Take a walk',
+    'sport_with_friend' => 'Sport with friends',
+    'go_bike' => 'Go biking',
+    'picnic_park' => 'Make a picnic in park',
+    'build_snowman' => 'Make a snowman',
+    'go_sky' => 'Go skiing',
+    'drink_tea' => 'Have a cup of tea',
+    'make_snow_fort' => 'Make snow fort',
+    'have_snow_fight' => 'Have a snowball fight',
+    'clear_snow' => 'Clear snow from yard',
+    'visit_fitness' => 'Visit a fitness studio',
+    'work_at_home' => 'Workout at home',
+    'sport_indoors' => 'Sport indoors',
+    'push_ups' => 'Do some push ups',
+    'joga' => 'Do some yoga',
+    'go_to_movies' => 'Go to the movies',
+    'go_to_concert' => 'Go to a concert',
+    'invite_coffee' => 'Invite someone for a coffee',
+    'throw_party' => 'Throw a party',
+    'go_to_meetup' => 'Go to a meetup',
+    'error' => 'Error'
+);

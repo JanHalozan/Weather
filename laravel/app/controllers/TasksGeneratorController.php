@@ -13,11 +13,11 @@ class TasksGeneratorController extends BaseController
             $view->type4 = Activities::where('activity_type',4)->get();
             $view->type5 = Activities::where('activity_type',5)->get();
         } catch(Exception $e) {
-            $view->type1 = "Error";
-            $view->type2 = "Error";
-            $view->type3 = "Error";
-            $view->type4 = "Error";
-            $view->type5 = "Error";
+            $view->type1 = "activities.error";
+            $view->type2 = "activities.error";
+            $view->type3 = "activities.error";
+            $view->type4 = "activities.error";
+            $view->type5 = "activities.error";
         }
 
         return $view;

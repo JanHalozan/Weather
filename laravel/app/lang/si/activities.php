@@ -1,0 +1,32 @@
+<?php
+
+return array(
+    'watch_tv' => 'Glejte televizijo',
+    'clean_room' => 'Pospravite si sobo',
+    'take_nap' => 'Počivajte',
+    'video_games' => 'Igrajte računalniške igre',
+    'play_instrument' => 'Igrajte inštrument',
+    'read_book' => 'Preberite knjigo',
+    'go_run' => 'Pojdite tekat',
+    'take_walk' => 'Pojdite na sprehod',
+    'sport_with_friend' => 'Športajte s prijatelji',
+    'go_bike' => 'Peljite se s kolesom',
+    'picnic_park' => 'V parku si naredite piknik',
+    'build_snowman' => 'Zgradite snežaka',
+    'go_sky' => 'Pojdite smučat',
+    'drink_tea' => 'Skuhajte si čaj',
+    'make_snow_fort' => 'Zgradite iglu',
+    'have_snow_fight' => 'Kepajte se',
+    'clear_snow' => 'Splüžite sneg',
+    'visit_fitness' => 'Obiščite fitnes',
+    'work_at_home' => 'Telovadi doma',
+    'sport_indoors' => 'Športajte v dvorani',
+    'push_ups' => 'Naredite nekaj sklec',
+    'joga' => 'Delajte jogo',
+    'go_to_movies' => 'Pojdite v kino',
+    'go_to_concert' => 'Pojdite na koncert',
+    'invite_coffee' => 'Pojdite s prijateljem na pijačo',
+    'throw_party' => 'Naredite žurko',
+    'go_to_meetup' => 'Pojdite na javno srečanje',
+    'error' => 'Napaka'
+);

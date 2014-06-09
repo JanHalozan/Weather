@@ -1,53 +1,53 @@
 TIP 1:
 	- Aktivnosti ko si doma v bajti
 
-		- Watch TV
-		- Clean room
-		- Take a nap
-		- Play video games
-		- Play an instrument
-		- Read a book
+		- watch_tv
+		- clean_room
+		- take_nap
+		- video_games
+		- play_instrument
+		- read_book
 
 TIP 2:
 	
-	- Športne aktivnosti zunaj
+	- ï¿½portne aktivnosti zunaj
 
-		- Go running
-		- Take a walk
-		- Sport with friends
-		- Go biking
-		- Picnic in park
+		- go_run
+		- take_walk
+		- sport_with_friend
+		- go_bike
+		- picnic_park
 
 TIP 3:
 
 	- Zimske radosti
 
-		- Build a snowman
-		- Go skiing
-		- Drink a cup of tea
-		- Make a snow fort
-		- Have a snow fight
-		- Clear snow
+		- build_snowman
+		- go_sky
+		- drink_tea
+		- make_snow_fort
+		- have_snow_fight
+		- clear_snow
 
 TIP 4:
 
-	- Športne aktivnosti noter
+	- ï¿½portne aktivnosti noter
 
-		- Visit a fitnes studio
-		- Work out at home
-		- Play squash
-		- Do some push ups
-		- Do joga
+		- visit_fitness
+		- work_at_home
+		- sport_indoors
+		- push_ups
+		- joga
 
 TIP 5:
 
-	- Dogodki aka kino, party, gledališèe ...
+	- Dogodki aka kino, party, gledaliï¿½ï¿½e ...
 
-		- Go to the movies
-		- Go to a concert
-		- Invite someone to coffe
-		- Throw a party
-		- Go to a meetup
+		- go_to_movies
+		- go_to_concert
+		- invite_coffee
+		- throw_party
+		- go_to_meetup
 
 
 0 - 9 Clear

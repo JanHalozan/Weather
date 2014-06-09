@@ -3,7 +3,7 @@
 return array(
 
 	'copyright' => 'Weatherbound &copy; Vse pravice pridržane.',
-	'tasks_recommendation' => 'Današnje vreme je primerno za:',
+	'tasks_recommendation' => 'Danes priporočamo naslednje aktivnosti:',
 	'fact_title' => 'Ali ste vedeli?',
     'city_pick_title' => 'Na zemljevidu izberi mesto, za katerega želite podatke o vremenu',
     'city_pick_accept' => 'Potrdi izbrano mesto',

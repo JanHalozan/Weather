@@ -115,7 +115,7 @@
 	<ul><b>TYPE 1:</b> 
 		<?php
 	 		for($i = 0; $i < count($type1); $i++){
-	 			echo "<li>" . $type1[$i]->name . " | </li>";
+	 			echo "<li>" . trans('activities.'.$type1[$i]->name) . " | </li>";
 	 		}
 	 	?>
 	</ul>
@@ -125,7 +125,7 @@
 	<ul><b>TYPE 2:</b>   
 		<?php
 	 		for($i = 0; $i < count($type2); $i++){
-	 			echo "<li>" . $type2[$i]->name . " | </li>";
+	 			echo "<li>" . trans('activities.'.$type2[$i]->name) . " | </li>";
 	 		}
 	 	?>
 	</ul>
@@ -135,7 +135,7 @@
 	<ul><b>TYPE 3:</b> 
 		<?php
 	 		for($i = 0; $i < count($type3); $i++){
-	 			echo "<li>" . $type3[$i]->name . " | </li>";
+	 			echo "<li>" . trans('activities.'.$type3[$i]->name) . " | </li>";
 	 		}
 	 	?>
 	</ul>
@@ -145,7 +145,7 @@
 	<ul><b>TYPE 4:</b>  
 		<?php
 	 		for($i = 0; $i < count($type4); $i++){
-	 			echo "<li>" . $type4[$i]->name . " | </li>";
+	 			echo "<li>" . trans('activities.'.$type4[$i]->name) . " | </li>";
 	 		}
 	 	?>
 	</ul>
@@ -155,7 +155,7 @@
 	<ul><b>TYPE 5:</b>  
 		<?php
 	 		for($i = 0; $i < count($type5); $i++){
-	 			echo "<li>" . $type5[$i]->name . " | </li>";
+	 			echo "<li>" . trans('activities.'.$type5[$i]->name) . " | </li>";
 	 		}
 	 	?>
 	</ul>
