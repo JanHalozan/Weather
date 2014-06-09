@@ -24,7 +24,7 @@ return array(
     'push_ups' => 'Naredite nekaj sklec',
     'joga' => 'Prakticirajte jogo',
     'go_to_movies' => '<a href="/cinema" style="text-decoration: underline">Pojdite v kino</a>',
-    'go_to_concert' => 'Pojdite na koncert',
+    'go_to_concert' => 'Pojdite na predstavo',
     'invite_coffee' => 'Pojdite s prijateljem na pijačo',
     'throw_party' => 'Naredite žurko',
     'go_to_meetup' => 'Pojdite na javno srečanje',

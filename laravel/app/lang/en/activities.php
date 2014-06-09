@@ -24,7 +24,7 @@ return array(
     'push_ups' => 'Do some push ups',
     'joga' => 'Do some yoga',
     'go_to_movies' => 'Go to the movies',
-    'go_to_concert' => 'Go to a concert',
+    'go_to_concert' => 'Go to a musical',
     'invite_coffee' => 'Invite someone for a coffee',
     'throw_party' => 'Throw a party',
     'go_to_meetup' => 'Go to a meetup',

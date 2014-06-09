@@ -11,6 +11,10 @@
 	color: red;
 }
 
+#comboBox {
+	width: 100%;
+}
+
 #addButton{
 	margin-top: 5px;
 	width: 100%;
@@ -22,7 +26,7 @@
 #content
 {
 	/*background: blue;*/
-	width: 100%;
+	width: 1420px;
 }
 
 #days-list
@@ -179,4 +183,9 @@ TASKS RELATED
 	{
 		width: 100px;
 	}
+	#content
+	{
+		width: 100%;
+	}
+
 }

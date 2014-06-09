@@ -37,6 +37,11 @@ class ActivitiesSeeder extends Seeder
                     'activity_type' => '1',
                     'user_id' => '-1'
                 ),
+                array(
+                    'name' => 'throw_party',
+                    'activity_type' => '1',
+                    'user_id' => '-1'
+                ),
 	            // Type 2 - Outdoor sport activities
 	            array(
 	            	'name' => 'go_run',
@@ -133,11 +138,6 @@ class ActivitiesSeeder extends Seeder
                 ),
                 array(
                     'name' => 'invite_coffee',
-                    'activity_type' => '5',
-                    'user_id' => '-1'
-                ),
-                array(
-                    'name' => 'throw_party',
                     'activity_type' => '5',
                     'user_id' => '-1'
                 ),

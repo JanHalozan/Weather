@@ -36,7 +36,7 @@
                     <ul id="navigation">
                             <li><a href="/">{{ Lang::get('guides.home') }}</a></li>
                             <li><a href="forecast">{{ Lang::get('guides.forecast') }}</a></li>
-                            <li tabindex="1">
+                            <li>
                                 <a>{{ Lang::get('guides.language') }}</a>
                                 <ul>
                                     <li><a href="lang-select/si">{{ Lang::get('guides.slovene') }}</a></li>
@@ -44,7 +44,7 @@
                                 </ul>
                             </li>
                             @if(Auth::check())
-                                <li tabindex="2">
+                                <li>
                                     <a>{{ Lang::get('guides.options') }}</a>
                                     <ul>
                                         <li><a href="me">{{ Lang::get('guides.profile') }}</a></li>
