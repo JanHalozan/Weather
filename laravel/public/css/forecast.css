@@ -1,6 +1,6 @@
 #content
 {
-	background: blue;
+	/*background: blue;*/
 	width: 100%;
 }
 
@@ -24,7 +24,7 @@
 .forecast-frame
 {
 	height: 100%;
-	background: red;
+	border: solid 1px black;
 }
 
 /*
@@ -35,22 +35,25 @@ WEATHER INFO RELATED
 {
 	float: left;
 	width: 100%;
-	background: purple;
+	/*background: purple;*/
 }
 
 .weather-icon
 {
 	margin-top: 0.5em;
+	margin-left: 0.8em;
 	width: 40%;
 	float: left;
-	background: green;
+	/*background: green;*/
 }
 
 .weather-info
 {
-	width: 60%;
+	margin-top: 0.5em;
+	text-align: center;
+	width: 50%;
 	float: right;
-	background: yellow;
+	/*background: yellow;*/
 }
 
 .weather-info *
@@ -65,7 +68,7 @@ WEATHER GUY RELATED
 #weather-guy 
 {
 	position: relative;
-	width: 134px;
+	width: 124px;
 	margin: 0 auto;
 }
 
@@ -129,7 +132,8 @@ TASKS RELATED
 	display: block;
 	position: relative;
 	bottom: 0;
-	background: green;
+	margin-top: 5px;
+	/*background: green;*/
 }
 
 .tasks-list
@@ -141,4 +145,17 @@ TASKS RELATED
 .tasks-list li
 {
 	height: 33%;
+}
+
+.day 
+{
+	text-align: center;
+	background-color: #4a708b;
+}
+
+@media screen and (min-width: 1500px){
+	.weather-icon
+	{
+		width: 100px;
+	}
 }

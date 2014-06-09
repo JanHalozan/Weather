@@ -32,6 +32,10 @@ class ForecastController extends BaseController
 			// ----------------- T INFO --------------------
 			array_push($days, array('high' => $forecasts[$i]->temperature_high, 'low' => $forecasts[$i]->temperature_low, 'temperature' => $forecasts[$i]->temperature));
 
+			// ----------------- DAY ----------------------
+			$weekday = date('l', strtotime($forecasts[$i]->forecast_date));
+			$days[$i]['day'] = $weekday;
+
 			// ------------------ ICON ---------------------
 
 			//Get the condition string
