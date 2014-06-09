@@ -17,6 +17,7 @@ return array(
     'example_generator' => 'Clothes generator',
     'tasks_generator' => 'Tasks generator',
     'city' => 'Select city',
+    'tasks' => 'Plan activities',
     
 
 

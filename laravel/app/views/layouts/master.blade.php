@@ -34,6 +34,7 @@
                                     <ul>
                                         <li><a href="me">{{ Lang::get('guides.profile') }}</a></li>
                                         <li><a href="city">{{ Lang::get('guides.city') }}</a></li>
+                                        <li><a href="tasks">{{ Lang::get('guides.tasks') }}</a></li>
                                         @if (Auth::user()->is_admin)
                                         <li><a href="example-generator">{{ Lang::get('guides.example_generator') }}</a></li>
                                         <li><a href="tasks-generator">{{ Lang::get('guides.tasks_generator') }}</a></li>

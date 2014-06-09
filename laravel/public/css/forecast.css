@@ -1,3 +1,24 @@
+/* ONLI FOR TASKS PLANER */
+#add {
+	width: 200px;
+	margin: 0 auto;
+}
+
+#info {
+	margin-bottom: 5px;
+	font-size: 1.1em;
+	text-align: center;
+	color: red;
+}
+
+#addButton{
+	margin-top: 5px;
+	width: 100%;
+}
+	
+/* END */
+
+
 #content
 {
 	/*background: blue;*/

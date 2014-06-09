@@ -27,31 +27,31 @@ $(document).ready(function(){
         	switch (data) {
 
                 case '0':
-                    $("#c1").append("<li>" + $("#comboBox option:selected").text() + "</li>");
+                    $(".c1").append("<li>" + $("#comboBox option:selected").text() + "</li>");
                 break;
 
                 case '1':
-                    $("#c2").append("<li>" + $("#comboBox option:selected").text() + "</li>");
+                    $(".c2").append("<li>" + $("#comboBox option:selected").text() + "</li>");
                 break;
 
                 case '2':
-                    $("#c3").append("<li>" + $("#comboBox option:selected").text() + "</li>");
+                    $(".c3").append("<li>" + $("#comboBox option:selected").text() + "</li>");
                 break;
 
                 case '3':
-                    $("#c4").append("<li>" + $("#comboBox option:selected").text() + "</li>");
+                    $(".c4").append("<li>" + $("#comboBox option:selected").text() + "</li>");
                 break;
 
                 case '4':
-                    $("#c5").append("<li>" + $("#comboBox option:selected").text() + "</li>");
+                    $(".c5").append("<li>" + $("#comboBox option:selected").text() + "</li>");
                 break;
 
                 case '5':
-                    $("#c6").append("<li>" + $("#comboBox option:selected").text() + "</li>");
+                    $("#info").text("Ne priporočamo");
                 break;
 
                 default:
-                    $("#c1").append("<li>"+ data +"</li>");
+                    $("#info").text("Napaka");
                 break;
 
             }
