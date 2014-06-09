@@ -1,7 +1,3 @@
-/**
- * Created by Luka on 4/23/14.
- */
-
 $(document).ready(function(){
 
     //Searching function
@@ -50,5 +46,16 @@ $(document).ready(function(){
                 $("#found_city").text(complete_text);
                 $("#add_button").hide('medium');
             });
+    });
+
+    //Save
+    $('#save-button').click(function(){
+        $.ajax({
+            type: "POST",
+            url: "user",
+            data: { 'city_id': $('select').value }
+        }).done(function(data){
+            window.location.replace('/');
+        });
     });
 });

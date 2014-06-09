@@ -51,7 +51,7 @@
     </tr>
     <tr>
         <td colspan="2" id="button_row">
-            <button class="green-sea-flat-button">Save</button>
+            <button id="save-button" class="green-sea-flat-button">Save</button>
             <button type="button" id="search_button" class="green-sea-flat-button">{{ Lang::get('cityAdd.search'); }}</button>
             <button type="button" id="add_button" class="green-sea-flat-button">{{ Lang::get('cityAdd.add_button'); }}</button>
         </td>
