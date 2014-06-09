@@ -10,7 +10,7 @@
 		<li class="days-item">
 			<div class="forecast-frame">
 				<div class="day">
-					<h2>{{$day['day']}}</h2>
+					<h2>{{ Lang::get($day['day']) }}</h2>
 				</div>
 				<div class="weather">
 					<img class="weather-icon" src="images/{{$day['icon']}}">
@@ -46,9 +46,9 @@
 				@if(Auth::check())
 				<div class="tasks">
 					<ul class="tasks-list">
-						<li>{{ $day['task1'] }}</li>
-						<li>{{ $day['task2'] }}</li>
-						<li>{{ $day['task3'] }}</li>
+						<li>{{ Lang::get($day['task1']) }}</li>
+						<li>{{ Lang::get($day['task2']) }}</li>
+						<li>{{ Lang::get($day['task3']) }}</li>
 					</ul>
 				</div>
 				@endif

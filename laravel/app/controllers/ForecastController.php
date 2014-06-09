@@ -34,7 +34,7 @@ class ForecastController extends BaseController
 
 			// ----------------- DAY ----------------------
 			$weekday = date('l', strtotime($forecasts[$i]->forecast_date));
-			$days[$i]['day'] = $weekday;
+			$days[$i]['day'] = 'other.'.$weekday;
 
 			// ------------------ ICON ---------------------
 
@@ -150,16 +150,16 @@ class ForecastController extends BaseController
 	                
 	            }
 
-	            $days[$i]['task1'] = $tasks[0];
-	            $days[$i]['task2'] = $tasks[1];
-	            $days[$i]['task3'] = $tasks[2]; 
+	            $days[$i]['task1'] = 'activities.' . $tasks[0];
+	            $days[$i]['task2'] = 'activities.' . $tasks[1];
+	            $days[$i]['task3'] = 'activities.' . $tasks[2];
 
         	}
 			catch (Exception $e)
 	        {
-	            $days[$i]['task1'] = "Error";
-	            $days[$i]['task2'] = "Error";
-	            $days[$i]['task3'] = "Error";
+	            $days[$i]['task1'] = "activities.error";
+	            $days[$i]['task2'] = "activities.error";
+	            $days[$i]['task3'] = "activities.error";
 	        }  
 	        
 		}

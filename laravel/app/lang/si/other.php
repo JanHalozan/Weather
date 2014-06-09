@@ -7,5 +7,14 @@ return array(
 	'fact_title' => 'Ali ste vedeli?',
     'city_pick_title' => 'Na zemljevidu izberi mesto, za katerega želite podatke o vremenu',
     'city_pick_accept' => 'Potrdi izbrano mesto',
-    'city_pick_success' => 'Lokacija uspešno izbrana.'
+    'city_pick_success' => 'Lokacija uspešno izbrana.',
+
+    //Days
+    'Monday' => 'Ponedeljek',
+    'Tuesday' => 'Torek',
+    'Wednesday' => 'Sreda',
+    'Thursday' => 'Četrtek',
+    'Friday' => 'Petek',
+    'Saturday' => 'Sobota',
+    'Sunday' => 'Nedelja'
 );
