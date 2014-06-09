@@ -1,1 +1,7 @@
-<h1>404 Bitch</h1>
+@extends('layouts.master')
+
+@section('content')
+
+<h1>404, Page not found.</h1>
+
+@stop
