@@ -59,13 +59,54 @@ Route::post('city-add', 'CityAddController@searchCity');
 Route::put('city-add', 'CityAddController@addCity');
 
 //Tasks route
-Route::get('tasks','TasksController@index');
-Route::post('tasks','TasksController@addTask');
+Route::get('tasks', function()
+{
+    if (Auth::check())
+        return TasksController::index();
+    else
+        return App::abort(404);
+});
+
+Route::post('tasks', function()
+{
+    if (Auth::check())
+        return TasksController::addTask();
+    else
+        return App::abort(404);
+});
 
 //TasksGenerator route
-Route::get('tasks-generator','TasksGeneratorController@index');
-Route::post('tasks-generator','TasksGeneratorController@save');
+Route::get('tasks-generator', function()
+{
+    if (Auth::check())
+        return TasksGeneratorController::index();
+    else
+        return App::abort(404);
+});
+
+
+Route::post('tasks-generator', function()
+{
+    if (Auth::check())
+        return TasksGeneratorController::save();
+    else
+        return App::abort(404);
+});
+
 
 //Route for example generator
-Route::get('example-generator', 'ExampleGeneratorController@index');
-Route::post('example-generator', 'ExampleGeneratorController@saveExample');
+Route::get('example-generator', function()
+{
+    if (Auth::check())
+        return ExampleGeneratorController::index();
+    else
+        return App::abort(404);
+});
+
+Route::post('example-generator', function()
+{
+    if (Auth::check())
+        return ExampleGeneratorController::saveExample();
+    else
+        return App::abort(404);
+});
