@@ -93,8 +93,8 @@ function fetchData($city_data)
                 $reading->cloudiness = intval($daily['clouds']);
                 $reading->pressure = floatval($daily['pressure']);
                 $reading->humidity = intval($daily['humidity']);
-                $reading->wind_speed = floatval($daily['speed']);
-                $reading->wind_direction = intval($daily['deg']);
+                $reading->wind_speed = isset($daily['speed'])? floatval($daily['speed']) : 0.0;
+                $reading->wind_direction = isset($daily['deg'])? intval($daily['deg']) : 0;
                 $reading->date = date('Y-m-d', $daily['dt']);
 
                 //Read all weather conditions

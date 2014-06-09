@@ -49,6 +49,7 @@ class CityAddController extends BaseController
     function index()
     {
         $view = View::make('city_add');
+        $this->fetchDataForCity(27);
         return $view;
     }
 
@@ -236,8 +237,8 @@ class CityAddController extends BaseController
                     $reading->cloudiness = intval($daily['clouds']);
                     $reading->pressure = floatval($daily['pressure']);
                     $reading->humidity = intval($daily['humidity']);
-                    $reading->wind_speed = floatval($daily['speed']);
-                    $reading->wind_direction = intval($daily['deg']);
+                    $reading->wind_speed = isset($daily['speed'])? floatval($daily['speed']) : 0.0;
+                    $reading->wind_direction = isset($daily['deg'])? intval($daily['deg']) : 0;
                     $reading->date = date('Y-m-d', $daily['dt']);
 
                     //Read all weather conditions
@@ -350,39 +351,41 @@ class CityAddController extends BaseController
             //Get post information
             $search_text = Input::get('search_text');
 
-            //Make request for city information
-            //Create curl request
-            $curl = curl_init();
-
-            curl_setopt_array($curl, array(
-                CURLOPT_RETURNTRANSFER => 1,
-                CURLOPT_TIMEOUT => 5,
-                CURLOPT_URL => 'http://api.openweathermap.org/data/2.5/find?q='.$search_text.'&mode=json',
-                CURLOPT_USERAGENT => 'Weatherbound'
-            ));
-
-            //Make request to API
-
-            $response = curl_exec($curl);
-            curl_close($curl);
-
-            if ($response)
+            for ($i = 0; $i < 5; ++$i)
             {
-                $json_data = json_decode($response, true);
+                //Make request for city information
+                //Create curl request
+                $curl = curl_init();
 
-                if ($json_data && isset($json_data['count']) && $json_data['count'] == 1)
+                curl_setopt_array($curl, array(
+                    CURLOPT_RETURNTRANSFER => 1,
+                    CURLOPT_TIMEOUT => 10,
+                    CURLOPT_URL => 'http://api.openweathermap.org/data/2.5/find?q='.$search_text.'&mode=json',
+                    CURLOPT_USERAGENT => 'Weatherbound'
+                ));
+
+                //Make request to API
+
+                $response = curl_exec($curl);
+                curl_close($curl);
+
+                if ($response)
                 {
-                    if ($json_data['list'][0]['name'] == false || $json_data['list'][0]['id'] == 0) return 'NULL';
-                    return json_encode(array(
-                        'id' => $json_data['list'][0]['id'],
-                        'name' => $json_data['list'][0]['name'],
-                        'country' => $json_data['list'][0]['sys']['country'],
-                        'longitude' => $json_data['list'][0]['coord']['lon'],
-                        'latitude' => $json_data['list'][0]['coord']['lat']
-                    ));
+                    $json_data = json_decode($response, true);
+
+                    if ($json_data && isset($json_data['count']) && $json_data['count'] == 1)
+                    {
+                        if ($json_data['list'][0]['name'] == false || $json_data['list'][0]['id'] == 0) return 'NULL';
+                        return json_encode(array(
+                            'id' => $json_data['list'][0]['id'],
+                            'name' => $json_data['list'][0]['name'],
+                            'country' => $json_data['list'][0]['sys']['country'],
+                            'longitude' => $json_data['list'][0]['coord']['lon'],
+                            'latitude' => $json_data['list'][0]['coord']['lat']
+                        ));
+                    }
                 }
             }
-
         }
 
         return "NULL";
