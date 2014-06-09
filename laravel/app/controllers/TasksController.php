@@ -1,7 +1,7 @@
 <?php
 class TasksController extends BaseController
 {
-    function index()
+    public static function index()
     {
         $view = View::make('tasks');
 
@@ -10,7 +10,7 @@ class TasksController extends BaseController
         return $view;
     }
 
-    function addTask()
+    public static function addTask()
     {
 
         if (Request::ajax())

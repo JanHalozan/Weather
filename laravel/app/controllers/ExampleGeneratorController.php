@@ -8,7 +8,7 @@
 
 class ExampleGeneratorController extends BaseController
 {
-    function index()
+    public static function index()
     {
         $view = View::make('example_generator');
 
@@ -88,7 +88,7 @@ class ExampleGeneratorController extends BaseController
         return $view;
     }
 
-    function saveExample()
+    public static function saveExample()
     {
         $view = $this->index();
 

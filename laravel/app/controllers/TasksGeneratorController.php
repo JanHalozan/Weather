@@ -2,7 +2,7 @@
 
 class TasksGeneratorController extends BaseController
 {
-    function index()
+    public static function index()
     {
         $view = View::make('tasks_generator');
 
@@ -23,7 +23,7 @@ class TasksGeneratorController extends BaseController
         return $view;
     }
 
-    function save()
+    public static function save()
     {
 
         if(Input::has('activity1') && Input::has('activity2') && Input::has('activity3') && Input::has('maxT') && Input::has('maxT') && Input::has('condition')){

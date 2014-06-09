@@ -79,7 +79,12 @@ Route::post('tasks', function()
 Route::get('tasks-generator', function()
 {
     if (Auth::check())
-        return TasksGeneratorController::index();
+    {
+        if (Auth::user()->is_admin)
+            return TasksGeneratorController::index();
+        else
+           return App::abort(404);
+    }
     else
         return App::abort(404);
 });
@@ -88,7 +93,12 @@ Route::get('tasks-generator', function()
 Route::post('tasks-generator', function()
 {
     if (Auth::check())
-        return TasksGeneratorController::save();
+    {
+        if (Auth::user()->is_admin)
+            return TasksGeneratorController::save();
+        else
+            return App::abort(404);
+    }
     else
         return App::abort(404);
 });
@@ -98,7 +108,12 @@ Route::post('tasks-generator', function()
 Route::get('example-generator', function()
 {
     if (Auth::check())
-        return ExampleGeneratorController::index();
+    {
+        if (Auth::user()->is_admin)
+            return ExampleGeneratorController::index();
+        else
+            return App::abort(404);
+    }
     else
         return App::abort(404);
 });
@@ -106,7 +121,12 @@ Route::get('example-generator', function()
 Route::post('example-generator', function()
 {
     if (Auth::check())
-        return ExampleGeneratorController::saveExample();
+    {
+        if (Auth::user()->is_admin)
+            return ExampleGeneratorController::saveExample();
+        else
+            return App::abort(404);
+    }
     else
         return App::abort(404);
 });

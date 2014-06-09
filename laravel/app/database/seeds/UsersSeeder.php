@@ -5,7 +5,7 @@ class UsersSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert(array(
-            array('username' => 'test', 'password' => Hash::make('geslo'), 'activated' => 1, 'locale' => 'us')
+            array('username' => 'test', 'password' => Hash::make('geslo'), 'activated' => 1, 'locale' => 'us', 'is_admin' => true)
         ));
     }
 }
