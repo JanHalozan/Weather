@@ -3,6 +3,7 @@
 return array(
 
     'login' => 'Log in',
+    'profile' => 'Profile',
     'register' => 'Sign up',
     'logout' => 'Log out',
     'options' => 'Options',
@@ -10,7 +11,7 @@ return array(
     'home' => 'Home',
     'forecast' => 'Forecast',
     'language' => 'Language',
-    'slovene' => 'Slovene',
+    'slovene' => 'Slovenian',
     'english' => 'English',
 
 

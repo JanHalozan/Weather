@@ -32,7 +32,7 @@
                                 <li>
                                     <a href="me">{{ Lang::get('guides.options') }}</a>
                                     <ul>
-                                        <li><a href="me">{{ Auth::user()->username }}</a></li>
+                                        <li><a href="me">{{ Lang::get('guides.profile') }}</a></li>
                                         <li><a href="logout">{{ Lang::get('guides.logout') }}</a></li>
                                     </ul>
                                 </li>

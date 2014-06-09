@@ -40,6 +40,14 @@ class UsersController extends BaseController
             $user->password = Hash::make(Input::get('password'));
             $user->locale = Input::get('locale');
 
+            //Set city_id if in cookie
+            if (Cookie::get('city_id'))
+            {
+                $user->city_id = Cookie::get('city_id');
+            }
+            else
+                $user->city_id = DB::table('cities')->first()->id;
+
             if (Input::hasFile('avatar'))
             {
                 //TODO implement avatar saving

@@ -4,6 +4,7 @@ return array(
 
     'login' => 'Prijava',
     'signup' => 'Registracija',
+    'profile' => 'Profil',
     'logout' => 'Odjava',
     'options' => 'Nastavitve',
     'access' => 'Dostop',
