@@ -153,7 +153,7 @@ TASKS RELATED
 	background-color: #4a708b;
 }
 
-@media screen and (min-width: 1500px){
+@media screen and (min-width: 1420px){
 	.weather-icon
 	{
 		width: 100px;
