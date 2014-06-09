@@ -50,12 +50,23 @@ $(document).ready(function(){
 
     //Save
     $('#save-button').click(function(){
+
+    var e = document.getElementById("selected-city");
+    var val = e.options[e.selectedIndex].value;
+
         $.ajax({
             type: "POST",
-            url: "user",
-            data: { 'city_id': $('select').value }
+            url: "me",
+            data: { 'city_id': val }
         }).done(function(data){
-            window.location.replace('/');
+            if (data == "OK")
+            {
+                location.reload();
+            }
+            else
+            {
+                alert(data);
+            }
         });
-    });
+     });
 });

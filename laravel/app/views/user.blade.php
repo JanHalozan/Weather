@@ -25,11 +25,18 @@
             {{ Lang::get('guides.selected_city') }}
         </td>
         <td>
-            <select>
+            <select id="selected-city">
                 @foreach($cities as $city)
+
+                @if ($selectedCity->id == $city->id)
+                <option value="{{ $city->id }}" selected>
+                    {{ $city->name }}
+                </option>
+                @else
                 <option value="{{ $city->id }}">
                     {{ $city->name }}
                 </option>
+                @endif
                 @endforeach
             </select>
         </td>

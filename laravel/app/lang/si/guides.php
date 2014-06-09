@@ -20,5 +20,8 @@ return array(
     'surname' => 'Priimek',
     'email' => 'Email',
     'avatar' => 'Avatar',
-    'selected_city' => 'Izbrano mesto'
+    'selected_city' => 'Izbrano mesto',
+
+
+    'generic_error' => "Prišlo je do napake, prosim poskusite ponovno."
 );

@@ -21,5 +21,7 @@ return array(
     'surname' => 'Surname',
     'email' => 'Email',
     'avatar' => 'Avatar',
-    'selected_city' => 'Selected city'
+    'selected_city' => 'Selected city',
+
+    'generic_error' => "Something went wrong, please try again."
 );

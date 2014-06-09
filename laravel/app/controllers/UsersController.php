@@ -12,6 +12,7 @@ class UsersController extends BaseController
         if (Auth::attempt(array('username' => Input::get('username'), 'password' => Input::get('password'))))
         {
             Session::put('locale', Auth::user()->locale);
+            Cookie::queue('city_id', Auth::user()->city_id, 60 * 24 * 3000);
 
             return Redirect::intended();
         }
@@ -51,6 +52,7 @@ class UsersController extends BaseController
 
             //Set the locale
             Session::put('locale', Auth::user()->locale);
+            Cookie::queue('city_id', Auth::user()->city_id, 60 * 24 * 3000);
 
             //Redirect him to the index page
             return Redirect::intended()->with('message', Lang::get('register.confirm'));
@@ -68,7 +70,7 @@ class UsersController extends BaseController
         $user = User::find(Auth::User()->id);
 
         $view->user = $user;
-        $view->city = Cities::find($user->city_id);
+        $view->selectedCity = Cities::find($user->city_id);
         $view->cities = Cities::all();
 
         return $view;
@@ -76,6 +78,16 @@ class UsersController extends BaseController
 
     public static function postMe()
     {
-        var_dump(Input::all());
+        $newID = Input::get('city_id');
+
+        $user = User::find(Auth::user()->id);
+
+        $user->city_id = $newID;
+
+        $user->save();
+
+        Cookie::queue('city_id', $newID, 60 * 24 * 3000);
+
+        return "OK";
     }
 } 
