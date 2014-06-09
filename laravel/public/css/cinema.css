@@ -1,0 +1,22 @@
+th
+{
+	padding: 15px 0;
+}
+
+td
+{
+	padding: 10px 0;
+}
+
+tr div
+{
+	padding-left: 10px;
+	vertical-align: top;
+}
+
+.link
+{
+	width: 100%;
+	text-align: right;
+	margin-top: 10px;
+}
