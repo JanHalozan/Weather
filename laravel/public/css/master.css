@@ -232,6 +232,29 @@ OTHER
     }
 }
 
+@media screen and (max-height: 740px){
+    #content
+    {
+        width: 600px;
+    }
+
+    #header-content
+    {
+        width: 600px;
+    }
+
+    #header-content h1 
+    {
+        font-size: 1.8em;
+    }
+
+    #footer-content
+    {
+        /* background: violet; */
+        width: 600px;
+    }
+}
+
 @media screen and (max-height: 600px){
     #content
     {

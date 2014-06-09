@@ -297,6 +297,63 @@ hr
 	}
 }
 
+@media screen and (max-height: 740px){
+
+	#frame 
+	{
+		height: 450px;
+		width: 100%;
+	}
+
+	#frame #info-panel #first-line #temperature p 
+	{
+		font-size: 8em;
+	}
+
+	#frame #info-panel #second-line p 
+	{
+		font-size: 1.8em;
+	}
+
+	#frame #info-panel #third-line p 
+	{
+		font-size: 1.4em;
+	}
+
+	#weather-guy 
+	{
+		width: 28%;
+	}
+
+	#frame #title-fact p 
+	{
+		font-size: 0.8em;
+	}
+
+	#frame #fact p 
+	{
+		font-size: 1em;
+	}
+
+	#frame #tasks-title
+	{
+		font-size: 0.8em;
+		margin-top: 36px;
+	}
+
+	#frame #tasks-list
+	{
+		margin-top: 4px;
+		font-size: 1em;
+	}
+
+	#frame #title-fact
+	{
+		/* Push facts a bit down */
+		margin-top: 0px;	
+	}
+}
+
 @media screen and (max-height: 600px){
 
 	#frame 
