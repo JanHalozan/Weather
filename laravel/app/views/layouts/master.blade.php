@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="description" content="A different weather portal.">
         <meta name="keywords" content="HTML,CSS,HTML5,JavaScript,Google,Weather,Weatherbound,clothes,fashion,funny,task,activity,forecast,yahoo,register,login,fun">
-        <meta name="author" content="Jan Halozan, Luka Horvat, Zoran Kelenc, Martin Fras, Saso Markovic">
+        <meta name="author" content="Jan Haložan, Luka Horvat, Zoran Kelenc, Martin Fras, Sašo Marković">
         <title>Weatherbound</title>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -82,8 +82,16 @@ class IndexController extends BaseController
         $condition = Conditions::find($weatherInfo->condition_id)->condition;
         $view->condition = Lang::get('conditions.' . $condition);
 
+        // If is night
+        if($weatherInfo->day == 0){
+            $condition = 'night';
+        }
+
         // Decide which icon is picked
         switch ($condition) {
+            case 'night':
+                $view->icon = 'Moon.png';
+                break;
             case 'clear_sky':
                 $view->icon = 'Sun.png';
                 break;
