@@ -26,8 +26,8 @@ tr:hover
 td
 {
     padding: 10px 10px;
-    border-bottom: 2px solid black;
-    border-top: 2px solid black;
+    border-bottom: 2px solid #4a708b;
+    border-top: 2px solid #4a708b;
     vertical-align: top;
 }
 
@@ -35,12 +35,12 @@ td:first-child
 {
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-    border-left: 2px solid black;
+    border-left: 2px solid #4a708b;
 }
 
 td:last-child
 {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    border-right: 2px solid black;
+    border-right: 2px solid #4a708b;
 }

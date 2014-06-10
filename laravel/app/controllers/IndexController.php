@@ -250,7 +250,17 @@ class IndexController extends BaseController
             $id = Input::get('city_id');
 
             if ($id)
+            {
                 Cookie::queue('city_id', $id, 60 * 24 * 3000);
+
+                //Check if user is logged in
+                if(Auth::user())
+                {
+                    $user = Auth::user();
+                    $user->city_id = $id;
+                    $user->save();
+                }
+            }
         }
     }
 
