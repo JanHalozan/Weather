@@ -21,7 +21,7 @@
                 <h4>{{ $item['name'] }}</h4>
 
                 @if(strlen($item['description']) > 150)
-                    <p>{{ substr($item['description'], 0, 150) }}...</p>
+                    <p>{{ substr($item['description'], 19) }}</p>
                 @else
                     <p>{{ $item['description'] }}</p>
                 @endif

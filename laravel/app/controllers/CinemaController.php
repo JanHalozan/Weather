@@ -20,7 +20,7 @@ class CinemaController extends BaseController
         $names = $xPath->query("//div[@class='overview-element separator']/div/div/div/h2/a");
         $images = $xPath->query("//div[@class='overview-element separator']/div/div/div/a/img/@data-original");
         $links = $xPath->query("//div[@class='overview-element separator']/div/div/div/a/@href");
-        $descriptions = $xPath->query("//div[@class='overview-element separator']/div/div[2]/p");
+        $descriptions = $xPath->query("//div[@class='overview-element separator']/div/div[2]/p[1]");
 
         for ($i = 0; $i < min($names->length, $images->length, $links->length); $i++)
         {
