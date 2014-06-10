@@ -13,7 +13,7 @@
 
 <div id="main-div">
     <div id="city-picker-div">
-        <h1>{{ Lang::get('other.city_pick_title') }}</h1>
+        <h1 id="picker-title">{{ Lang::get('other.city_pick_title') }}</h1>
         <div id="maps-div">Google Maps</div>
         <input type="hidden" name="latitude" id="latitude" value="46.55"/>
         <input type="hidden" name="longitude" id="longitude" value="15.63"/>

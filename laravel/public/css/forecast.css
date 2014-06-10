@@ -18,6 +18,12 @@
 #addButton{
 	margin-top: 5px;
 	width: 100%;
+    border-radius: 20px;
+}
+
+#addButton:hover{
+    background-color: #4a708b;
+    color: white;
 }
 	
 /* END */

@@ -33,7 +33,7 @@ button:hover
     color: white;
 }
 
-h1
+#picker-title
 {
     display: block;
     margin: 0px auto;
