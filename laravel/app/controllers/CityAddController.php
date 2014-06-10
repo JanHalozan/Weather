@@ -350,6 +350,9 @@ class CityAddController extends BaseController
         {
             //Get post information
             $search_text = Input::get('search_text');
+            $city = trim(explode(',', $search_text)[0]);
+            $country = trim(explode(',', $search_text)[1]);
+            $search_text = $city . ',' . $country;
 
             for ($i = 0; $i < 5; ++$i)
             {
