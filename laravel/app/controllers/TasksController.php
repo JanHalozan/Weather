@@ -161,7 +161,7 @@ class TasksController extends BaseController
                     if($posibility[$i] > $maxPosibilityVal)
                     {
                         // If day allready have 5 tasks its ignored
-                        if(Input::get("c".$i."Size") < '5'){
+                        if(Input::get("c".$i."Size") < '3'){
                             $maxPosibilityVal = $posibility[$i];
                             $day = $i;
                         }
@@ -171,7 +171,6 @@ class TasksController extends BaseController
                 // If none of the days have that type, we dont recomand it
                 if($maxPosibilityVal == 0)
                 {
-                    // Container 6 is trash
                     $day = 5;
                 }
             } 

@@ -3,11 +3,11 @@ $(document).ready(function(){
 	$("#addButton").click(function(){
 
         // Get size of list, in order to limit 5 tasks per day
-        var c0Size = $("#c1 li").length;
-        var c1Size = $("#c2 li").length;
-        var c2Size = $("#c3 li").length;
-        var c3Size = $("#c4 li").length;
-        var c4Size = $("#c5 li").length;
+        var c0Size = $(".c1 li").length;
+        var c1Size = $(".c2 li").length;
+        var c2Size = $(".c3 li").length;
+        var c3Size = $(".c4 li").length;
+        var c4Size = $(".c5 li").length;
 
 		$.ajax(
 		{
