@@ -34,30 +34,35 @@ $(document).ready(function(){
 
                 case '0':
                     $(".c1").append("<li>" + $("#comboBox option:selected").text() + "</li>");
+                    $("#info").text("Activity added");
                 break;
 
                 case '1':
                     $(".c2").append("<li>" + $("#comboBox option:selected").text() + "</li>");
+                    $("#info").text("Activity added");
                 break;
 
                 case '2':
                     $(".c3").append("<li>" + $("#comboBox option:selected").text() + "</li>");
+                    $("#info").text("Activity added");
                 break;
 
                 case '3':
                     $(".c4").append("<li>" + $("#comboBox option:selected").text() + "</li>");
+                    $("#info").text("Activity added");
                 break;
 
                 case '4':
                     $(".c5").append("<li>" + $("#comboBox option:selected").text() + "</li>");
+                    $("#info").text("Activity added");
                 break;
 
                 case '5':
-                    $("#info").text("Ne priporočamo");
+                    $("#info").text("Not recommended");
                 break;
 
                 default:
-                    $("#info").text("Napaka");
+                    $("#info").text("Something went wrong");
                 break;
 
             }

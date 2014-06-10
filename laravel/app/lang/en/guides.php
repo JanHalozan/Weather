@@ -18,6 +18,8 @@ return array(
     'tasks_generator' => 'Tasks generator',
     'city' => 'Select city',
     'tasks' => 'Plan activities',
+
+    'dont_recommend' => 'Not recommended',
     
 
 
