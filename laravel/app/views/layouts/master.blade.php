@@ -59,8 +59,9 @@
                                 </li>
                             @else
                                 <li>
-                                    <a href="login">{{ Lang::get('guides.access') }}</a>
+                                    <a href="login">{{ Lang::get('guides.options') }}</a>
                                     <ul>
+                                        <li><a href="city">{{ Lang::get('guides.city') }}</a></li>
                                         <li><a href="login">{{ Lang::get('guides.login') }}</a></li>
                                         <li><a href="register">{{ Lang::get('guides.register') }}</a></li>
                                     </ul>
