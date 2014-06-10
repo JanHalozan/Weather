@@ -43,8 +43,6 @@
 
 					<img src="images/WeatherGuy.png" alt="Weatherguy"/>
 				</div>
-				{{-- Only if we're logged in we show the tasks --}}
-				@if(Auth::check())
 				<div class="tasks">
 					<ul class="tasks-list">
 						<li>{{ Lang::get($day['task1']) }}</li>
@@ -52,7 +50,6 @@
 						<li>{{ Lang::get($day['task3']) }}</li>
 					</ul>
 				</div>
-				@endif
 			</div>
 		</li>
 		@endforeach
