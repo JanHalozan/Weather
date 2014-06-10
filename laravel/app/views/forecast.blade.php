@@ -2,6 +2,7 @@
 
 @section('head')
 	{{HTML::style('css/forecast.css')}}
+	{{HTML::script('js/forecast.js')}}
 @stop
 
 @section('content')
