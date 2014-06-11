@@ -9,7 +9,7 @@ $(document).ready(function(){
             $("#input_warning").text(warning_text).show('medium');
             return;
         }
-        $("#search_button").text(searching_text);
+        $("#search_button").text(searching_text).prop('disabled', true);
         $.ajax({
             type: "POST",
             url: "city-add",
@@ -29,14 +29,14 @@ $(document).ready(function(){
                 else
                 {
                     $("#input_warning").text(no_find_text).show('medium');
-                    $("#search_button").text(search_text);
+                    $("#search_button").text(search_text).prop('disabled', false);
                 }
             });
     });
 
     //City add function
     $('#add_button').click(function(){
-        $('#add_button').text(adding_text);
+        $('#add_button').text(adding_text).prop('disabled', true);
         $.ajax({
             type: 'PUT',
             url: 'city-add',
