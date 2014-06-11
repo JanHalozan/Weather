@@ -90,8 +90,6 @@ class ExampleGeneratorController extends BaseController
 
     public static function saveExample()
     {
-        $view = $this->index();
-
         //Get condition id from database
         $condition_id = DB::table('weather_conditions')->where('condition', Input::get('condition'))->pluck('id');
 
@@ -114,7 +112,6 @@ class ExampleGeneratorController extends BaseController
             )
         );
 
-        $view->post = true;
-        return $view;
+        return Redirect::to('example-generator');
     }
 }
