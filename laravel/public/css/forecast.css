@@ -183,3 +183,9 @@ TASKS RELATED
 	text-align: center;
 	background-color: #4a708b;
 }
+
+.day h2
+{
+    color: #FFF;
+    font-weight: 300;
+}
