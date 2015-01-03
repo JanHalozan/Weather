@@ -1,5 +1,22 @@
 #Welcome to Smart Weather Agent repo
 
+##HOWTOSETUP DEVELOPMENT STUFF
+Na hitro v srjanscini, ker sem popizdovo poleg.
+1. nasnemli php 5+, enable curl pa mcrypt. Najlaze z WAMP (ma ze vse vklopleno), ali pa XAMP in alternative
+2. naredi mysql server z bazo
+3. kreiraj bazo 'development' z uporanbikom 'developer' in geslom 'Sup3rG3sL0', pa mu dej dostop nad vsem (tam daj tudi da mu dovolo local dostop)
+4. cloniraj projekt nekam na komp
+5. premakni se v laravel mapo in zazeni: (php more biti pot do tvojega php executabla, za win userje je to v xamp folderi nekje)
+php artisan migrate
+php artisan db:seed
+6. sedaj treba pognati fetcherja, ker drugaci stran sploh ne dela, idi v mapo fetcher
+php fetcher.php
+php forecast_fetcher.php (to mogoce ni potrebno)
+7. preveri ce je b bazi kaj shranjeno v weather_current. obvezno ke je za ID 2 (ljubljana), ker je stran trenutno hardcodana na to
+8. v /laravel/app/config/app.php nastavi debug => true, ker drugaci ce gre kej narobe bos samo buljo v ekran
+8. pozeni z php artisan serve
+9. idi na stran, upej bokmater ke ti dela, in bi moglo pokazati vsaj index page z nekimi current podatki
+
 ###Some guidelines to follow when developing for Spletni Inteligentni Agent (SIA)
 ###Code standards and guidelines
 Do not write more than 100 characters per line
