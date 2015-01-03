@@ -13,12 +13,13 @@ function getTask($type)
 
 class IndexController extends BaseController 
 {
-
     //This is the default action
     public function index()
     {
+        
         $view = View::make('index');
 
+/*
         if (Cookie::get('city_id'))
         {
             $city = Cities::find(Cookie::get('city_id'));
@@ -36,6 +37,7 @@ class IndexController extends BaseController
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_REFERER, $url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 5); //timeout in seconds
 
             $response = curl_exec($ch);
             $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -73,6 +75,9 @@ class IndexController extends BaseController
             }
         }
 
+*/
+        $city = Cities::first();
+        $city->id = 2;
         //TODO finish the population of view with weather data
         //Populate the view with weather data
         $weatherInfo = CurrentWeather::where('city_id', '=', $city->id)->orderBy('reading_time', 'desc')->firstOrFail();
