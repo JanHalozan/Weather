@@ -17,6 +17,7 @@ Route::get('city', 'IndexController@cityPicker');
 Route::put('city', 'IndexController@setCookie');
 Route::post('city', 'IndexController@getCity');
 Route::get('lang-select/{local_identifier}', 'IndexController@setLang');
+Route::get('rg', 'GraphicsController@index');
 
 //Forecast logic
 Route::get('forecast', 'ForecastController@index');
