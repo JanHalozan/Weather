@@ -13,20 +13,31 @@ function luka_init()
 	*/
 
 	//Create basic cube
-	var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+	//var geometry = new THREE.BoxGeometry( 1, 1, 1 );
 	//var material = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
 	
 
-	//Create floor
-	var floor_geometry = new THREE.PlaneGeometry( 10, 5, 20, 20);
+	//Create balcon floor
+	var floor_geometry = new THREE.BoxGeometry( 5, 2.5, 0.2);
 	var floor_texture = THREE.ImageUtils.loadTexture("images/textures/floor_texture.jpg");
 	floor_texture.wrapS = floor_texture.wrapT = THREE.RepeatWrapping;
 	floor_texture.repeat.set(10, 5);
 	var floor_material = new THREE.MeshLambertMaterial({map: floor_texture, side: THREE.DoubleSide});
-	var floor = new THREE.Mesh( floor_geometry, floor_material );
-	floor.rotation.x = 90;
+	var floor_mesh = new THREE.Mesh( floor_geometry, floor_material );
+	floor_mesh.rotation.x = 90;
+	floor_mesh.position.y = 0.1;
 
-	scene.add(floor);
+	//Create outside grass
+	var grass_geometry = new THREE.PlaneGeometry( 10, 20, 20, 20);
+	var grass_texture = THREE.ImageUtils.loadTexture("images/textures/grass_texture.jpg");
+	grass_texture.wrapS = grass_texture.wrapT = THREE.RepeatWrapping;
+	grass_texture.repeat.set(10, 20);
+	var grass_material = new THREE.MeshLambertMaterial({map: grass_texture, side: THREE.DoubleSide});
+	var grass_mesh = new THREE.Mesh( grass_geometry, grass_material );
+	grass_mesh.rotation.x = 90;
+
+	scene.add(floor_mesh);
+	scene.add(grass_mesh);
 }
 
 function luka_update()
