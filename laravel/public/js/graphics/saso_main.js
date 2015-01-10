@@ -24,22 +24,18 @@ function initSnezinke(stSnezink, minX, maxX, minY, maxY, minZ, maxZ) {
 	}
 	
 	for(var i = 0; i < stSnezink; i++){
-		// Različne snežinke
-		if(i % 4 == 0)
-			snezinke[i] = new THREE.Mesh( snezinkaGeometry, snezinkaMaterial[0] );
-		else if(i % 4 == 1)
-			snezinke[i] = new THREE.Mesh( snezinkaGeometry, snezinkaMaterial[1] );
-		else if(i % 4 == 2)
-			snezinke[i] = new THREE.Mesh( snezinkaGeometry, snezinkaMaterial[2] );
-		else if(i % 4 == 3)
-			snezinke[i] = new THREE.Mesh( snezinkaGeometry, snezinkaMaterial[3] );	
+		for(var j = 0; j < 4; j++) {
+			// Različne snežinke
+			if(i % 4 == j)
+				snezinke[i] = new THREE.Mesh( snezinkaGeometry, snezinkaMaterial[j] );
+		}
 		
 		snezinke[i].position.x = getRandom(minX, maxX);
 		snezinke[i].position.y = getRandom(minY, maxY);
 		snezinke[i].position.z = getRandom(minZ, maxZ);
 	}	
 
-	scene.fog = new THREE.FogExp2(0x5C97BF, 0.12);
+	scene.fog = new THREE.FogExp2(0x5C97BF, fogDensity);
 }
 
 function padanjeSnezink(stSnezink, hitrostPadanja, mocVetra, minY, maxY, minX, maxX) {
@@ -48,15 +44,10 @@ function padanjeSnezink(stSnezink, hitrostPadanja, mocVetra, minY, maxY, minX, m
 		// Padanje dol po y
 		snezinke[i].position.y -= hitrostPadanja;
 
-		// Premikanje v desno
-		if(i % 4 == 0)
-			snezinke[i].position.x += mocVetra;
-		else if(i % 4 == 1)
-			snezinke[i].position.x += mocVetra - 0.002;
-		else if(i % 4 == 2)
-			snezinke[i].position.x += mocVetra - 0.004;
-		else if(i % 4 == 3)
-			snezinke[i].position.x += mocVetra - 0.006;
+		for(var j = 0; j < 4; j++) {
+			if(i % 4 == j)
+				snezinke[i].position.x += mocVetra - 0.002*j;
+		}
 		
 		if(snezinke[i].position.y < minY)
 			snezinke[i].position.y = maxY;
@@ -78,6 +69,7 @@ var minY = 0, maxY = 10;
 var minZ = -12, maxZ = -1;
 var hitrostPadanja = 0.03;
 var mocVetra = 0.005;
+var fogDensity = 0.12;
 
 var zastavica = 0;
 var isKeyPresed = 0;
@@ -98,7 +90,7 @@ function saso_update()
 		if(isKeyPresed == 0) {
 			if(zastavica == 0) {
 				zastavica = 1;
-				scene.fog.density = 0.12;
+				scene.fog.density = fogDensity;
 				for(var i = 0; i < stSnezink; i++)
 					scene.add(snezinke[i]);
 			}
@@ -113,7 +105,7 @@ function saso_update()
 	} 
 	else if (keyboard.pressed('m')) {
 		if(isKeyPresed == 0) {
-			if(stSnezink < 2900)
+			if(stSnezink < maxStSnezink - 100)
 				stSnezink += 100;
 			for(var i = 0; i < 100; i++)
 				scene.add(snezinke[i + (stSnezink - 100)]);
@@ -132,8 +124,6 @@ function saso_update()
 	else {
 		isKeyPresed = 0;
 	}
-
-
 
 	if(zastavica == 1)
 		padanjeSnezink(stSnezink, hitrostPadanja, mocVetra, minY, maxY, minX, maxX);
