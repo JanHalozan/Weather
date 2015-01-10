@@ -34,20 +34,9 @@ var text_elements = new Array();
 
 function luka_init()
 {
-	//TODO SPLIT STUFF INTO MORE FILES, THEN CALL FROM main.js
-	//Create text HUD
-	/*
-	var city_name_span = document.createElement("span");
-	var city_name_hud = document.createTextNode(data_blob.city_name);
-	city_name_span.appendChild(city_name_hud);
-	city_name_span.style.color = "#000000";
-	city_name_span.style.position = "fixed";
-	city_name_span.style.left = renderer.domElement.style.left;
-	document.getElementById("main_view").appendChild(city_name_span);
-	*/
 	var name_hud = document.getElementById("hud_location");
-	name_hud.style.left = "110px";
-	name_hud.style.top = "80px";
+	name_hud.style.left = "20px";
+	name_hud.style.top = "50px";
 
 	//Create single color skybox
 	var skybox_geometry = new THREE.BoxGeometry(50, 50, 50);
@@ -110,6 +99,7 @@ function luka_update()
 	{
 		text_elements[i].update();
 	}
+
 }
 
 //TODO PROJEKT RG
