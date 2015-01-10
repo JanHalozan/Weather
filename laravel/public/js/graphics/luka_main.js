@@ -14,18 +14,24 @@ function luka_init()
 
 	//Create basic cube
 	var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-	var material = new THREE.MeshPhongMaterial( { color: 0x00ff00 } );
-	var cube = new THREE.Mesh( geometry, material );
+	//var material = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
+	
 
-	scene.add(cube);
+	//Create floor
+	var floor_geometry = new THREE.PlaneGeometry( 10, 5, 20, 20);
+	var floor_texture = THREE.ImageUtils.loadTexture("images/textures/floor_texture.jpg");
+	floor_texture.wrapS = floor_texture.wrapT = THREE.RepeatWrapping;
+	floor_texture.repeat.set(10, 5);
+	var floor_material = new THREE.MeshLambertMaterial({map: floor_texture, side: THREE.DoubleSide});
+	var floor = new THREE.Mesh( floor_geometry, floor_material );
+	floor.rotation.x = 90;
 
-	//Move camera
-	camera.position.z = 5;
+	scene.add(floor);
 }
 
 function luka_update()
 {
-	camera.position.z += 0.001;
+	//camera.rotation.y += 0.01;
 }
 
 //TODO PROJEKT RG
