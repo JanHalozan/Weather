@@ -1,3 +1,39 @@
+function hud_element(text, pos_x, pos_y, pos_z)
+{
+	//Create text
+	var text_geo = new THREE.TextGeometry(String(text), {size: 0.1, height: 0.01} );	
+	text_geo.computeBoundingBox();
+	var x = text_geo.boundingBox.max.x;
+	text_geo.applyMatrix( new THREE.Matrix4().makeTranslation(-text_geo.boundingBox.max.x/2, -text_geo.boundingBox.max.y/2, 0) );
+	var mat = new THREE.MeshBasicMaterial( {color: 0xffffff} );
+	this.mesh = new THREE.Mesh(text_geo, mat);
+
+	//Create plate
+	var floor_geometry = new THREE.BoxGeometry( x + 0.1, text_geo.boundingBox.max.y + 0.1, text_geo.boundingBox.max.z);
+	var floor_material = new THREE.MeshBasicMaterial({color: 0x882222});
+	this.plate = new THREE.Mesh( floor_geometry, floor_material );
+
+	this.mesh.position.x = pos_x;
+	this.mesh.position.y = pos_y;
+	this.mesh.position.z = pos_z;
+
+	this.plate.position.x = pos_x;
+	this.plate.position.y = pos_y;
+	this.plate.position.z = pos_z - 0.001;// + text_geo.boundingBox.max.z/2;
+
+	scene.add(this.mesh);
+	scene.add(this.plate);
+
+	this.update = function(){
+		this.mesh.lookAt(camera.position);
+		this.plate.lookAt(camera.position);
+	}
+}
+
+var a;
+var b;
+var ke;
+
 function luka_init()
 {
 	//TODO SPLIT STUFF INTO MORE FILES, THEN CALL FROM main.js
@@ -42,14 +78,9 @@ function luka_init()
 	scene.add(floor_mesh);
 	scene.add(grass_mesh);
 
-	//Text test
-	var text_geo = new THREE.TextGeometry( "Maribor", {size: 0.2, height: 0.1} );	
-	var mat = new THREE.MeshLambertMaterial( {color: 0xffffff} );
-	var neke = new THREE.Mesh(text_geo, mat);
-	neke.position.y = 1;
-	neke.position.x = 1;
-	neke.rotation.y = -Math.PI/2;
-	scene.add(neke);
+	a = new hud_element("Maribor", 1, 1, -1);
+	b = new hud_element("20°C", 1, 0.8, -1);
+	ke = new hud_element("Smark je salthebel", -1.5, 1, -1);
 
 	//Set proper camera position TEMP
 	//camera.rotation.x = 0.1;
@@ -73,6 +104,10 @@ function luka_update()
 	{
 		camera.position.x += -0.03;
 	}
+
+	a.update();
+	b.update();
+	ke.update();
 }
 
 //TODO PROJEKT RG
