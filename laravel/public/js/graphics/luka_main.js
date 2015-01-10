@@ -54,13 +54,14 @@ function luka_init()
 	floor_mesh.position.y = 0.1;
 
 	//Create outside grass
-	var grass_geometry = new THREE.PlaneGeometry(10, 20, 20, 20);
+	var grass_geometry = new THREE.PlaneGeometry(100, 50, 20, 20);
 	var grass_texture = THREE.ImageUtils.loadTexture("images/textures/grass_texture.jpg");
 	grass_texture.wrapS = grass_texture.wrapT = THREE.RepeatWrapping;
-	grass_texture.repeat.set(10, 20);
+	grass_texture.repeat.set(150, 50);
 	var grass_material = new THREE.MeshLambertMaterial({map: grass_texture, side: THREE.DoubleSide});
 	var grass_mesh = new THREE.Mesh( grass_geometry, grass_material );
 	grass_mesh.rotation.x = Math.PI/2;
+	grass_mesh.position.z = -8;
 
 	scene.add(floor_mesh);
 	scene.add(grass_mesh);
