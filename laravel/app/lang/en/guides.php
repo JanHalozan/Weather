@@ -31,6 +31,7 @@ return array(
     'email' => 'Email',
     'avatar' => 'Avatar',
     'selected_city' => 'Selected city',
+    'view3D' => '3D View',
 
     'generic_error' => "Something went wrong, please try again."
 );

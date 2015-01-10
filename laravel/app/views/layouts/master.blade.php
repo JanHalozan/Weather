@@ -43,6 +43,7 @@
                                     <li><a href="lang-select/en">{{ Lang::get('guides.english') }}</a></li> 
                                 </ul>
                             </li>
+                            <li><a href="rg">{{ Lang::get('guides.view3D') }}</a></li>
                             @if(Auth::check())
                                 <li>
                                     <a>{{ Lang::get('guides.options') }}</a>

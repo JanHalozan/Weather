@@ -29,6 +29,7 @@ return array(
     'email' => 'Email',
     'avatar' => 'Avatar',
     'selected_city' => 'Izbrano mesto',
+    'view3D' => '3D pogled', 
 
 
     'generic_error' => "Prišlo je do napake, prosim poskusite ponovno."
