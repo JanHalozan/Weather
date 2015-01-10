@@ -66,10 +66,10 @@ var stSnezink = 900;
 var velikostSnezinke = 0.13;
 var minX = -15, maxX = 15;
 var minY = 0, maxY = 10;
-var minZ = -12, maxZ = -1;
+var minZ = -24, maxZ = -1;
 var hitrostPadanja = 0.03;
 var mocVetra = 0.005;
-var fogDensity = 0.12;
+var fogDensity = 0.1;
 
 var zastavica = 0;
 var isKeyPresed = 0;
