@@ -3,7 +3,7 @@
 @section('head')
 	{{HTML::style('css/index.css')}}
 	{{HTML::script('js/graphics/three.min.js')}}
-	{{HTML::script('js/graphics/controls/OrbitControls.js')}}
+	{{HTML::script('js/graphics/controls/threex.keyboardstate.js')}}
 	<script type="text/javascript">
 	var data_blob = JSON.parse('{{$data_blob}}');
 	</script>
