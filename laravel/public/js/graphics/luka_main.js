@@ -77,8 +77,9 @@ function luka_init()
 	scene.add(grass_mesh);
 
 	//Add some elements
-	text_elements.push(new TextElement("Maribor", 1, 1, -1));
-	text_elements.push(new TextElement("20°C", 1, 0.8, -1));
+	text_elements.push(new TextElement(data_blob.city_name + ', ' + data_blob.country, 1, 1.2, -1));
+	text_elements.push(new TextElement(data_blob.condition, 1, 1, -1));
+	text_elements.push(new TextElement(data_blob.temperature.toFixed(0) + '°C', 1, 0.8, -1));
 	text_elements.push(new TextElement("Much text, so fancy", -1.5, 1, -1));
 	text_elements.push(new TextElement("FERIFax™", -1.5, 1.3, -1));
 
