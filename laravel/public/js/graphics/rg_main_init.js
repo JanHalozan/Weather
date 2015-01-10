@@ -1,10 +1,10 @@
 //Create render and add canvas to scene
 var renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth - 200, window.innerHeight - 160 );
+renderer.setSize( window.innerWidth, window.innerHeight-74);
 var canvas = renderer.domElement;
 canvas.style.position = "fixed";
-canvas.style.top = "80px";
-canvas.style.left = "100px";
+canvas.style.top = "50px";
+canvas.style.left = "0px";
 document.getElementById("main_view").appendChild( canvas );
 
 //Create the scene and camera
@@ -34,8 +34,8 @@ window.addEventListener( 'resize', onWindowResize, false );
 
 function onWindowResize()
 {
-    camera.aspect = (window.innerWidth-200) / (window.innerHeight - 160);
+    camera.aspect = (window.innerWidth) / (window.innerHeight - 74);
     camera.updateProjectionMatrix();
-    renderer.setSize( window.innerWidth - 200, window.innerHeight - 160 );
+    renderer.setSize( window.innerWidth, window.innerHeight - 74 );
 }
 
