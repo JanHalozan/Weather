@@ -65,7 +65,7 @@ function luka_init()
 	floor_mesh.position.y = 0.1;
 
 	//Create outside grass
-	var grass_geometry = new THREE.PlaneGeometry( 10, 20, 20, 20);
+	var grass_geometry = new THREE.PlaneGeometry(10, 20, 20, 20);
 	var grass_texture = THREE.ImageUtils.loadTexture("images/textures/grass_texture.jpg");
 	grass_texture.wrapS = grass_texture.wrapT = THREE.RepeatWrapping;
 	grass_texture.repeat.set(10, 20);

@@ -21,11 +21,11 @@ scene.add(camera);
 var keyboard = new THREEx.KeyboardState();
 
 //Add basic lights to the scene
-var ambient_light = new THREE.AmbientLight(0x333333)
-var point_light = new THREE.PointLight(0xFFFFFF);
-point_light.position.x = -10;
-point_light.position.y = 30;
-point_light.position.z = 10;
+var ambient_light = new THREE.AmbientLight(0x111111)
+var point_light = new THREE.PointLight(0xffffff, 1, 100);
+point_light.position.x = -3;
+point_light.position.y = 5;
+point_light.position.z = -3;
 scene.add(point_light);
 scene.add(ambient_light);
 
