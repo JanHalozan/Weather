@@ -1,0 +1,7 @@
+#hud_location {
+	position: absolute;
+	z-index: 1;
+	font-size: 2em;
+	font-family: 'Roboto', sans-serif;
+	text-shadow: 2px 2px #888888;
+}

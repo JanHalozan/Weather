@@ -6,11 +6,14 @@ function luka_init()
 	var city_name_span = document.createElement("span");
 	var city_name_hud = document.createTextNode(data_blob.city_name);
 	city_name_span.appendChild(city_name_hud);
-	city_name_span.style.color = "#FFFFFF";
+	city_name_span.style.color = "#000000";
 	city_name_span.style.position = "fixed";
 	city_name_span.style.left = renderer.domElement.style.left;
 	document.getElementById("main_view").appendChild(city_name_span);
 	*/
+	var name_hud = document.getElementById("hud_location");
+	name_hud.style.left = "110px";
+	name_hud.style.top = "80px";
 
 	//Create single color skybox
 	var skybox_geometry = new THREE.BoxGeometry(50, 50, 50);
@@ -38,6 +41,15 @@ function luka_init()
 
 	scene.add(floor_mesh);
 	scene.add(grass_mesh);
+
+	//Text test
+	var text_geo = new THREE.TextGeometry( "Maribor", {size: 0.2, height: 0.1} );	
+	var mat = new THREE.MeshLambertMaterial( {color: 0xffffff} );
+	var neke = new THREE.Mesh(text_geo, mat);
+	neke.position.y = 1;
+	neke.position.x = 1;
+	neke.rotation.y = -Math.PI/2;
+	scene.add(neke);
 
 	//Set proper camera position TEMP
 	//camera.rotation.x = 0.1;
