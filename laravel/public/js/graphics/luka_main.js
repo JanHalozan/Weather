@@ -1,16 +1,16 @@
-function hud_element(text, pos_x, pos_y, pos_z)
+function TextElement(text, pos_x, pos_y, pos_z)
 {
 	//Create text
 	var text_geo = new THREE.TextGeometry(String(text), {size: 0.1, height: 0.01} );	
 	text_geo.computeBoundingBox();
 	var x = text_geo.boundingBox.max.x;
 	text_geo.applyMatrix( new THREE.Matrix4().makeTranslation(-text_geo.boundingBox.max.x/2, -text_geo.boundingBox.max.y/2, 0) );
-	var mat = new THREE.MeshBasicMaterial( {color: 0xffffff} );
+	var mat = new THREE.MeshBasicMaterial( {color: 0xffffff, opacity: 0.7, transparent: true} );
 	this.mesh = new THREE.Mesh(text_geo, mat);
 
 	//Create plate
 	var floor_geometry = new THREE.BoxGeometry( x + 0.1, text_geo.boundingBox.max.y + 0.1, text_geo.boundingBox.max.z);
-	var floor_material = new THREE.MeshBasicMaterial({color: 0x882222});
+	var floor_material = new THREE.MeshBasicMaterial({color: 0x882222, opacity: 0.7, transparent: true});
 	this.plate = new THREE.Mesh( floor_geometry, floor_material );
 
 	this.mesh.position.x = pos_x;
@@ -30,9 +30,7 @@ function hud_element(text, pos_x, pos_y, pos_z)
 	}
 }
 
-var a;
-var b;
-var ke;
+var text_elements = new Array();
 
 function luka_init()
 {
@@ -78,9 +76,11 @@ function luka_init()
 	scene.add(floor_mesh);
 	scene.add(grass_mesh);
 
-	a = new hud_element("Maribor", 1, 1, -1);
-	b = new hud_element("20°C", 1, 0.8, -1);
-	ke = new hud_element("Smark je salthebel", -1.5, 1, -1);
+	//Add some elements
+	text_elements.push(new TextElement("Maribor", 1, 1, -1));
+	text_elements.push(new TextElement("20°C", 1, 0.8, -1));
+	text_elements.push(new TextElement("Much text, so fancy", -1.5, 1, -1));
+	text_elements.push(new TextElement("FERIFax™", -1.5, 1.3, -1));
 
 	//Set proper camera position TEMP
 	//camera.rotation.x = 0.1;
@@ -105,9 +105,10 @@ function luka_update()
 		camera.position.x += -0.03;
 	}
 
-	a.update();
-	b.update();
-	ke.update();
+	for (i = 0; i < text_elements.length; ++i)
+	{
+		text_elements[i].update();
+	}
 }
 
 //TODO PROJEKT RG
