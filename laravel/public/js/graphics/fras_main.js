@@ -6,17 +6,17 @@ function initOblaki()
 
 function initSonce()
 {
-	var sun_size = 7;
+	var sun_size = 5;
 
 	//geometrija in textura   
-	var sun_texture = THREE.ImageUtils.loadTexture("images/textures/sun_texture.png");
+	var sun_texture = THREE.ImageUtils.loadTexture("images/textures/sun_texture2.png");
     var sun_geometry = new THREE.PlaneGeometry( sun_size, sun_size );
 
     //material
     var sun_material = new THREE.MeshBasicMaterial({
 		map:sun_texture,
 		transparent:true,
-		opacity:0.9
+		opacity:0.7
 	});
 
     var sonce = new THREE.Mesh( sun_geometry, sun_material );

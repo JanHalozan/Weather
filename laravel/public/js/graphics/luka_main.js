@@ -10,7 +10,7 @@ function TextElement(text, pos_x, pos_y, pos_z)
 
 	//Create plate
 	var floor_geometry = new THREE.BoxGeometry( x + 0.1, text_geo.boundingBox.max.y + 0.1, text_geo.boundingBox.max.z);
-	var floor_material = new THREE.MeshBasicMaterial({color: 0x882222, opacity: 0.7, transparent: true});
+	var floor_material = new THREE.MeshBasicMaterial({color: 0x22313F, opacity: 0.7, transparent: true});
 	this.plate = new THREE.Mesh( floor_geometry, floor_material );
 
 	this.mesh.position.x = pos_x;
@@ -40,7 +40,7 @@ function luka_init()
 
 	//Create single color skybox
 	var skybox_geometry = new THREE.BoxGeometry(50, 50, 50);
-	var skybox_material = new THREE.MeshBasicMaterial( {color: 0x87CEEB, side:THREE.BackSide} );
+	var skybox_material = new THREE.MeshBasicMaterial( {color: 0x5C97BF, side:THREE.BackSide} );
 	var skybox_mesh = new THREE.Mesh(skybox_geometry, skybox_material);
 	scene.add(skybox_mesh);
 
