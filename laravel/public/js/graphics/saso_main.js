@@ -13,7 +13,6 @@ var minZ = -24, maxZ = -1;
 var hitrostPadanja = 0.03;
 var mocVetra = 0.005;
 var fogDensity = 0.1;
-var cameraLook;
 
 var zastavica = 0;
 var isKeyPresed = 0;
@@ -33,8 +32,6 @@ function saso_init()
 	canvas.onclick = canvas.requestPointerLock || canvas.mozRequestPointerLock || canvas.webkitRequestPointerLock;
 	
 	document.addEventListener( 'mousemove', premikanjeMiske, false );
-
-	cameraLook = new THREE.Vector3(0,1,0);
 }
 
 function saso_update()
@@ -178,9 +175,6 @@ function premikanjeMiske( event ) {
 		// Reset če gre krog okoli
 		if(X > 360 || X < -360)
 			X = 0;
-
-		cameraLook.y = 1;
-		camera.lookAt(cameraLook);
 
 		// Koti so v radianih, moje meritve pa v stopinjah zato je tukaj pretvorba
 		camera.rotation.y = X * Math.PI / 180;
