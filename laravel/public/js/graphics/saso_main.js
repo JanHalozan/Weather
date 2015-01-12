@@ -14,6 +14,7 @@ var hitrostPadanja = 0.03;
 var mocVetra = 0.005;
 var fogDensity = 0.1;
 var vektorPogleda;
+var hitrostHoje = 0.05;
 
 var zastavica = 0;
 var isKeyPresed = 0;
@@ -82,22 +83,27 @@ function saso_update()
 	if(zastavica == 1)
 		padanjeSnezink(stSnezink, hitrostPadanja, mocVetra, minY, maxY, minX, maxX);
 
-	// Basic movement
-	if (keyboard.pressed('w'))
-	{
-		camera.position.z += -0.03;
-	}
-	if (keyboard.pressed('d'))
-	{
-		camera.position.x += 0.03;
-	}
-	if (keyboard.pressed('s'))
-	{
-		camera.position.z += 0.03;
-	}
-	if (keyboard.pressed('a'))
-	{
-		camera.position.x += -0.03;
+	if( document.pointerLockElement === canvas || 
+		document.mozPointerLockElement === canvas ||
+  		document.webkitPointerLockElement === canvas) {
+
+		if (keyboard.pressed('w'))
+		{
+			camera.translateZ( -hitrostHoje );
+		}
+		if (keyboard.pressed('d'))
+		{
+			camera.translateX( hitrostHoje );
+		}
+		if (keyboard.pressed('s'))
+		{
+			camera.translateZ( hitrostHoje );
+		}
+		if (keyboard.pressed('a'))
+		{
+			camera.translateX( -hitrostHoje );
+		}
+
 	}
 }
 
