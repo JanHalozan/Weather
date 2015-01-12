@@ -147,6 +147,8 @@ function padanjeSnezink(stSnezink, hitrostPadanja, mocVetra, minY, maxY, minX, m
 				snezinke[i].position.x += mocVetra - 0.002*j;
 		}
 		
+		snezinke[i].rotation.y = (X-90)*Math.PI/180;
+
 		if(snezinke[i].position.y < minY)
 			snezinke[i].position.y = maxY;
 
