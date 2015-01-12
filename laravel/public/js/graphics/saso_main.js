@@ -13,6 +13,7 @@ var minZ = -24, maxZ = -1;
 var hitrostPadanja = 0.03;
 var mocVetra = 0.005;
 var fogDensity = 0.1;
+var vektorPogleda;
 
 var zastavica = 0;
 var isKeyPresed = 0;
@@ -28,6 +29,9 @@ function saso_init()
 	scene.fog.density = 0;
 
 	// MISKA
+	// Vektor pogleda
+	vektorPogleda = new THREE.Vector3( 0, 0, 0 );
+
 	// Lock request za miško
 	canvas.onclick = canvas.requestPointerLock || canvas.mozRequestPointerLock || canvas.webkitRequestPointerLock;
 	
@@ -104,7 +108,7 @@ function getRandom(min, max) {
 function initSnezinke(stSnezink, minX, maxX, minY, maxY, minZ, maxZ) {
 	// Textura in geometry za snežinko
 	var snezinkaTexture = THREE.ImageUtils.loadTexture("images/textures/snezinka.png");
-	var snezinkaGeometry = new THREE.PlaneGeometry(velikostSnezinke, velikostSnezinke);
+	var snezinkaGeometry = new THREE.PlaneGeometry(velikostSnezinke,velikostSnezinke);
 
 
 	var snezinkaMaterial = [];
@@ -154,8 +158,8 @@ function padanjeSnezink(stSnezink, hitrostPadanja, mocVetra, minY, maxY, minX, m
 	}
 }
 
-var X = 0;
-var Y = 1;
+var X = 90;
+var Y = 0;
 
 function premikanjeMiske( event ) {
 	if( document.pointerLockElement === canvas || 
@@ -163,20 +167,27 @@ function premikanjeMiske( event ) {
   		document.webkitPointerLockElement === canvas) {
 
 		X -= (event.movementX || event.mozMovementX || event.webkitMovementX || 0)/10;
-		Y -= (event.movementY || event.mozMovementY || event.webkitMovementY || 0)/1000;
-
+		Y -= (event.movementY || event.mozMovementY || event.webkitMovementY || 0)/10;
 		
-		// Lock pogleda navzgor
-		if(Y > 90)
-			Y = 90;
-		else if (Y < -90)
-			Y = -90;
+		// Lock pogleda navzgor / navzdol
+		if(Y > 80)
+			Y = 80;
+		else if (Y < -80)
+			Y = -80;
 
 		// Reset če gre krog okoli
 		if(X > 360 || X < -360)
 			X = 0;
 
+		var beta = (Y)*Math.PI/180;
+		var alfa = (X-180)*Math.PI/180;
+
 		// Koti so v radianih, moje meritve pa v stopinjah zato je tukaj pretvorba
-		camera.rotation.y = X * Math.PI / 180;
+		// 1000 pomeni radij
+		vektorPogleda.x = -1000 * Math.cos(beta) * Math.cos(alfa);
+		vektorPogleda.y = 1000 * Math.sin(beta);
+		vektorPogleda.z = 1000 * Math.cos(beta) * Math.sin(alfa);
+
+		camera.lookAt(vektorPogleda);
 	}
 }
