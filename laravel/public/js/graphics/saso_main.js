@@ -1,10 +1,107 @@
 
 /* 
- + GLOBALNE SPREMENLJIVKE IN FUNKCIJE
+ + GLOBALNE SPREMENLJIVKE
 */
 
+var snezinke = [];
+var maxStSnezink = 3000; 
+var stSnezink = 900;
+var velikostSnezinke = 0.13;
+var minX = -15, maxX = 15;
+var minY = 0, maxY = 10;
+var minZ = -24, maxZ = -1;
+var hitrostPadanja = 0.03;
+var mocVetra = 0.005;
+var fogDensity = 0.1;
+var cameraLook;
+
+var zastavica = 0;
+var isKeyPresed = 0;
+
+/* 
+ - GLOBALNE SPREMENLJIVKE
+*/
+
+function saso_init() 
+{
+	// SNEG
+	initSnezinke(maxStSnezink, minX, maxX, minY, maxY, minZ, maxZ);
+	scene.fog.density = 0;
+
+	// MISKA
+	// Lock request za miško
+	canvas.onclick = canvas.requestPointerLock || canvas.mozRequestPointerLock || canvas.webkitRequestPointerLock;
+	
+	document.addEventListener( 'mousemove', premikanjeMiske, false );
+
+	cameraLook = new THREE.Vector3(0,1,0);
+}
+
+function saso_update()
+{
+	if (keyboard.pressed('9')) {
+		if(isKeyPresed == 0) {
+			if(zastavica == 0) {
+				zastavica = 1;
+				scene.fog.density = fogDensity;
+				for(var i = 0; i < stSnezink; i++)
+					scene.add(snezinke[i]);
+			}
+			else {
+				zastavica = 0;
+				scene.fog.density = 0;
+				for(var i = 0; i < stSnezink; i++)
+					scene.remove(snezinke[i]);
+			}
+		}
+		isKeyPresed = 1;
+	} 
+	else if (keyboard.pressed('m')) {
+		if(isKeyPresed == 0) {
+			if(stSnezink < maxStSnezink - 100)
+				stSnezink += 100;
+			for(var i = 0; i < 100; i++)
+				scene.add(snezinke[i + (stSnezink - 100)]);
+		}
+		isKeyPresed = 1;
+	}
+	else if (keyboard.pressed('n')) {
+		if(isKeyPresed == 0) {
+			if(stSnezink > 200)
+				stSnezink -= 100;
+			for(var i = 0; i < 100; i++)
+				scene.remove(snezinke[i+stSnezink]);
+		}
+		isKeyPresed = 1;
+	}  
+	else {
+		isKeyPresed = 0;
+	}
+
+	if(zastavica == 1)
+		padanjeSnezink(stSnezink, hitrostPadanja, mocVetra, minY, maxY, minX, maxX);
+
+	// Basic movement
+	if (keyboard.pressed('w'))
+	{
+		camera.position.z += -0.03;
+	}
+	if (keyboard.pressed('d'))
+	{
+		camera.position.x += 0.03;
+	}
+	if (keyboard.pressed('s'))
+	{
+		camera.position.z += 0.03;
+	}
+	if (keyboard.pressed('a'))
+	{
+		camera.position.x += -0.03;
+	}
+}
+
 function getRandom(min, max) {
-  return Math.random() * (max - min) + min;
+  	return Math.random() * (max - min) + min;
 }
 
 function initSnezinke(stSnezink, minX, maxX, minY, maxY, minZ, maxZ) {
@@ -60,71 +157,32 @@ function padanjeSnezink(stSnezink, hitrostPadanja, mocVetra, minY, maxY, minX, m
 	}
 }
 
-var snezinke = [];
-var maxStSnezink = 3000; 
-var stSnezink = 900;
-var velikostSnezinke = 0.13;
-var minX = -15, maxX = 15;
-var minY = 0, maxY = 10;
-var minZ = -24, maxZ = -1;
-var hitrostPadanja = 0.03;
-var mocVetra = 0.005;
-var fogDensity = 0.1;
+var X = 0;
+var Y = 1;
 
-var zastavica = 0;
-var isKeyPresed = 0;
+function premikanjeMiske( event ) {
+	if( document.pointerLockElement === canvas || 
+		document.mozPointerLockElement === canvas ||
+  		document.webkitPointerLockElement === canvas) {
 
-/* 
- - GLOBALNE SPREMENLJIVKE IN FUNKCIJE
-*/
+		X -= (event.movementX || event.mozMovementX || event.webkitMovementX || 0)/10;
+		Y -= (event.movementY || event.mozMovementY || event.webkitMovementY || 0)/1000;
 
-function saso_init() 
-{
-	initSnezinke(maxStSnezink, minX, maxX, minY, maxY, minZ, maxZ);
-	scene.fog.density = 0;
-}
+		
+		// Lock pogleda navzgor
+		if(Y > 90)
+			Y = 90;
+		else if (Y < -90)
+			Y = -90;
 
-function saso_update()
-{
-	if (keyboard.pressed('9')) {
-		if(isKeyPresed == 0) {
-			if(zastavica == 0) {
-				zastavica = 1;
-				scene.fog.density = fogDensity;
-				for(var i = 0; i < stSnezink; i++)
-					scene.add(snezinke[i]);
-			}
-			else {
-				zastavica = 0;
-				scene.fog.density = 0;
-				for(var i = 0; i < stSnezink; i++)
-					scene.remove(snezinke[i]);
-			}
-		}
-		isKeyPresed = 1;
-	} 
-	else if (keyboard.pressed('m')) {
-		if(isKeyPresed == 0) {
-			if(stSnezink < maxStSnezink - 100)
-				stSnezink += 100;
-			for(var i = 0; i < 100; i++)
-				scene.add(snezinke[i + (stSnezink - 100)]);
-		}
-		isKeyPresed = 1;
+		// Reset če gre krog okoli
+		if(X > 360 || X < -360)
+			X = 0;
+
+		cameraLook.y = 1;
+		camera.lookAt(cameraLook);
+
+		// Koti so v radianih, moje meritve pa v stopinjah zato je tukaj pretvorba
+		camera.rotation.y = X * Math.PI / 180;
 	}
-	else if (keyboard.pressed('n')) {
-		if(isKeyPresed == 0) {
-			if(stSnezink > 200)
-				stSnezink -= 100;
-			for(var i = 0; i < 100; i++)
-				scene.remove(snezinke[i+stSnezink]);
-		}
-		isKeyPresed = 1;
-	}  
-	else {
-		isKeyPresed = 0;
-	}
-
-	if(zastavica == 1)
-		padanjeSnezink(stSnezink, hitrostPadanja, mocVetra, minY, maxY, minX, maxX);
 }
