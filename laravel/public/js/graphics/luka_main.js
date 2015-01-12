@@ -30,6 +30,126 @@ function TextElement(text, pos_x, pos_y, pos_z)
 	}
 }
 
+function strToInt(str, size)
+{
+	var a = "";
+	for (var i = 0; i < size; ++i)
+	{
+		if (str[i] == '1') a += "0";
+		else a += "1";
+	}
+	return -(parseInt(a.substring(1, size), 2) + 1);
+}
+
+function load_dct(file_name)
+{
+	var oReq = new XMLHttpRequest();
+	var in_stream = "";
+	oReq.open("GET", file_name, true);
+	oReq.responseType = "arraybuffer";
+
+	oReq.onload = function (oEvent) {
+	  	var arrayBuffer = oReq.response; // Note: not oReq.responseText
+	  	if (arrayBuffer) {
+	    	var byteArray = new Uint8Array(arrayBuffer);
+	    	for (var i = 0; i < byteArray.byteLength; i++) 
+	    	{
+	    		// do something with each byte in the array
+	    		var n = parseInt(byteArray[i]).toString(2);
+	    		while (n.length < 8) n = "0" + n;
+	    		in_stream += n;
+	    	}
+	  	}
+
+	  	//Read image width and height
+	  	var image_width = parseInt(in_stream.substring(0, 16), 2);
+	  	var image_height = parseInt(in_stream.substring(16, 32), 2);
+	  	var pos = 32;
+
+	  	var num_blocks = Math.ceil(image_width/8.0) * Math.ceil(image_height/8.0) * 3;
+
+	  	for (var i = 0; i < num_blocks; ++i)
+	  	{
+	  		var data = new Array();
+	  		var data_index = 1;
+	  		var num_values = 1;
+
+	  		//Read DC
+            var dc = strToInt(in_stream.substring(pos, pos+11), 11);
+            pos += 11;
+            data[0] = dc;
+
+           	console.log(in_stream.substring(pos));
+
+            //Read AC
+            while (num_values < 64)
+            {
+                //a in b tip
+                if (in_stream[pos] == "0")
+                {
+                    pos++;
+
+                    //Preberi tekoco
+                    //Dodaj nule
+                    var num_null = parseInt(in_stream.substring(pos, pos+6), 2);
+                    console.log(in_stream.substring(pos, pos+6));
+                    pos += 6;
+
+                    for (var n = 0; n < num_null; ++n)
+                    {
+                        data[data_index] = 0;
+                        ++data_index;
+                    }
+                    num_values += num_null;
+
+                    //Check if a tip a or b tip
+                    if (num_values < 64)
+                    {
+                        //Preberi dolzino
+                        var l = parseInt(in_stream.substring(pos, pos+4), 2);
+                        pos += 4;
+
+                        //Preberi ac
+                        var ac = strToInt(in_stream.substring(pos, pos+l), l);
+                        pos += l;
+                        if (data_index >= 64)
+                        {
+                            data_index = 0;
+                        }
+                        data[data_index] = ac;
+                        ++data_index;
+                        ++num_values;
+                    }
+                }
+                //C tip
+                else if (in_stream[pos] == "1")
+                {
+                   	pos++;
+                    //Preberi dolzino
+                   	var l = parseInt(in_stream.substring(pos, pos+4), 2);
+                    pos += 4;
+
+                    //preberi ac
+                    var ac = strToInt(in_stream.substring(pos, pos+l), l);
+                    pos += l;
+                    if (data_index >= 64)
+                    {
+                        data_index = 0;
+                    }
+                    data[data_index] = ac;
+                    ++data_index;
+                    ++num_values;
+                }
+            }
+
+            console.log(data);
+            break;
+	  	}
+	};
+
+	oReq.send(null);
+}
+
 var text_elements = new Array();
 
 function luka_init()
@@ -75,27 +195,11 @@ function luka_init()
 
 	//Set proper camera position TEMP
 	//camera.rotation.x = 0.1;
+	load_dct("images/textures/test.dct");
 }
 
 function luka_update()
 {
-	if (keyboard.pressed('w'))
-	{
-		camera.position.z += -0.03;
-	}
-	if (keyboard.pressed('d'))
-	{
-		camera.position.x += 0.03;
-	}
-	if (keyboard.pressed('s'))
-	{
-		camera.position.z += 0.03;
-	}
-	if (keyboard.pressed('a'))
-	{
-		camera.position.x += -0.03;
-	}
-
 	for (i = 0; i < text_elements.length; ++i)
 	{
 		text_elements[i].update();
