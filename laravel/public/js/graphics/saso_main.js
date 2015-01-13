@@ -4,6 +4,7 @@
 */
 
 var snezinke = [];
+var grass_mesh_snow;
 var maxStSnezink = 3000; 
 var stSnezink = 900;
 var velikostSnezinke = 0.13;
@@ -14,7 +15,9 @@ var hitrostPadanja = 0.03;
 var mocVetra = 0.005;
 var fogDensity = 0.1;
 var vektorPogleda;
-var hitrostHoje = 0.08;
+
+// Za hojo
+var hitrostHoje = 0.05;
 var hoja = 1;
 var counter = 0;
 
@@ -35,6 +38,16 @@ function saso_init()
 	initSnezinke(maxStSnezink, minX, maxX, minY, maxY, minZ, maxZ);
 	scene.fog.density = 0;
 
+	// Zasnežena trava
+	var grass_geometry = new THREE.PlaneGeometry(100, 50, 20, 20);
+	var grass_texture = THREE.ImageUtils.loadTexture("images/textures/grass_texture_snow.jpg");
+	grass_texture.wrapS = grass_texture.wrapT = THREE.RepeatWrapping;
+	grass_texture.repeat.set(150, 50);
+	var grass_material = new THREE.MeshLambertMaterial({map: grass_texture, side: THREE.DoubleSide});
+	grass_mesh_snow = new THREE.Mesh( grass_geometry, grass_material );
+	grass_mesh_snow.rotation.x = Math.PI/2;
+	grass_mesh_snow.position.z = -8;
+
 	// MISKA
 	// Vektor pogleda
 	vektorPogleda = new THREE.Vector3( 0, 0, 0 );
@@ -52,12 +65,16 @@ function saso_update()
 			if(zastavica == 0) {
 				zastavica = 1;
 				scene.fog.density = fogDensity;
+				scene.add(grass_mesh_snow);
+				scene.remove(grass_mesh);
 				for(var i = 0; i < stSnezink; i++)
 					scene.add(snezinke[i]);
 			}
 			else {
 				zastavica = 0;
 				scene.fog.density = 0;
+				scene.add(grass_mesh);
+				scene.remove(grass_mesh_snow);
 				for(var i = 0; i < stSnezink; i++)
 					scene.remove(snezinke[i]);
 			}
@@ -194,8 +211,10 @@ function padanjeSnezink(stSnezink, hitrostPadanja, mocVetra, minY, maxY, minX, m
 				snezinke[i].position.x += mocVetra - 0.002*j;
 		}
 		
+		// Vedno pravokotno na pogled
 		snezinke[i].lookAt(camera.position);
 
+		// Če grejo iven polja
 		if(snezinke[i].position.y < minY)
 			snezinke[i].position.y = maxY;
 
