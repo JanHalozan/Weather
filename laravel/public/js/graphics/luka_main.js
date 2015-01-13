@@ -30,15 +30,117 @@ function TextElement(text, pos_x, pos_y, pos_z)
 	}
 }
 
+//Precalcualte cos table
+var cos_table = new Array();
+for (var x = 0; x < 8; ++x)
+{
+	for (var u = 0; u < 8; ++u)
+	{
+		cos_table[x + u*8] = Math.cos(((2*x + 1)*u*Math.PI)/16.0);
+	}
+}
+
 function strToInt(str, size)
 {
 	var a = "";
-	for (var i = 0; i < size; ++i)
+	if (str[0] == "1")
 	{
-		if (str[i] == '1') a += "0";
-		else a += "1";
+		if (size == 1) return -1;
+		for (var i = 0; i < size; ++i)
+		{
+			if (str[i] == '1') a += "0";
+			else a += "1";
+		}
+		return -(parseInt(a.substring(1, size), 2) + 1);
 	}
-	return -(parseInt(a.substring(1, size), 2) + 1);
+	else
+	{
+		if (size == 1) return 0;
+		return parseInt(str.substring(1, size), 2);
+	}
+}
+
+function unwrapZigZag(in_data)
+{
+    var konec = false;
+    var x = 0;
+    var y = 0;
+    var index = 0;
+
+    var data = new Array();
+
+    //Reset table
+    for (var i = 0; i < 64; ++i)
+    {
+        data[i] = 5000;
+    }
+
+    do
+    {
+        data[x + y*8] = in_data[index];
+        //Check where to go
+        //Leftdown
+        if (x>0 && y<7 && data[(x-1) + (y+1)*8]==5000)
+        {
+            x--; y++;
+        }
+        //Upright
+        else if ((x<7) && (y>0) && (data[(x+1) + (y-1)*8]==5000))
+        {
+            x++; y--;
+        }
+        //Right on top and bottom lines
+        else if ((x>0) && (x<7))
+            x++;
+        //Down on left and right lines
+        else if ((y>0) && (y<7))
+            y++;
+        //Right in topleft and bottomleft
+        else if (x<7)
+            x++;
+        else konec = true;
+        ++index;
+    } while(!konec);
+
+    return data;
+}
+
+function C(i)
+{
+    return i == 0? (1/1.41421356237) : 1;
+}
+
+function calculateIDCT(block)
+{
+    var idct_values = new Array();
+
+    var value = 0;
+    for (var y = 0; y < 8; ++y)
+    {
+        for (var x = 0; x < 8; ++x)
+        {
+            value = 0;
+            for (var v = 0; v < 8; ++v)
+            {
+                for (var u = 0; u < 8; ++u)
+                {
+                    value += C(u) * C(v) * (block[u + v*8]) * cos_table[x + u*8] * cos_table[y + v*8];
+                }
+            }
+            value *= 1.0/4.0;
+            if (value < -128)
+            {
+                value = -128;
+            }
+            else if (value > 127)
+            {
+                value = 127;
+            }
+            idct_values[x + y*8] = Math.floor(value + 128);
+        }
+    }
+
+    return idct_values;
 }
 
 function load_dct(file_name)
@@ -68,18 +170,23 @@ function load_dct(file_name)
 
 	  	var num_blocks = Math.ceil(image_width/8.0) * Math.ceil(image_height/8.0) * 3;
 
+	  	var blocks = new Array();
+
 	  	for (var i = 0; i < num_blocks; ++i)
 	  	{
 	  		var data = new Array();
 	  		var data_index = 1;
 	  		var num_values = 1;
 
+	  		//console.log(in_stream.substring(pos));
+
 	  		//Read DC
+	  		//console.log(in_stream.substring(pos, pos+11));
             var dc = strToInt(in_stream.substring(pos, pos+11), 11);
             pos += 11;
             data[0] = dc;
 
-           	console.log(in_stream.substring(pos));
+           	
 
             //Read AC
             while (num_values < 64)
@@ -92,7 +199,7 @@ function load_dct(file_name)
                     //Preberi tekoco
                     //Dodaj nule
                     var num_null = parseInt(in_stream.substring(pos, pos+6), 2);
-                    console.log(in_stream.substring(pos, pos+6));
+                    //console.log(in_stream.substring(pos, pos+6));
                     pos += 6;
 
                     for (var n = 0; n < num_null; ++n)
@@ -128,23 +235,31 @@ function load_dct(file_name)
                     //Preberi dolzino
                    	var l = parseInt(in_stream.substring(pos, pos+4), 2);
                     pos += 4;
+                    //console.log(l);
 
                     //preberi ac
                     var ac = strToInt(in_stream.substring(pos, pos+l), l);
+                    //console.log(in_stream.substring(pos, pos+l));
                     pos += l;
                     if (data_index >= 64)
                     {
                         data_index = 0;
                     }
                     data[data_index] = ac;
+                    //console.log(ac);
                     ++data_index;
                     ++num_values;
                 }
             }
 
-            console.log(data);
-            break;
+            var block_data = unwrapZigZag(data);
+            var inverse = calculateIDCT(block_data);
+            blocks.push(inverse);
+            //console.log(inverse);
 	  	}
+
+	  	//We have blocks
+
 	};
 
 	oReq.send(null);
@@ -159,7 +274,7 @@ function luka_init()
 	name_hud.style.top = "50px";
 
 	//Create single color skybox
-	var skybox_geometry = new THREE.BoxGeometry(50, 50, 50);
+	var skybox_geometry = new THREE.BoxGeometry(1000, 1000, 1000);
 	var skybox_material = new THREE.MeshBasicMaterial( {color: 0x5C97BF, side:THREE.BackSide} );
 	var skybox_mesh = new THREE.Mesh(skybox_geometry, skybox_material);
 	scene.add(skybox_mesh);
