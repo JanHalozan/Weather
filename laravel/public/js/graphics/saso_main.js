@@ -109,8 +109,6 @@ function saso_update()
 	}
 }
 
-var nekaj = new THREE.Vector3( 0, 0, 0 );
-
 function getRandom(min, max) {
   	return Math.random() * (max - min) + min;
 }
