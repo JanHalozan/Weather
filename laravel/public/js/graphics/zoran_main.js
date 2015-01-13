@@ -12,14 +12,16 @@ var clouds = null;
 var thunder = null;
 
 /* rain related variables */
-var rainDensity = 1000;
-var rainfallSpeed = 0.4;
+var rainDensity = 2000;
+var rainfallSpeed = 0.25;
 var isRaining = false;
 var fogdensity = 0.075;
 
 /* other variables */
 var windSpeed = 0.1;
-var isKeyPressed = false;
+var isRKeyPressed = false;
+var isTKeyPressed = false;
+var thunderVisible = false;
 
 /* FUNCTIONS */
 function initClouds()
@@ -49,15 +51,17 @@ function initThunder()
 function initRaindrops() 
 {
 	var rainTexture = THREE.ImageUtils.loadTexture("images/textures/rain.png");
-	var rainPlaneGeometry = new THREE.PlaneGeometry(0.01, 0.06);
-	var rainMaterial = new THREE.MeshBasicMaterial({map:rainTexture, transparent:true});
+	var rainPlaneGeometry = new THREE.PlaneGeometry(0.01, 0.08);
+	var rainMaterial = new THREE.MeshBasicMaterial({map:rainTexture, transparent: true});
+	//var rainMaterial = new THREE.MeshBasicMaterial({color: 0xAAAAAA});
 	
 	for(var i = 0; i < rainDensity; i++)
 	{
 		rainDrops[i] = new THREE.Mesh(rainPlaneGeometry, rainMaterial);
 		rainDrops[i].position.x = randomNumber(minX, maxX);
 		rainDrops[i].position.y = randomNumber(minY, maxY);
-		rainDrops[i].position.z = randomNumber(minZ, maxZ);
+		rainDrops[i].position.z = randomNumber(-5, 5);
+		rainDrops[i].rotation.z = windSpeed * 2.0;
 	}
 }
 
@@ -67,6 +71,7 @@ function rainfall(rainDensity, rainfallSpeed, windSpeed)
 	{
 		rainDrops[i].position.y -= rainfallSpeed;
 		rainDrops[i].position.x += windSpeed;
+		rainDrops[i].rotation.y = (X-90)*Math.PI/180;
 		
 		if(rainDrops[i].position.y < minY) rainDrops[i].position.y = maxY;
 		if(rainDrops[i].position.x > maxX) rainDrops[i].position.x = minX;
@@ -84,34 +89,71 @@ function zoran_init()
 }
 
 var thunderCount = 0;
+var flashMesh;
+var flashOpacity;
+var flashGeometry = new THREE.BoxGeometry(15, 2, 10);
+
+var rainAudio;
 
 function zoran_update()
 {
 	if(isRaining)
+		rainfall(rainDensity, rainfallSpeed, windSpeed);
+
+	if (thunderVisible)
 	{
-		if (thunderCount == 100)
-		{
-			thunder.position.x = randomNumber(minX, maxX);
-			scene.add(thunder);
-		}
-		else if (thunderCount > 105)
+		if (thunderCount > 10)
 		{
 			scene.remove(thunder);
-			thunderCount = 0;
+			thunderVisible = false;
+			scene.remove(flashMesh);
 		}
-		thunderCount++;
-
-		rainfall(rainDensity, rainfallSpeed, windSpeed);
+		else
+		{
+			scene.remove(flashMesh);
+			var flashMaterial = new THREE.MeshBasicMaterial( {color: 0xFFFFFF, side:THREE.BackSide, transparent: true, opacity: 1.0 - (thunderCount / 10.0)} );
+			flashMesh = new THREE.Mesh(flashGeometry, flashMaterial);
+			flashMesh.position.y = 1.25;
+			scene.add(flashMesh);
+			thunderCount++;
+		}
 	}
+
+	if (keyboard.pressed('t')) 
+	{
+		if(!isTKeyPressed) 
+		{
+			if(isRaining && !thunderVisible)
+			{
+				thunderVisible = true;
+				thunderCount = 0;
+				thunder.position.x = randomNumber(minX, maxX);
+				thunder.rotation.y = (90-X) * Math.PI / 180;
+
+				var audio = new Audio("sound/strike.mp3");
+				audio.play();
+
+				scene.add(thunder);
+			}
+		}
+		
+		isTKeyPressed = true;
+	} 
+	else
+		isTKeyPressed = false;
 		
 	if (keyboard.pressed('r')) 
 	{
-		if(!isKeyPressed) 
+		if(!isRKeyPressed) 
 		{
 			if(!isRaining)
 			{
 				for(var i = 0; i < rainDrops.length; i++) scene.add(rainDrops[i]);
 				scene.add(clouds);
+
+				rainAudio = new Audio("sound/rain.mp3");
+				rainAudio.loop = true;
+				rainAudio.play();
 
 				scene.fog.density = fogdensity;
 			}
@@ -120,6 +162,7 @@ function zoran_update()
 				for(var i = 0; i < rainDrops.length; i++) scene.remove(rainDrops[i]);
 				scene.remove(clouds);
 				scene.remove(thunder);
+				rainAudio.stop();
 
 				scene.fog.density = 0;
 			}
@@ -127,8 +170,8 @@ function zoran_update()
 			isRaining = !isRaining;
 		}
 		
-		isKeyPressed = true;
+		isRKeyPressed = true;
 	} 
 	else
-		isKeyPressed = false;
+		isRKeyPressed = false;
 }
