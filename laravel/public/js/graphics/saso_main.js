@@ -19,6 +19,10 @@ var hitrostHoje = 0.05;
 var zastavica = 0;
 var isKeyPresed = 0;
 
+// Za pogled kamere
+var X = 90;
+var Y = 0;
+
 /* 
  - GLOBALNE SPREMENLJIVKE
 */
@@ -167,9 +171,6 @@ function padanjeSnezink(stSnezink, hitrostPadanja, mocVetra, minY, maxY, minX, m
 			snezinke[i].position.x = maxX;
 	}
 }
-
-var X = 90;
-var Y = 0;
 
 function premikanjeMiske( event ) {
 	if( document.pointerLockElement === canvas || 
