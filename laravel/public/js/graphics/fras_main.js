@@ -38,5 +38,5 @@ function fras_init()
 
 function fras_update()
 {  
-    //sonce.rotation.y = (X-90)*Math.PI/180;
+    sonce.lookAt(camera.position);
 }
