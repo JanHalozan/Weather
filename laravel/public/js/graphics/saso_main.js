@@ -90,6 +90,7 @@ function saso_update()
 		if (keyboard.pressed('w'))
 		{
 			camera.translateZ( -hitrostHoje );
+			camera.position.y = 1;
 		}
 		if (keyboard.pressed('d'))
 		{
@@ -98,6 +99,7 @@ function saso_update()
 		if (keyboard.pressed('s'))
 		{
 			camera.translateZ( hitrostHoje );
+			camera.position.y = 1;
 		}
 		if (keyboard.pressed('a'))
 		{
@@ -106,6 +108,8 @@ function saso_update()
 
 	}
 }
+
+var nekaj = new THREE.Vector3( 0, 0, 0 );
 
 function getRandom(min, max) {
   	return Math.random() * (max - min) + min;
