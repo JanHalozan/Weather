@@ -14,7 +14,9 @@ var hitrostPadanja = 0.03;
 var mocVetra = 0.005;
 var fogDensity = 0.1;
 var vektorPogleda;
-var hitrostHoje = 0.05;
+var hitrostHoje = 0.08;
+var hoja = 1;
+var counter = 0;
 
 var zastavica = 0;
 var isKeyPresed = 0;
@@ -91,19 +93,42 @@ function saso_update()
 		document.mozPointerLockElement === canvas ||
   		document.webkitPointerLockElement === canvas) {
 
-		if (keyboard.pressed('w')) {
+		if (keyboard.pressed('w') && keyboard.pressed('a')){
+			camera.translateZ( -hitrostHoje/1.2 );
+			camera.translateX( -hitrostHoje/1.2 );
+			simulacijaHoje();
+		}
+		else if (keyboard.pressed('w') && keyboard.pressed('d')){
+			camera.translateZ( -hitrostHoje/1.2 );
+			camera.translateX( hitrostHoje/1.2 );
+			simulacijaHoje();
+		}
+		else if (keyboard.pressed('s') && keyboard.pressed('a')){
+			camera.translateZ( hitrostHoje/1.2 );
+			camera.translateX( -hitrostHoje/1.2 );
+			simulacijaHoje();
+		}
+		else if (keyboard.pressed('s') && keyboard.pressed('d')){
+			camera.translateZ( hitrostHoje/1.2 );
+			camera.translateX( hitrostHoje/1.2 );
+			simulacijaHoje();
+		}
+		else if (keyboard.pressed('w')) {
 			camera.translateZ( -hitrostHoje );
-			camera.position.y = 1;
+			simulacijaHoje();
 		} 
-		if (keyboard.pressed('d')) {
+		else if (keyboard.pressed('d')) {
 			camera.translateX( hitrostHoje );
+			simulacijaHoje();
 		} 
-		if (keyboard.pressed('s')) {
+		else if (keyboard.pressed('s')) {
 			camera.translateZ( hitrostHoje );
-			camera.position.y = 1;
+			simulacijaHoje();
+			
 		} 
-		if (keyboard.pressed('a')) {
+		else if (keyboard.pressed('a')) {
 			camera.translateX( -hitrostHoje );
+			simulacijaHoje();
 		}
 
 	}
@@ -111,6 +136,20 @@ function saso_update()
 
 function getRandom(min, max) {
   	return Math.random() * (max - min) + min;
+}
+
+function simulacijaHoje() {
+	// Simulacija hoje
+	if(counter < 10)
+		hoja += 0.005;
+	else if(counter < 20)
+		hoja -= 0.005;
+	else {
+		counter = 0;
+		hoja = 1;
+	}
+	counter++;
+	camera.position.y = hoja;
 }
 
 function initSnezinke(stSnezink, minX, maxX, minY, maxY, minZ, maxZ) {
