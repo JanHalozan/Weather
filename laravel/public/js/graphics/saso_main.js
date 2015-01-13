@@ -91,22 +91,18 @@ function saso_update()
 		document.mozPointerLockElement === canvas ||
   		document.webkitPointerLockElement === canvas) {
 
-		if (keyboard.pressed('w'))
-		{
+		if (keyboard.pressed('w')) {
 			camera.translateZ( -hitrostHoje );
 			camera.position.y = 1;
-		}
-		if (keyboard.pressed('d'))
-		{
+		} 
+		if (keyboard.pressed('d')) {
 			camera.translateX( hitrostHoje );
-		}
-		if (keyboard.pressed('s'))
-		{
+		} 
+		if (keyboard.pressed('s')) {
 			camera.translateZ( hitrostHoje );
 			camera.position.y = 1;
-		}
-		if (keyboard.pressed('a'))
-		{
+		} 
+		if (keyboard.pressed('a')) {
 			camera.translateX( -hitrostHoje );
 		}
 
@@ -159,7 +155,7 @@ function padanjeSnezink(stSnezink, hitrostPadanja, mocVetra, minY, maxY, minX, m
 				snezinke[i].position.x += mocVetra - 0.002*j;
 		}
 		
-		snezinke[i].rotation.y = (X-90)*Math.PI/180;
+		snezinke[i].lookAt(camera.position);
 
 		if(snezinke[i].position.y < minY)
 			snezinke[i].position.y = maxY;
