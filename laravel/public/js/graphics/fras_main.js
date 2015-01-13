@@ -3,6 +3,7 @@ function initOblaki()
 
 }
 
+var sonce;
 
 function initSonce()
 {
@@ -19,12 +20,12 @@ function initSonce()
 		opacity:0.7
 	});
 
-    var sonce = new THREE.Mesh( sun_geometry, sun_material );
+    sonce = new THREE.Mesh( sun_geometry, sun_material );
 
     //pozicija
     sonce.position.x = 5;
-    sonce.position.y = 15;
-    sonce.position.z = -25;
+    sonce.position.y = 18;
+    sonce.position.z = -23;
 
     scene.add(sonce);
     //camera.lookAt(sonce.position);
@@ -36,6 +37,6 @@ function fras_init()
 }
 
 function fras_update()
-{
-
+{  
+    sonce.rotation.x = (X-90)*Math.PI/180;
 }
