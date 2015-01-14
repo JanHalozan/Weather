@@ -9,8 +9,8 @@ document.getElementById("main_view").appendChild( canvas );
 
 //Create the scene and camera
 var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera( 75, (window.innerWidth - 200) / (window.innerHeight - 160), 0.1, 1000 );
-camera.up = new THREE.Vector3( 0, 1, 0 );
+var camera = new THREE.PerspectiveCamera(50, (window.innerWidth - 200) / (window.innerHeight - 160), 0.1, 1000);
+camera.up = new THREE.Vector3(0, 1, 0);
 camera.position.y = 1;
 camera.position.z = 1;
 camera.position.x = 0;
