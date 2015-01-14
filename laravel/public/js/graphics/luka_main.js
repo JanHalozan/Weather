@@ -143,6 +143,38 @@ function calculateIDCT(block)
     return idct_values;
 }
 
+function unwrapBlocks(blocks, image_width, image_height)
+{
+    var pos_x = 0;
+    var pos_y = 0;
+    var data = new Array();
+
+    for (var i = 0; i < blocks.length; ++i)
+    {
+        var b = blocks[i];
+
+        for (var y = 0; y < 8; ++y)
+        {
+            for (var x = 0; x < 8; ++x)
+            {
+                if (x + pos_x < image_width && y + pos_y < image_height)
+                {
+                    data[(x + pos_x) + (y + pos_y)*image_width] = b[x + y*8];
+                }
+            }
+        }
+
+        pos_x += 8;
+        if (pos_x >= image_width)
+        {
+            pos_x = 0;
+            pos_y += 8;
+        }
+    }
+
+    return data;
+}
+
 function load_dct(file_name)
 {
 	var oReq = new XMLHttpRequest();
@@ -259,7 +291,30 @@ function load_dct(file_name)
 	  	}
 
 	  	//We have blocks
+	  	//Divide into 3 sets
+	  	var red_values = new Array();
+	  	var green_values = new Array();
+	  	var blue_values = new Array();
+	  	var i = 0;
+	  	for(; i < blocks.length/3; ++i)
+	  	{
+	  		red_values.push(blocks[i]);
+	  	}
+	  	for(; i < blocks.length/3*2; ++i)
+	  	{
+	  		green_values.push(blocks[i]);
+	  	}
+	  	for(; i < blocks.length; ++i)
+	  	{
+	  		blue_values.push(blocks[i]);
+	  	}
 
+	  	//Unwrap blocks onto channels
+	  	var red_channel = unwrapBlocks(red_values, image_width, image_height);
+	  	var green_channel = unwrapBlocks(green_values, image_width, image_height);
+	  	var blue_channel = unwrapBlocks(blue_values, image_width, image_height);
+
+	  	
 	};
 
 	oReq.send(null);
