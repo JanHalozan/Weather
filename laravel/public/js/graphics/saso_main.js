@@ -4,6 +4,7 @@
 */
 
 var snezinke = [];
+var grass_mesh_snow;
 var maxStSnezink = 3000; 
 var stSnezink = 900;
 var velikostSnezinke = 0.13;
@@ -14,7 +15,11 @@ var hitrostPadanja = 0.03;
 var mocVetra = 0.005;
 var fogDensity = 0.1;
 var vektorPogleda;
+
+// Za hojo
 var hitrostHoje = 0.05;
+var hoja = 1;
+var counter = 0;
 
 var zastavica = 0;
 var isKeyPresed = 0;
@@ -33,6 +38,16 @@ function saso_init()
 	initSnezinke(maxStSnezink, minX, maxX, minY, maxY, minZ, maxZ);
 	scene.fog.density = 0;
 
+	// Zasnežena trava
+	var grass_geometry = new THREE.PlaneGeometry(100, 50, 20, 20);
+	var grass_texture = THREE.ImageUtils.loadTexture("images/textures/grass_texture_snow.jpg");
+	grass_texture.wrapS = grass_texture.wrapT = THREE.RepeatWrapping;
+	grass_texture.repeat.set(150, 50);
+	var grass_material = new THREE.MeshLambertMaterial({map: grass_texture, side: THREE.DoubleSide});
+	grass_mesh_snow = new THREE.Mesh( grass_geometry, grass_material );
+	grass_mesh_snow.rotation.x = Math.PI/2;
+	grass_mesh_snow.position.z = -8;
+
 	// MISKA
 	// Vektor pogleda
 	vektorPogleda = new THREE.Vector3( 0, 0, 0 );
@@ -50,12 +65,16 @@ function saso_update()
 			if(zastavica == 0) {
 				zastavica = 1;
 				scene.fog.density = fogDensity;
+				scene.add(grass_mesh_snow);
+				scene.remove(grass_mesh);
 				for(var i = 0; i < stSnezink; i++)
 					scene.add(snezinke[i]);
 			}
 			else {
 				zastavica = 0;
 				scene.fog.density = 0;
+				scene.add(grass_mesh);
+				scene.remove(grass_mesh_snow);
 				for(var i = 0; i < stSnezink; i++)
 					scene.remove(snezinke[i]);
 			}
@@ -91,19 +110,42 @@ function saso_update()
 		document.mozPointerLockElement === canvas ||
   		document.webkitPointerLockElement === canvas) {
 
-		if (keyboard.pressed('w')) {
+		if (keyboard.pressed('w') && keyboard.pressed('a')){
+			camera.translateZ( -hitrostHoje/1.2 );
+			camera.translateX( -hitrostHoje/1.2 );
+			simulacijaHoje();
+		}
+		else if (keyboard.pressed('w') && keyboard.pressed('d')){
+			camera.translateZ( -hitrostHoje/1.2 );
+			camera.translateX( hitrostHoje/1.2 );
+			simulacijaHoje();
+		}
+		else if (keyboard.pressed('s') && keyboard.pressed('a')){
+			camera.translateZ( hitrostHoje/1.2 );
+			camera.translateX( -hitrostHoje/1.2 );
+			simulacijaHoje();
+		}
+		else if (keyboard.pressed('s') && keyboard.pressed('d')){
+			camera.translateZ( hitrostHoje/1.2 );
+			camera.translateX( hitrostHoje/1.2 );
+			simulacijaHoje();
+		}
+		else if (keyboard.pressed('w')) {
 			camera.translateZ( -hitrostHoje );
-			camera.position.y = 1;
+			simulacijaHoje();
 		} 
-		if (keyboard.pressed('d')) {
+		else if (keyboard.pressed('d')) {
 			camera.translateX( hitrostHoje );
+			simulacijaHoje();
 		} 
-		if (keyboard.pressed('s')) {
+		else if (keyboard.pressed('s')) {
 			camera.translateZ( hitrostHoje );
-			camera.position.y = 1;
+			simulacijaHoje();
+			
 		} 
-		if (keyboard.pressed('a')) {
+		else if (keyboard.pressed('a')) {
 			camera.translateX( -hitrostHoje );
+			simulacijaHoje();
 		}
 
 	}
@@ -111,6 +153,20 @@ function saso_update()
 
 function getRandom(min, max) {
   	return Math.random() * (max - min) + min;
+}
+
+function simulacijaHoje() {
+	// Simulacija hoje
+	if(counter < 10)
+		hoja += 0.005;
+	else if(counter < 20)
+		hoja -= 0.005;
+	else {
+		counter = 0;
+		hoja = 1;
+	}
+	counter++;
+	camera.position.y = hoja;
 }
 
 function initSnezinke(stSnezink, minX, maxX, minY, maxY, minZ, maxZ) {
@@ -155,8 +211,10 @@ function padanjeSnezink(stSnezink, hitrostPadanja, mocVetra, minY, maxY, minX, m
 				snezinke[i].position.x += mocVetra - 0.002*j;
 		}
 		
+		// Vedno pravokotno na pogled
 		snezinke[i].lookAt(camera.position);
 
+		// Če grejo iven polja
 		if(snezinke[i].position.y < minY)
 			snezinke[i].position.y = maxY;
 

@@ -7,25 +7,25 @@ var sonce;
 
 function initSonce()
 {
-	var sun_size = 5;
+    var sun_size = 40;
 
-	//geometrija in textura   
-	var sun_texture = THREE.ImageUtils.loadTexture("images/textures/sun_texture2.png");
+    //geometrija in textura   
+    var sun_texture = THREE.ImageUtils.loadTexture("images/textures/sun_texture2.png");
     var sun_geometry = new THREE.PlaneGeometry( sun_size, sun_size );
 
     //material
     var sun_material = new THREE.MeshBasicMaterial({
-		map:sun_texture,
-		transparent:true,
-		opacity:0.7
-	});
+        map:sun_texture,
+        transparent:true,
+        opacity:0.7
+    });
 
     sonce = new THREE.Mesh( sun_geometry, sun_material );
 
     //pozicija
-    sonce.position.x = 5;
-    sonce.position.y = 18;
-    sonce.position.z = -23;
+    sonce.position.x = 30;
+    sonce.position.y = 100;
+    sonce.position.z = -199;
 
     scene.add(sonce);
     //camera.lookAt(sonce.position);
@@ -33,10 +33,10 @@ function initSonce()
 
 function fras_init() 
 {
-	initSonce();
+    initSonce();
 }
 
 function fras_update()
 {  
-    sonce.rotation.x = (X-90)*Math.PI/180;
+    sonce.lookAt(camera.position);
 }

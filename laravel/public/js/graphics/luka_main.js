@@ -321,6 +321,7 @@ function load_dct(file_name)
 }
 
 var text_elements = new Array();
+var grass_mesh;
 
 function luka_init()
 {
@@ -349,7 +350,7 @@ function luka_init()
 	grass_texture.wrapS = grass_texture.wrapT = THREE.RepeatWrapping;
 	grass_texture.repeat.set(150, 50);
 	var grass_material = new THREE.MeshLambertMaterial({map: grass_texture, side: THREE.DoubleSide});
-	var grass_mesh = new THREE.Mesh( grass_geometry, grass_material );
+	grass_mesh = new THREE.Mesh( grass_geometry, grass_material );
 	grass_mesh.rotation.x = Math.PI/2;
 	grass_mesh.position.z = -8;
 
