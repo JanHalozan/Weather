@@ -136,7 +136,7 @@ function calculateIDCT(block)
             {
                 value = 127;
             }
-            idct_values[x + y*8] = Math.floor(value + 128);
+            idct_values[x + y*8] = Math.floor(value);
         }
     }
 
@@ -175,12 +175,16 @@ function unwrapBlocks(blocks, image_width, image_height)
     return data;
 }
 
+var grass_mesh;
+var texture = null;
+
 function load_dct(file_name)
 {
 	var oReq = new XMLHttpRequest();
 	var in_stream = "";
 	oReq.open("GET", file_name, true);
 	oReq.responseType = "arraybuffer";
+	
 
 	oReq.onload = function (oEvent) {
 	  	var arrayBuffer = oReq.response; // Note: not oReq.responseText
@@ -287,7 +291,6 @@ function load_dct(file_name)
             var block_data = unwrapZigZag(data);
             var inverse = calculateIDCT(block_data);
             blocks.push(inverse);
-            //console.log(inverse);
 	  	}
 
 	  	//We have blocks
@@ -314,14 +317,39 @@ function load_dct(file_name)
 	  	var green_channel = unwrapBlocks(green_values, image_width, image_height);
 	  	var blue_channel = unwrapBlocks(blue_values, image_width, image_height);
 
-	  	
+	  	//Create one array of data
+	  	var c_pos = 0;
+	  	var texture_data = new Uint8Array(image_width * image_height * 3);
+	  	for (var i = 0; i < image_width * image_height * 3; i += 3)
+	  	{
+	  		texture_data[i] = blue_channel[c_pos] + 128;
+	  		texture_data[i+1] = green_channel[c_pos] + 128;
+	  		texture_data[i+2] = red_channel[c_pos] + 128;
+	  		c_pos++;
+	  	}
+
+	  	texture = new THREE.DataTexture(texture_data, image_width, image_height, THREE.RGBFormat, THREE.UnsignedByteType);
+	  	texture.needsUpdate = true;
+
+	  	//Create balcon floor
+		var floor_geometry = new THREE.BoxGeometry( 5, 0.2, 2.5);
+		//var floor_texture = THREE.ImageUtils.loadTexture("images/textures/floor_texture.jpg");
+		//floor_texture.wrapS = floor_texture.wrapT = THREE.RepeatWrapping;
+		//floor_texture.repeat.set(10, 5);
+
+		texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+		texture.repeat.set(10, 5);
+		var floor_material = new THREE.MeshLambertMaterial({map: texture, side: THREE.DoubleSide});
+		var floor_mesh = new THREE.Mesh( floor_geometry, floor_material );
+		floor_mesh.position.y = 0.1;
+
+		scene.add(floor_mesh);
 	};
 
 	oReq.send(null);
 }
 
 var text_elements = new Array();
-var grass_mesh;
 
 function luka_init()
 {
@@ -329,20 +357,14 @@ function luka_init()
 	name_hud.style.left = "20px";
 	name_hud.style.top = "50px";
 
+	//Kreairamo balkon z DCT sliko, balkon se kar naredi v funkciji, hax for fax
+	load_dct("images/textures/test.dct");
+
 	//Create single color skybox
 	var skybox_geometry = new THREE.BoxGeometry(1000, 1000, 1000);
 	var skybox_material = new THREE.MeshBasicMaterial( {color: 0x5C97BF, side:THREE.BackSide} );
 	var skybox_mesh = new THREE.Mesh(skybox_geometry, skybox_material);
 	scene.add(skybox_mesh);
-
-	//Create balcon floor
-	var floor_geometry = new THREE.BoxGeometry( 5, 0.2, 2.5);
-	var floor_texture = THREE.ImageUtils.loadTexture("images/textures/floor_texture.jpg");
-	floor_texture.wrapS = floor_texture.wrapT = THREE.RepeatWrapping;
-	floor_texture.repeat.set(10, 5);
-	var floor_material = new THREE.MeshLambertMaterial({map: floor_texture, side: THREE.DoubleSide});
-	var floor_mesh = new THREE.Mesh( floor_geometry, floor_material );
-	floor_mesh.position.y = 0.1;
 
 	//Create outside grass
 	var grass_geometry = new THREE.PlaneGeometry(100, 50, 20, 20);
@@ -354,7 +376,6 @@ function luka_init()
 	grass_mesh.rotation.x = Math.PI/2;
 	grass_mesh.position.z = -8;
 
-	scene.add(floor_mesh);
 	scene.add(grass_mesh);
 
 	//Add some elements
@@ -363,10 +384,7 @@ function luka_init()
 	text_elements.push(new TextElement(data_blob.temperature.toFixed(0) + '°C', 1, 0.8, -1));
 	text_elements.push(new TextElement("Much text, so fancy", -1.5, 1, -1));
 	text_elements.push(new TextElement("FERIFax™", -1.5, 1.3, -1));
-
-	//Set proper camera position TEMP
-	//camera.rotation.x = 0.1;
-	load_dct("images/textures/test.dct");
+	
 }
 
 function luka_update()
@@ -375,7 +393,6 @@ function luka_update()
 	{
 		text_elements[i].update();
 	}
-
 }
 
 //TODO PROJEKT RG
