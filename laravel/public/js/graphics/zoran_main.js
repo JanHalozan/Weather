@@ -93,8 +93,6 @@ var flashMesh;
 var flashOpacity;
 var flashGeometry = new THREE.BoxGeometry(15, 2, 10);
 
-var rainAudio;
-
 function zoran_update()
 {
 	if(isRaining)
@@ -102,7 +100,7 @@ function zoran_update()
 
 	if (thunderVisible)
 	{
-		if (thunderCount > 10)
+		if (thunderCount > 20)
 		{
 			scene.remove(thunder);
 			thunderVisible = false;
@@ -111,7 +109,7 @@ function zoran_update()
 		else
 		{
 			scene.remove(flashMesh);
-			var flashMaterial = new THREE.MeshBasicMaterial( {color: 0xFFFFFF, side:THREE.BackSide, transparent: true, opacity: 1.0 - (thunderCount / 10.0)} );
+			var flashMaterial = new THREE.MeshBasicMaterial( {color: 0xFFFFFF, side:THREE.BackSide, transparent: true, opacity: 1.0 - (thunderCount / 20.0)} );
 			flashMesh = new THREE.Mesh(flashGeometry, flashMaterial);
 			flashMesh.position.y = 1.25;
 			scene.add(flashMesh);
@@ -129,9 +127,6 @@ function zoran_update()
 				thunderCount = 0;
 				thunder.position.x = randomNumber(minX, maxX);
 				thunder.rotation.y = (90-X) * Math.PI / 180;
-
-				var audio = new Audio("sound/strike.mp3");
-				audio.play();
 
 				scene.add(thunder);
 			}
@@ -151,10 +146,6 @@ function zoran_update()
 				for(var i = 0; i < rainDrops.length; i++) scene.add(rainDrops[i]);
 				scene.add(clouds);
 
-				rainAudio = new Audio("sound/rain.mp3");
-				rainAudio.loop = true;
-				rainAudio.play();
-
 				scene.fog.density = fogdensity;
 			}
 			else
@@ -162,7 +153,6 @@ function zoran_update()
 				for(var i = 0; i < rainDrops.length; i++) scene.remove(rainDrops[i]);
 				scene.remove(clouds);
 				scene.remove(thunder);
-				rainAudio.stop();
 
 				scene.fog.density = 0;
 			}
