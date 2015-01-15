@@ -51,11 +51,11 @@ function jan_init()
     	});
 
 		object.castShadow = true;
-		for (var i = 0; i < 25; ++i)
+		for (var i = 0; i < 50; ++i)
 		{
 			var tree = object.clone();
 			tree.scale.set(0.5, 0.5, 0.5);
-			tree.position.set(-Math.round(random() * 20) + 10, 0, -Math.round(random() * 20));
+			tree.position.set(-Math.round(random() * 20) + 10, 0, -Math.round(random() * 40) - 2);
 			scene.add(tree);
 			trees[trees.length] = tree;
 		}
@@ -78,8 +78,6 @@ function jan_init()
 				child.material.side = THREE.DoubleSide;
 			}
 		})
-
-
 
 		object.position.set(13, 0, -12);
 		object.scale.set(1.5, 1.5, 1.5);
@@ -117,13 +115,13 @@ function jan_init()
 
 	scene.add(rightFence);
 
-	var backHouseGeometry = new THREE.PlaneGeometry(10, 10);
+	var backHouseGeometry = new THREE.PlaneGeometry(10, 5);
 	var houseTexture = THREE.ImageUtils.loadTexture("images/textures/back_house_tex.jpg");
-	var houseMaterial = new THREE.MeshLambertMaterial({map: houseTexture});
+	var houseMaterial = new THREE.MeshLambertMaterial({map: houseTexture, side: THREE.DoubleSide});
 	var housePlane = new THREE.Mesh(backHouseGeometry, houseMaterial);
 
-	housePlane.position.set(0, 0, 1.25);
-	housePlane.rotation.set(0, Math.PI, 0);
+	housePlane.position.set(-0.55, 2.5, 1.25);
+	housePlane.rotation.set(Math.PI, 0, Math.PI);
 
 	scene.add(housePlane);
 
