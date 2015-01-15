@@ -350,6 +350,19 @@ function load_dct(file_name)
 	oReq.send(null);
 }
 
+function getImageData(image)
+{
+    var canvas = document.createElement( 'canvas' );
+    canvas.width = image.width;
+    canvas.height = image.height;
+
+    var context = canvas.getContext( '2d' );
+    context.drawImage( image, 0, 0 );
+
+    return context.getImageData( 0, 0, image.width, image.height );
+}
+
+
 var text_elements = new Array();
 
 function luka_init()
@@ -361,18 +374,37 @@ function luka_init()
 	//Kreairamo balkon z DCT sliko, balkon se kar naredi v funkciji, hax for fax
 	load_dct("images/textures/test.dct");
 
-	//Create outside grass
-	var grass_geometry = new THREE.PlaneGeometry(100, 50, 20, 20);
-	var grass_texture = THREE.ImageUtils.loadTexture("images/textures/grass_texture.jpg");
-	grass_texture.wrapS = grass_texture.wrapT = THREE.RepeatWrapping;
-	grass_texture.repeat.set(150, 50);
-	var grass_material = new THREE.MeshLambertMaterial({map: grass_texture, side: THREE.DoubleSide});
-	grass_mesh = new THREE.Mesh( grass_geometry, grass_material );
-	grass_mesh.rotation.x = Math.PI/2;
-	grass_mesh.position.z = -8;
-	grass_mesh.receiveShadow = true;
+	//Load height map texture
+	var height_map = THREE.ImageUtils.loadTexture("images/textures/height.png", {}, function(){
+		var height_data = getImageData(height_map.image);
+		var grass_geometry = new THREE.PlaneGeometry(60, 60, 99, 49);
 
-	scene.add(grass_mesh);
+		for (var i = 0; i < grass_geometry.vertices.length; ++i)
+		{
+			var h = height_data.data[(i*4)+2];
+			//console.log(grass_geometry.vertices[i]);
+			grass_geometry.vertices[i].z = 0 - h/50;
+		}
+
+		var grass_texture = THREE.ImageUtils.loadTexture("images/textures/grass_texture.jpg");
+		grass_texture.wrapS = grass_texture.wrapT = THREE.RepeatWrapping;
+		grass_texture.repeat.set(150, 50);
+		var grass_material = new THREE.MeshBasicMaterial({map: grass_texture, side: THREE.DoubleSide});
+		grass_mesh = new THREE.Mesh( grass_geometry, grass_material );
+		grass_mesh.rotation.x = Math.PI/2;
+		grass_mesh.rotation.z = Math.PI;
+		grass_mesh.position.z = -2;
+		grass_mesh.receiveShadow = true;
+
+		scene.add(grass_mesh);
+	});
+	
+	/*
+	console.log(height_map);
+	//Create outside grass
+	
+	//Set plane height depending on texture
+	*/
 
 	//Add some elements
 	text_elements.push(new TextElement(data_blob.city_name + ', ' + data_blob.country, 1, 1.2, -1));
