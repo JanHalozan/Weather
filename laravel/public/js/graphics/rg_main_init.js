@@ -1,6 +1,8 @@
 //Create render and add canvas to scene
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight-74);
+renderer.shadowMapEnabled = true;
+renderer.shadowMapType = THREE.PCFSoftShadowMap;
 var canvas = renderer.domElement;
 canvas.style.position = "fixed";
 canvas.style.top = "50px";
@@ -21,12 +23,15 @@ scene.add(camera);
 var keyboard = new THREEx.KeyboardState();
 
 //Add basic lights to the scene
-var ambient_light = new THREE.AmbientLight(0x111111)
-var point_light = new THREE.PointLight(0xffffff, 1, 100);
-point_light.position.x = -3;
-point_light.position.y = 5;
-point_light.position.z = -3;
-scene.add(point_light);
+var ambient_light = new THREE.AmbientLight(0x333333)
+var spot_light = new THREE.SpotLight(0xffffff);
+spot_light.castShadow = true;
+spot_light.shadowMapWidth = 1024;
+spot_light.shadowMapHeight = 1024;
+//spot_light.shadowCameraVisible = true;
+spot_light.shadowDarkness = 0.5;
+spot_light.position.set(30, 100, -199);//x = 30;
+scene.add(spot_light);
 scene.add(ambient_light);
 
 //Create a resize event for the cavas to scale

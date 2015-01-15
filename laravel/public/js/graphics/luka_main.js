@@ -342,6 +342,7 @@ function load_dct(file_name)
 		var floor_material = new THREE.MeshLambertMaterial({map: texture, side: THREE.DoubleSide});
 		var floor_mesh = new THREE.Mesh( floor_geometry, floor_material );
 		floor_mesh.position.y = 0.1;
+		floor_mesh.receiveShadow = true;
 
 		scene.add(floor_mesh);
 	};
@@ -375,6 +376,7 @@ function luka_init()
 	grass_mesh = new THREE.Mesh( grass_geometry, grass_material );
 	grass_mesh.rotation.x = Math.PI/2;
 	grass_mesh.position.z = -8;
+	grass_mesh.receiveShadow = true;
 
 	scene.add(grass_mesh);
 
