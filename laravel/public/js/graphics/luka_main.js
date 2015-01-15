@@ -361,12 +361,6 @@ function luka_init()
 	//Kreairamo balkon z DCT sliko, balkon se kar naredi v funkciji, hax for fax
 	load_dct("images/textures/test.dct");
 
-	//Create single color skybox
-	var skybox_geometry = new THREE.BoxGeometry(1000, 1000, 1000);
-	var skybox_material = new THREE.MeshBasicMaterial( {color: 0x5C97BF, side:THREE.BackSide} );
-	var skybox_mesh = new THREE.Mesh(skybox_geometry, skybox_material);
-	scene.add(skybox_mesh);
-
 	//Create outside grass
 	var grass_geometry = new THREE.PlaneGeometry(100, 50, 20, 20);
 	var grass_texture = THREE.ImageUtils.loadTexture("images/textures/grass_texture.jpg");

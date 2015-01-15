@@ -119,6 +119,21 @@ function jan_init()
 	housePlane.rotation.set(0, Math.PI, 0);
 
 	scene.add(housePlane);
+
+	var skyboxGeometry = new THREE.BoxGeometry(60, 20, 60);
+	var skyboxTexture = new THREE.ImageUtils.loadTexture("images/textures/skybox.jpg");
+	var skyboxMaterial = new THREE.MeshBasicMaterial({color: 0x5C97BF, side:THREE.BackSide, map: skyboxTexture});
+	var skyboxMesh = new THREE.Mesh(skyboxGeometry, skyboxMaterial);
+	skyboxMesh.position.y = 9.5;
+	scene.add(skyboxMesh);
+
+	//Hides the top fucked up side of the box
+	var skyGeometry = new THREE.PlaneGeometry(75, 75);
+	var skyMaterial = new THREE.MeshBasicMaterial({color: 0x2c60a5, side:THREE.DoubleSide});
+	var skyMesh = new THREE.Mesh(skyGeometry, skyMaterial);
+	skyMesh.position.set(0, 19.4, 0);
+	skyMesh.rotation.set(Math.PI * 0.5, 0, 0);
+	scene.add(skyMesh);
 }
 
 function jan_update()
