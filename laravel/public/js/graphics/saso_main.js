@@ -21,7 +21,6 @@ var hitrostHoje = 0.05;
 var hoja = 1;
 var counter = 0;
 
-var zastavica = 0;
 var isKeyPresed = 0;
 
 // Za pogled kamere

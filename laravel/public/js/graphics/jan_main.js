@@ -6,12 +6,14 @@ var houseMesh;
 
 var seed = 2;
 var snowyTrees = false;
-var keyDown = false;
 
 var trees = [];
 var snowyTexture;
 var normalTexture;
 var needsTextureUpdate = false;
+
+var grassPresent = true;
+var grassMeshes = [];
 
 function random()
 {
@@ -79,10 +81,15 @@ function jan_init()
 
 
 
-		object.position.set(3, 0, -10);
-		object.scale.set(0.1, 0.1, 0.1);
-		object.rotation.set(0, Math.PI, 0);
+		object.position.set(13, 0, -12);
+		object.scale.set(1.5, 1.5, 1.5);
+		object.rotation.set(0, 0, 0);
 		scene.add(object);
+
+		var objectCopy = object.clone();
+		objectCopy.position.set(-15, 0, -5);
+		objectCopy.rotation.set(0, -Math.PI * 0.5, 0);
+		scene.add(objectCopy);
 	});
 
 	var fenceFrontGeometry = new THREE.PlaneGeometry(5, 0.5);
@@ -134,25 +141,60 @@ function jan_init()
 	skyMesh.position.set(0, 19.4, 0);
 	skyMesh.rotation.set(Math.PI * 0.5, 0, 0);
 	scene.add(skyMesh);
+
+	var grassGeometry = new THREE.PlaneGeometry(1, 1);
+	var grassTexture = new THREE.ImageUtils.loadTexture("images/textures/grass.png");
+	var grassMaterial = new THREE.MeshBasicMaterial({side: THREE.DoubleSide, map: grassTexture, transparent: true, opacity: 0.5});
+	var grassMesh = new THREE.Mesh(grassGeometry, grassMaterial);
+	grassMesh.position.set(0, 0, -5);
+	scene.add(grassMesh);
+	grassMeshes[grassMeshes.length] = grassMesh;
+
+	for (var i = 0; i < 1000; ++i)
+	{
+		var obj = grassMesh.clone();
+		obj.position.set(random() * 40 - 20, 0, random() * 20 - 22);
+		scene.add(obj);
+		grassMeshes[grassMeshes.length] = obj;
+	}
+
+	for (var i = 0; i < 200; ++i)
+	{
+		var obj = grassMesh.clone();
+		obj.position.set(-random() * 20 - 3, 0, random() * 5 - 5);
+		scene.add(obj);
+		grassMeshes[grassMeshes.length] = obj;
+	}
+
+	for (var i = 0; i < 200; ++i)
+	{
+		var obj = grassMesh.clone();
+		obj.position.set(random() * 20 + 3, 0, random() * 5 - 5);
+		scene.add(obj);
+		grassMeshes[grassMeshes.length] = obj;
+	}
+}
+
+function toggleGrass()
+{
+	if (grassPresent)
+	{
+		for (var i = 0; i < grassMeshes.length; ++i)
+			scene.remove(grassMeshes[i]);
+
+		grassPresent = false;
+	}
+	else
+	{
+		for (var i = 0; i < grassMeshes.length; ++i)
+			scene.add(grassMeshes[i]);
+
+		grassPresent = true;
+	}
 }
 
 function jan_update()
 {
-	if  (keyboard.pressed('l'))
-	{
-		if (!keyDown)
-		{
-			snowyTrees = !snowyTrees;
-			needsTextureUpdate = true;
-		}
-
-		keyDown = true;
-	}
-	else
-	{
-		keyDown = false;
-	}
-
 	if (needsTextureUpdate)
 	{
 		for (var i = 0; i < trees.length; ++i)
@@ -165,5 +207,24 @@ function jan_update()
 		}
 
 		needsTextureUpdate = false;
+	}
+
+	if (zastavica)
+	{
+		if (grassPresent) toggleGrass();
+		if (!snowyTrees)
+		{
+			snowyTrees = !snowyTrees;
+			needsTextureUpdate = true;
+		}
+	}
+	else
+	{
+		if (!grassPresent) toggleGrass();
+		if (snowyTrees)
+		{
+			snowyTrees = !snowyTrees;
+			needsTextureUpdate = true;
+		}
 	}
 }

@@ -1,4 +1,6 @@
 //Create render and add canvas to scene
+var zastavica = 0; //Smark stuff - Jan needs it
+
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight-74);
 renderer.shadowMapEnabled = true;
