@@ -6,7 +6,7 @@ var houseMesh;
 
 function jan_init() 
 {
-	var loader = new THREE.ObjectLoader();
+	var loader = new THREE.OBJLoader();
 
 	loader.load("models/tree.obj", function(object){
 
