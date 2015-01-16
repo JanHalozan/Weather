@@ -46,10 +46,6 @@ var audioSnow;
 
 function saso_init() 
 {
-	// Start screen
-	startScreen();
-	document.addEventListener( 'resize', startScreen, false);
-
 	// SNEG
 	initSnezinke(maxStSnezink, SnegMinX, SnegMaxX, SnegMinY, SnegMaxY, SnegMinZ, SnegMaxZ);
 	scene.fog.density = 0;
@@ -76,18 +72,10 @@ function saso_init()
 	// Inicializacija zvočnega efekta
 	audioSnow = new Audio("sounds/snow.mp3");
 	audioSnow.loop = true;
-
 }
 
 function saso_update()
 {
-	if (!(document.pointerLockElement === canvas || 
-		document.mozPointerLockElement === canvas ||
-  		document.webkitPointerLockElement === canvas)) {
-
-		document.getElementById("startGame").style.display = 'block';
-	}
-
 	if (keyboard.pressed('9')) {
 		if (isKeyPresed == 0) {
 			if (zastavica == 0) {
@@ -319,14 +307,4 @@ function snowSoundEffect(play)
         audioSnow.pause();
         audioClearSky.play();    
     }
-}
-
-function startScreen() {
-	document.getElementById("startGame").style.height = window.innerHeight - 74 + "px";
-	document.getElementById("startText").style.marginTop = (window.innerHeight/2 - 94) + "px";
-}
-
-function startClick() {
-	document.getElementById("startGame").style.display = 'none';
-	canvas.requestPointerLock();
 }

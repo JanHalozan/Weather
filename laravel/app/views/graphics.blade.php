@@ -10,32 +10,6 @@
 	<script type="text/javascript">
 	var data_blob = JSON.parse('{{$data_blob}}');
 	</script>
-	<style>
-  		#startGame {
-  			position: fixed;
-  			width: 100%;
-  			height: 100%;
-  			background-color: rgba(128, 128, 128, 0.3);
-  			top: 50px;
-  			left: 0;
-  			z-index: 9999;
-
-  			-webkit-touch-callout: none;
-    		-webkit-user-select: none;
-    		-khtml-user-select: none;
-    		-moz-user-select: none;
-    		-ms-user-select: none;
-    		user-select: none;
-
-    		cursor: pointer;
-  		}
-
-  		#startGame h1 {
-  			text-align: center;
-  			margin-top: 20%;
-  			color: white;
-  		}
-	</style>
 @stop
 
 @section('content')
@@ -48,10 +22,6 @@
 		{{HTML::script('js/graphics/jan_main.js')}}
 		{{HTML::script('js/graphics/fras_main.js')}}
 		{{HTML::script('js/graphics/zoran_main.js')}}
-		<div id="startGame" onclick="startClick()">
-			<div></div>
-			<h1 id="startText">Click for start / press ESC for exit</h1> 
-		</div>
 		{{HTML::script('js/graphics/saso_main.js')}}
 		{{HTML::script('js/graphics/rg_main.js')}}
 	</div>

@@ -27,13 +27,20 @@ var keyboard = new THREEx.KeyboardState();
 //Add basic lights to the scene
 var ambient_light = new THREE.AmbientLight(0x333333)
 var spot_light = new THREE.SpotLight(0xffffff);
+var spot_light2 = new THREE.SpotLight(0x333333);
+
+spot_light2.castShadow = false;
+spot_light2.position.set(0, 100, 100);
+
 spot_light.castShadow = true;
 spot_light.shadowMapWidth = 1024;
 spot_light.shadowMapHeight = 1024;
 //spot_light.shadowCameraVisible = true;
 spot_light.shadowDarkness = 0.5;
-spot_light.position.set(30, 100, -199);//x = 30;
+spot_light.position.set(0, 100, -199);//x = 30;
+
 scene.add(spot_light);
+scene.add(spot_light2);
 scene.add(ambient_light);
 
 //Create a resize event for the cavas to scale
