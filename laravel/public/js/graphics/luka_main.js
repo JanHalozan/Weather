@@ -399,20 +399,64 @@ function luka_init()
 
 		scene.add(grass_mesh);
 	});
-	
-	/*
-	console.log(height_map);
-	//Create outside grass
-	
-	//Set plane height depending on texture
-	*/
 
-	//Add some elements
-	text_elements.push(new TextElement(data_blob.city_name + ', ' + data_blob.country, 1, 1.2, -1));
-	text_elements.push(new TextElement(data_blob.condition, 1, 1, -1));
-	text_elements.push(new TextElement(data_blob.temperature.toFixed(0) + '°C', 1, 0.8, -1));
-	//text_elements.push(new TextElement("Much text, so fancy", -1.5, 1, -1));
-	//text_elements.push(new TextElement("FERIFax™", -1.5, 1.3, -1));
+	//Create text with data
+	//Main data
+	text_elements.push(new TextElement(data_blob.city_name + ', ' + data_blob.country, -0.8, 1.5, -2));
+	text_elements.push(new TextElement(data_blob.condition, -0.8, 1.3, -2));
+	text_elements.push(new TextElement(data_blob.temperature.toFixed(0) + '°C', -0.8, 1.1, -2));
+
+	//Activity data
+	text_elements.push(new TextElement(data_blob.task_title, 3.3, 1.5, -0.3));
+	text_elements.push(new TextElement(data_blob.task1, 3.3, 1.3, -0.3));
+	text_elements.push(new TextElement(data_blob.task2, 3.3, 1.1, -0.3));
+	text_elements.push(new TextElement(data_blob.task3, 3.3, 0.9, -0.3));
+
+	//Load clothes
+	var plane = new THREE.PlaneGeometry( 0.5, 0.5, 1, 1);
+
+	//Textures
+	var pants_texture = THREE.ImageUtils.loadTexture("images/" + data_blob.pants + "_legs.png");
+	var body_texture = THREE.ImageUtils.loadTexture("images/" + data_blob.body + "_torso.png");
+	var head_texture = THREE.ImageUtils.loadTexture("images/" + data_blob.head + "_head.png");
+	var boots_texture = THREE.ImageUtils.loadTexture("images/" + data_blob.boots + "_boots.png");
+	var guy_texture = new THREE.ImageUtils.loadTexture("images/WeatherGuy.png");
+
+	//Materials
+	var pants_material = new THREE.MeshBasicMaterial( {map: pants_texture, transparent:true} );
+	var body_material = new THREE.MeshBasicMaterial( {map: body_texture, transparent:true} );
+	var head_material = new THREE.MeshBasicMaterial( {map: head_texture, transparent:true} );
+	var boots_material = new THREE.MeshBasicMaterial( {map: boots_texture, transparent:true} );
+	var guy_material = new THREE.MeshBasicMaterial( {map: guy_texture, transparent:true} );
+
+	//Position them and add to scene
+	var guy_position = new THREE.Vector3(-2, 1, -1);
+
+	var pants_mesh = new THREE.Mesh(plane, pants_material);
+	pants_mesh.rotation.y = Math.PI/2;
+	pants_mesh.position.set(guy_position.x, guy_position.y, guy_position.z);
+
+	var body_mesh = new THREE.Mesh(plane, body_material);
+	body_mesh.rotation.y = Math.PI/2;
+	body_mesh.position.set(guy_position.x, guy_position.y, guy_position.z);
+
+	var head_mesh = new THREE.Mesh(plane, head_material);
+	head_mesh.rotation.y = Math.PI/2;
+	head_mesh.position.set(guy_position.x, guy_position.y, guy_position.z);
+
+	var boots_mesh = new THREE.Mesh(plane, boots_material);
+	boots_mesh.rotation.y = Math.PI/2;
+	boots_mesh.position.set(guy_position.x, guy_position.y, guy_position.z);
+
+	var guy_mesh = new THREE.Mesh(plane, guy_material);
+	guy_mesh.rotation.y = Math.PI/2;
+	guy_mesh.position.set(guy_position.x, guy_position.y, guy_position.z);
+
+	scene.add(guy_mesh);
+	scene.add(pants_mesh);
+	scene.add(body_mesh);
+	scene.add(head_mesh);
+	scene.add(boots_mesh);	
 
 	//Sound effect for clear sky
 	audioClearSky = new Audio("sounds/clearSky.mp3");
