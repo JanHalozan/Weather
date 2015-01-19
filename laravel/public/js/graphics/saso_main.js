@@ -72,6 +72,15 @@ function saso_init()
 	// Inicializacija zvočnega efekta
 	audioSnow = new Audio("sounds/snow.mp3");
 	audioSnow.loop = true;
+
+	if(data_blob.condition_code == "few_clouds"){
+		zastavica = 1;
+		scene.fog.density = fogDensity;
+		scene.add(grass_mesh_snow);
+		scene.remove(grass_mesh);
+		for(var i = 0; i < stSnezink; i++)
+			scene.add(snezinke[i]);
+	}
 }
 
 function saso_update()
