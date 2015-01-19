@@ -14,9 +14,9 @@ function initDelnaOblacnost()
     var cloud2_texture = THREE.ImageUtils.loadTexture("images/textures/cloud2.png");
     var cloud2_geometry = new THREE.PlaneGeometry( 6, 2);
     var cloud3_texture = THREE.ImageUtils.loadTexture("images/textures/cloud4.png");
-    var cloud3_geometry = new THREE.PlaneGeometry( 10, 4);
+    var cloud3_geometry = new THREE.PlaneGeometry( 11, 5);
     var cloud4_texture = THREE.ImageUtils.loadTexture("images/textures/cloud4.png");
-    var cloud4_geometry = new THREE.PlaneGeometry( 8, 3);
+    var cloud4_geometry = new THREE.PlaneGeometry( 9, 4);
 
 
 
@@ -51,23 +51,23 @@ function initDelnaOblacnost()
 
     //pozicija
     oblaki[0].position.x = -2;
-    oblaki[0].position.y = 15;
+    oblaki[0].position.y = 12;
     oblaki[0].position.z = -15;
     oblaki[0].rotation.x = Math.PI/2;
 
     oblaki[1].position.x = 10;
-    oblaki[1].position.y = 13;
+    oblaki[1].position.y = 12;
     oblaki[1].position.z = -8;
     oblaki[1].rotation.x = Math.PI/2;
 
 
     oblaki[2].position.x = -10;
-    oblaki[2].position.y = 14;
+    oblaki[2].position.y = 17;
     oblaki[2].position.z = -9;
     oblaki[2].rotation.x = Math.PI/2;
 
     oblaki[3].position.x = 10;
-    oblaki[3].position.y = 14;
+    oblaki[3].position.y = 17;
     oblaki[3].position.z = -1;
     oblaki[3].rotation.x = Math.PI/2;
     oblaki[3].rotation.z = Math.PI/32;
@@ -109,28 +109,46 @@ function initSonce()
 */
 }
 
-var oblacnoNebo;
+var cloud_big;
+var cloud_big2;
 
 function initOblacnost()
 {
-    var skyTexture = THREE.ImageUtils.loadTexture("images/textures/cloud2.png");
-    var sky_geometry = new THREE.PlaneGeometry(50, 40);
+    var Cloud2Texture = THREE.ImageUtils.loadTexture("images/textures/cloud4.png");
+    var cloud2_geometry = new THREE.PlaneGeometry(40, 30);
 
-    var sky_material = new THREE.MeshBasicMaterial({
-        map:skyTexture,
+    var CloudTexture = THREE.ImageUtils.loadTexture("images/textures/cloud2.png");
+    var cloud_geometry = new THREE.PlaneGeometry(40, 30);
+
+
+    var cloud_material = new THREE.MeshBasicMaterial({
+        map:CloudTexture,
         transparent:true,
-        opacity:0.5
+        opacity:0.6
     });
 
-    oblacnoNebo = new THREE.Mesh( sky_geometry, sky_material);
+    var cloud2_material = new THREE.MeshBasicMaterial({
+        map:Cloud2Texture,
+        transparent:true,
+        opacity:0.8
+    });
 
-    oblacnoNebo.position.z = -2 ;
-    oblacnoNebo.position.y = 14.9;
 
-    oblacnoNebo.rotation.x = Math.PI/2;
-    oblacnoNebo.rotation.z = Math.PI;
+    cloud_big2 = new THREE.Mesh( cloud2_geometry, cloud2_material);
+    cloud_big = new THREE.Mesh( cloud_geometry, cloud_material);
 
-    scene.add(oblacnoNebo);
+    cloud_big2.position.y = 16;
+    cloud_big2.rotation.x = Math.PI/2;
+    cloud_big2.position.z = 0;
+    cloud_big2.position.x = -10;
+
+    cloud_big.position.y = 18;
+    cloud_big.rotation.x = Math.PI/2;
+    cloud_big.position.z = -15;
+    cloud_big.position.x = 10;
+
+
+    
 
 }
 
@@ -144,8 +162,32 @@ function updateObPremiku()
       tempX = camera.position.x;
       tempY = camera.position.y;
 }*/
+var premik = 1;
 
 
+function updateDelnaOblacnost()
+{
+    if( premik > 0){
+        
+        oblaki[0].translateX(0.00025);
+        oblaki[1].translateX(-0.00025);
+        oblaki[2].translateX(0.0005);
+        oblaki[3].translateX(-0.001);
+        premik += 1;
+        if(premik == 10000)
+            premik = -10000;
+
+    }else
+    {  
+
+        oblaki[0].translateX(-0.00025);
+        oblaki[1].translateX(0.00025);
+        oblaki[2].translateX(-0.0005);
+        oblaki[3].translateX(0.001);
+        
+        premik += 1;
+    }
+}
 
 
 function fras_init() 
@@ -154,11 +196,12 @@ function fras_init()
 
     initDelnaOblacnost();
 
-    //initOblacnost();
+    initOblacnost();
 }
 
-
 var isOKeyPressed = false;
+var is7KeyPressed = false;
+var jeDelnoOblacno = false
 var jeOblacno = false;
 var isSKeyPressed = false;
 var jeSoncno = false;
@@ -167,18 +210,20 @@ function fras_update()
 {  
     sonce.lookAt(camera.position);
     //updateObPremiku();
+    updateDelnaOblacnost();
 
 // oblaki
 if (keyboard.pressed('o')) 
     {
-        if(!isOKeyPressed) 
+        if(!isOKeyPressed)
         {   
-            if(!jeOblacno)
+            if(!jeDelnoOblacno)
             {
                 for(var i=0;i<4;i++)
                 {
                     scene.add(oblaki[i]);
                 }
+                scene.add(sonce);
             }
             else
             {
@@ -186,10 +231,11 @@ if (keyboard.pressed('o'))
                 {
                     scene.remove(oblaki[i]);
                 }
+                scene.remove(sonce);
                 
             }
 
-            jeOblacno = !jeOblacno;
+            jeDelnoOblacno = !jeDelnoOblacno;
         
         }
         
@@ -205,18 +251,13 @@ if (keyboard.pressed('o'))
         {   
             if(!jeSoncno)
             {
-                for(var i=0;i<4;i++)
-                {
                     scene.add(sonce);
-                }
+                
             }
             else
             {
-                for(var i=0;i<4;i++)
-                {
                     scene.remove(sonce);
-                }
-                
+                   
             }
 
             jeSoncno = !jeSoncno;
@@ -227,6 +268,45 @@ if (keyboard.pressed('o'))
     } 
     else  
         is8KeyPressed = false;
+
+    //Oblacnost
+    if (keyboard.pressed('7')) 
+    {
+        if(!is7KeyPressed) 
+        {   
+            if(!jeOblacno)
+            {
+               // scene.add(oblacnoNebo);
+                scene.add(cloud_big);
+                scene.add(cloud_big2);
+
+                        for(var i=0;i<4;i++)
+                    {
+                        scene.add(oblaki[i]);
+                    }
+
+            }
+            else
+            {
+                //scene.remove(oblacnoNebo);
+                scene.remove(cloud_big);
+                scene.remove(cloud_big2);
+
+                for(var i=0;i<4;i++)
+                {
+                    scene.remove(oblaki[i]);
+                }
+                
+            }
+
+            jeOblacno = !jeOblacno;
+        
+        }
+        
+        is7KeyPressed = true;
+    } 
+    else  
+        is7KeyPressed = false;
 
    
     //oblak1.lookAt(camera.position);
