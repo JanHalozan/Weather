@@ -19,7 +19,7 @@ class IndexController extends BaseController
         
         $view = View::make('index');
 
-/*
+
         if (Cookie::get('city_id'))
         {
             $city = Cities::find(Cookie::get('city_id'));
@@ -69,15 +69,12 @@ class IndexController extends BaseController
             }
             else
             {
-                $view->message = "We were unable to find a nearby location, using Maribor as a fallback.";
+                $view->message = "We were unable to find a nearby location, using Ljubljana as a fallback.";
 
-                $city = Cities::first();
+                $city = Cities::where('name', 'Ljubljana')->first();
             }
         }
 
-*/
-        $city = Cities::first();
-        $city->id = 2;
         //TODO finish the population of view with weather data
         //Populate the view with weather data
         $weatherInfo = CurrentWeather::where('city_id', '=', $city->id)->orderBy('reading_time', 'desc')->firstOrFail();
