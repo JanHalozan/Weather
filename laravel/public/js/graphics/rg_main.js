@@ -1,8 +1,8 @@
 //Call all init functions
 luka_init();
+saso_init();
 jan_init();
 fras_init();
-saso_init();
 zoran_init();
 
 
