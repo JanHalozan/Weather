@@ -6,7 +6,7 @@
 	{{HTML::script('js/graphics/three.min.js')}}
 	{{HTML::script('js/graphics/OBJLoader.js')}}
 	{{HTML::script('js/graphics/controls/threex.keyboardstate.js')}}
-	{{HTML::script('js/graphics/controls/helvetiker_regular.typeface.js')}}
+	{{HTML::script('js/graphics/controls/droid_sans_regular.typeface.js')}}
 	<script type="text/javascript">
 	var data_blob = JSON.parse('{{$data_blob}}');
 	</script>

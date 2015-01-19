@@ -1,7 +1,7 @@
 function TextElement(text, pos_x, pos_y, pos_z)
 {
 	//Create text
-	var text_geo = new THREE.TextGeometry(String(text), {size: 0.1, height: 0.01} );	
+	var text_geo = new THREE.TextGeometry(String(text), {size: 0.1, height: 0.01, font: "droid sans"} );	
 	text_geo.computeBoundingBox();
 	var x = text_geo.boundingBox.max.x;
 	text_geo.applyMatrix( new THREE.Matrix4().makeTranslation(-text_geo.boundingBox.max.x/2, -text_geo.boundingBox.max.y/2, 0) );
@@ -397,14 +397,17 @@ function luka_init()
 		grass_mesh.position.z = -2;
 		grass_mesh.receiveShadow = true;
 
-		scene.add(grass_mesh);
+		if (data_blob.condition_code != "snow")
+		{
+			scene.add(grass_mesh);
+		}
 	});
 
 	//Create text with data
 	//Main data
-	text_elements.push(new TextElement(data_blob.city_name + ', ' + data_blob.country, -0.8, 1.5, -2));
-	text_elements.push(new TextElement(data_blob.condition, -0.8, 1.3, -2));
-	text_elements.push(new TextElement(data_blob.temperature.toFixed(0) + '°C', -0.8, 1.1, -2));
+	text_elements.push(new TextElement(data_blob.city_name + ', ' + data_blob.country, -4, 1.5, -1));
+	text_elements.push(new TextElement(data_blob.condition, -4, 1.3, -1));
+	text_elements.push(new TextElement(data_blob.temperature.toFixed(0) + '°C', -4, 1.1, -1));
 
 	//Activity data
 	text_elements.push(new TextElement(data_blob.task_title, 3.3, 1.5, -0.3));
@@ -413,7 +416,7 @@ function luka_init()
 	text_elements.push(new TextElement(data_blob.task3, 3.3, 0.9, -0.3));
 
 	//Load clothes
-	var plane = new THREE.PlaneGeometry( 0.5, 0.5, 1, 1);
+	var plane = new THREE.PlaneGeometry( 0.5, 1, 1, 1);
 
 	//Textures
 	var pants_texture = THREE.ImageUtils.loadTexture("images/" + data_blob.pants + "_legs.png");
@@ -430,23 +433,23 @@ function luka_init()
 	var guy_material = new THREE.MeshBasicMaterial( {map: guy_texture, transparent:true} );
 
 	//Position them and add to scene
-	var guy_position = new THREE.Vector3(-2, 1, -1);
+	var guy_position = new THREE.Vector3(-4, 1.3, 0.2);
 
 	var pants_mesh = new THREE.Mesh(plane, pants_material);
 	pants_mesh.rotation.y = Math.PI/2;
-	pants_mesh.position.set(guy_position.x, guy_position.y, guy_position.z);
+	pants_mesh.position.set(guy_position.x+0.0001, guy_position.y, guy_position.z);
 
 	var body_mesh = new THREE.Mesh(plane, body_material);
 	body_mesh.rotation.y = Math.PI/2;
-	body_mesh.position.set(guy_position.x, guy_position.y, guy_position.z);
+	body_mesh.position.set(guy_position.x+0.0002, guy_position.y, guy_position.z);
 
 	var head_mesh = new THREE.Mesh(plane, head_material);
 	head_mesh.rotation.y = Math.PI/2;
-	head_mesh.position.set(guy_position.x, guy_position.y, guy_position.z);
+	head_mesh.position.set(guy_position.x+0.0003, guy_position.y, guy_position.z);
 
 	var boots_mesh = new THREE.Mesh(plane, boots_material);
 	boots_mesh.rotation.y = Math.PI/2;
-	boots_mesh.position.set(guy_position.x, guy_position.y, guy_position.z);
+	boots_mesh.position.set(guy_position.x+0.0002, guy_position.y, guy_position.z);
 
 	var guy_mesh = new THREE.Mesh(plane, guy_material);
 	guy_mesh.rotation.y = Math.PI/2;
