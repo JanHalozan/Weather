@@ -174,8 +174,8 @@ function updateDelnaOblacnost()
         oblaki[2].translateX(0.0005);
         oblaki[3].translateX(-0.001);
         premik += 1;
-        if(premik == 10000)
-            premik = -10000;
+        if(premik == 1000)
+            premik = -1000;
 
     }else
     {  
