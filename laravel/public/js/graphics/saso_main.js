@@ -73,7 +73,7 @@ function saso_init()
 	audioSnow = new Audio("sounds/snow.mp3");
 	audioSnow.loop = true;
 
-	if(data_blob.condition_code == "few_clouds"){
+	if(data_blob.condition_code == "snow"){
 		zastavica = 1;
 		scene.fog.density = fogDensity;
 		scene.add(grass_mesh_snow);
@@ -85,7 +85,7 @@ function saso_init()
 
 function saso_update()
 {
-	if (keyboard.pressed('9')) {
+	if (keyboard.pressed('b')) {
 		if (isKeyPresed == 0) {
 			if (zastavica == 0) {
 				zastavica = 1;

@@ -197,6 +197,30 @@ function fras_init()
     initDelnaOblacnost();
 
     initOblacnost();
+
+    if(data_blob.condition_code == "clear_sky")
+    {
+        scene.add(sonce);
+    }
+    if(data_blob.condition_code == "few_clouds" || data_blob.condition_code == "scattered_clouds" )
+    {
+        scene.add(sonce);
+         for(var i=0;i<4;i++)
+         {
+            scene.add(oblaki[i]);
+         }
+    }
+    if(data_blob.condition_code == "broken_clouds")
+    {
+        scene.add(cloud_big);
+        scene.add(cloud_big2);
+
+        for(var i=0;i<4;i++)
+        {
+            scene.add(oblaki[i]);
+        }
+    }
+
 }
 
 var isOKeyPressed = false;
@@ -245,7 +269,7 @@ if (keyboard.pressed('o'))
         isOKeyPressed = false;
 
     // sonce
-    if (keyboard.pressed('8')) 
+    if (keyboard.pressed('p')) 
     {
         if(!is8KeyPressed) 
         {   
@@ -270,7 +294,7 @@ if (keyboard.pressed('o'))
         is8KeyPressed = false;
 
     //Oblacnost
-    if (keyboard.pressed('7')) 
+    if (keyboard.pressed('i')) 
     {
         if(!is7KeyPressed) 
         {   
