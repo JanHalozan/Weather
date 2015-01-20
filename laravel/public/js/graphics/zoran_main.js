@@ -95,7 +95,7 @@ function rainStart()
 
 function zoran_init() 
 {
-	if (data_blob.condition_code = "shower_rain")
+	if (data_blob.condition_code == "shower_rain")
 		rainDensity = 3000;
 
 	initRaindrops();

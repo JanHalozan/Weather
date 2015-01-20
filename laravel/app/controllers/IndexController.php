@@ -19,7 +19,7 @@ class IndexController extends BaseController
         
         $view = View::make('index');
 
-
+        //Get citie
         if (Cookie::get('city_id'))
         {
             $city = Cities::find(Cookie::get('city_id'));

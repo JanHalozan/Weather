@@ -84,8 +84,9 @@ class GraphicsController extends BaseController
 
         //Get the condition string
         $condition = Conditions::find($weatherInfo->condition_id)->condition;
-        $data['condition'] = Lang::get('conditions.' . $condition);
         $data['condition_code'] = $condition;
+        $data['condition'] = Lang::get('conditions.' . $condition);
+        //echo $data['condition_code'] . " " . $data['condition'];
 
         //Get country data
         $country = Countries::find($city->country_id);
