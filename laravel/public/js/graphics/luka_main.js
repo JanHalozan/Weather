@@ -408,7 +408,7 @@ function luka_init()
 	console.log(data_blob);
 	text_elements.push(new TextElement(data_blob.city_name + ', ' + data_blob.country, -4, 1.5, -1));
 	text_elements.push(new TextElement(data_blob.condition, -4, 1.3, -1));
-	text_elements.push(new TextElement(data_blob.temperature.toFixed(0).toString() + '°C', -4, 1.1, -1));
+	text_elements.push(new TextElement(parseFloat(data_blob.temperature).toFixed(0).toString() + '°C', -4, 1.1, -1));
 
 	//Activity data
 	text_elements.push(new TextElement(data_blob.task_title, 3.3, 1.5, -0.3));
