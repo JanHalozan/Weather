@@ -14,8 +14,6 @@
 
 @section('content')
 	<div id="main_view">
-		<!--HUD ELEMENTS -->
-		<span id="hud_location"></span>
 		<!--First call main init, where the important stuff is setup, then call each dev's stuff, and finall go into the main loop-->
 		{{HTML::script('js/graphics/rg_main_init.js')}}
 		{{HTML::script('js/graphics/luka_main.js')}}
