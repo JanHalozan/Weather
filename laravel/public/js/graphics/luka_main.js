@@ -368,10 +368,6 @@ var audioClearSky;
 
 function luka_init()
 {
-	var name_hud = document.getElementById("hud_location");
-	name_hud.style.left = "20px";
-	name_hud.style.top = "50px";
-
 	//Kreairamo balkon z DCT sliko, balkon se kar naredi v funkciji, hax for fax
 	load_dct("images/textures/test.dct");
 
