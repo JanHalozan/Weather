@@ -4,7 +4,7 @@ var minX = -15,
 	minY = 0,
 	maxY = 7,
 	minZ = -10,
-	maxZ = 0;
+	maxZ = 5;
 
 /* scene related variables */
 var rainDrops = [];
@@ -84,17 +84,45 @@ var audioThunder;
 
 function randomNumber(low, high) { return Math.random() * (high - low) + low; }
 
+function rainStart()
+{
+	isRaining = true;
+	for(var i = 0; i < rainDrops.length; i++) scene.add(rainDrops[i]);
+	scene.add(clouds);
+
+	rainSoundEffect(true);
+}
+
 function zoran_init() 
 {
+	if (data_blob.condition_code = "shower_rain")
+		rainDensity = 3000;
+
 	initRaindrops();
 	initClouds();
 	initThunder();
 
-	// sound effect
+	// sound effects
 	audioRain = new Audio("sounds/rain.mp3");
 	audioRain.loop = true;
-
 	audioThunder = new Audio("sounds/thunder.mp3");
+
+	// load weather
+	if (data_blob.condition_code == "rain")
+	{
+		rainStart();
+		scene.fog.density = 0.04;
+	}
+	else if (data_blob.condition_code == "shower_rain")
+	{
+		rainStart();
+		scene.fog.density = fogdensity;
+	}
+	else if (data_blob.condition_code == "thunderstorm")
+	{
+		rainStart();
+		scene.fog.density = fogdensity;
+	}
 }
 
 var thunderCount = 0;
