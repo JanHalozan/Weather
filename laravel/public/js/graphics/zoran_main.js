@@ -6,6 +6,9 @@ var minX = -15,
 	minZ = -10,
 	maxZ = 5;
 
+var temperatureChanged = false;
+var temperatureRead = 0;
+
 /* scene related variables */
 var rainDrops = [];
 var clouds = null;
@@ -16,24 +19,27 @@ var rainDensity = 2000;
 var rainfallSpeed = 0.25;
 var isRaining = false;
 var fogdensity = 0.075;
+var isThunderstorm = false;
 
 /* other variables */
 var windSpeed = 0.1;
 var isRKeyPressed = false;
 var isTKeyPressed = false;
+var isNumKeyPressed = false;
 var thunderVisible = false;
 
 /* FUNCTIONS */
 function initClouds()
 {
 	var cloudTexture = THREE.ImageUtils.loadTexture("images/textures/cloud.png");
-	var cloudPlaneGeometry = new THREE.PlaneGeometry(50.0, 10.0);
-	var cloudMaterial = new THREE.MeshBasicMaterial({map:cloudTexture, transparent:true, opacity: 1.2});
+	var cloudPlaneGeometry = new THREE.PlaneGeometry(80.0, 80.0);
+	var cloudMaterial = new THREE.MeshBasicMaterial({map:cloudTexture, transparent:true, opacity: 1.4});
 	
 	clouds = new THREE.Mesh(cloudPlaneGeometry, cloudMaterial);
-	clouds.position.x = 0.0;
-	clouds.position.y = 7;
-	clouds.position.z = -6;
+	clouds.position.x = 5.0;
+	clouds.position.y = 8;
+	clouds.position.z = 11;
+	clouds.rotation.x = 1.5;
 }
 
 function initThunder()
@@ -81,6 +87,7 @@ function rainfall(rainDensity, rainfallSpeed, windSpeed)
 
 var audioRain;
 var audioThunder;
+var tempCount = 0.0;
 
 function randomNumber(low, high) { return Math.random() * (high - low) + low; }
 
@@ -91,6 +98,17 @@ function rainStart()
 	scene.add(clouds);
 
 	rainSoundEffect(true);
+}
+
+function thunderStrike()
+{
+	audioThunder.load();
+	thunderVisible = true;
+	thunderCount = 0;
+	thunder.position.x = randomNumber(minX, maxX);
+	thunder.rotation.y = (90-X) * Math.PI / 180;
+
+	scene.add(thunder);
 }
 
 function zoran_init() 
@@ -122,6 +140,8 @@ function zoran_init()
 	{
 		rainStart();
 		scene.fog.density = fogdensity;
+		isThunderstorm = true;
+		setInterval(thunderStrike, 24000);
 	}
 }
 
@@ -171,7 +191,8 @@ function zoran_update()
 			thunderCount++;
 		}
 	}
-
+	
+	/*
 	if (keyboard.pressed('t')) 
 	{
 		if(!isTKeyPressed) 
@@ -191,6 +212,7 @@ function zoran_update()
 	} 
 	else
 		isTKeyPressed = false;
+	*/
 		
 	if (keyboard.pressed('r')) 
 	{
@@ -221,4 +243,40 @@ function zoran_update()
 	} 
 	else
 		isRKeyPressed = false;
+	
+	/* PLOŠČICA - TEMPERATURA */
+	if (keyboard.pressed('1') || keyboard.pressed('2') || keyboard.pressed('3') || keyboard.pressed('4') || keyboard.pressed('5') || keyboard.pressed('6') || keyboard.pressed('7') || keyboard.pressed('8') || keyboard.pressed('9')) 
+	{
+		if(!isNumKeyPressed) 
+		{
+			var number;
+			if (keyboard.pressed('1')) number = 1.0;
+			else if (keyboard.pressed('2'))	number = 2.0;
+			else if (keyboard.pressed('3'))	number = 3.0;
+			else if (keyboard.pressed('4'))	number = 4.0;
+			else if (keyboard.pressed('5'))	number = 5.0;
+			else if (keyboard.pressed('6'))	number = 6.0;
+			else if (keyboard.pressed('7'))	number = 7.0;
+			else if (keyboard.pressed('8'))	number = 8.0;
+			else if (keyboard.pressed('9'))	number = 9.0;
+			else number = 0.0;
+
+			if (tempCount == 0)
+				temperatureRead = number;
+			else if (tempCount == 1)
+			{
+				temperatureRead = temperatureRead * 10.0 + number;
+				temperatureChanged = true;
+				tempCount = -1;
+			}
+
+			tempCount = tempCount + 1;
+		}
+		
+		isNumKeyPressed = true;
+	} 
+	else
+		isNumKeyPressed = false;
 }
+
+
