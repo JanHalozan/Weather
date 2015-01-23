@@ -245,7 +245,7 @@ function zoran_update()
 		isRKeyPressed = false;
 	
 	/* PLOŠČICA - TEMPERATURA */
-	if (keyboard.pressed('1') || keyboard.pressed('2') || keyboard.pressed('3') || keyboard.pressed('4') || keyboard.pressed('5') || keyboard.pressed('6') || keyboard.pressed('7') || keyboard.pressed('8') || keyboard.pressed('9')) 
+	if (keyboard.pressed('0') || keyboard.pressed('1') || keyboard.pressed('2') || keyboard.pressed('3') || keyboard.pressed('4') || keyboard.pressed('5') || keyboard.pressed('6') || keyboard.pressed('7') || keyboard.pressed('8') || keyboard.pressed('9')) 
 	{
 		if(!isNumKeyPressed) 
 		{
