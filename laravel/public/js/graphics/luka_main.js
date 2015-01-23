@@ -365,6 +365,7 @@ function getImageData(image)
 
 var text_elements = new Array();
 var audioClearSky;
+var temperature_text;
 
 function luka_init()
 {
@@ -404,7 +405,7 @@ function luka_init()
 	console.log(data_blob);
 	text_elements.push(new TextElement(data_blob.city_name + ', ' + data_blob.country, -4, 1.5, -1));
 	text_elements.push(new TextElement(data_blob.condition, -4, 1.3, -1));
-	text_elements.push(new TextElement(parseFloat(data_blob.temperature).toFixed(0).toString() + '°C', -4, 1.1, -1));
+	temperature_text = new TextElement(parseFloat(data_blob.temperature).toFixed(0).toString() + '°C', -4, 1.1, -1);
 
 	//Activity data
 	text_elements.push(new TextElement(data_blob.task_title, 3.3, 1.5, -0.3));
@@ -466,6 +467,17 @@ function luka_init()
 
 function luka_update()
 {
+	//Zoki temp
+	if (temperatureChanged == true)
+	{
+		temperatureChanged = false;
+		//Remove old text
+		scene.remove(temperature_text.mesh);
+		scene.remove(temperature_text.plate);
+		temperature_text = new TextElement(parseFloat(temperatureRead).toFixed(0).toString() + '°C', -4, 1.1, -1);
+	}
+
+	temperature_text.update();
 	for (i = 0; i < text_elements.length; ++i)
 	{
 		text_elements[i].update();
