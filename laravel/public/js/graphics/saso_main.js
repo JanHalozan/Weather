@@ -109,24 +109,6 @@ function saso_update()
 			}
 		}
 		isKeyPresed = 1;
-	} 
-	else if (keyboard.pressed('m')) {
-		if (isKeyPresed == 0) {
-			if(stSnezink < maxStSnezink - 100)
-				stSnezink += 100;
-			for(var i = 0; i < 100; i++)
-				scene.add(snezinke[i + (stSnezink - 100)]);
-		}
-		isKeyPresed = 1;
-	}
-	else if (keyboard.pressed('n')) {
-		if (isKeyPresed == 0) {
-			if(stSnezink > 200)
-				stSnezink -= 100;
-			for(var i = 0; i < 100; i++)
-				scene.remove(snezinke[i+stSnezink]);
-		}
-		isKeyPresed = 1;
 	}  
 	else {
 		isKeyPresed = 0;
@@ -140,6 +122,19 @@ function saso_update()
 		else if (keyboard.pressed('left')) {
 			if(mocVetra > -0.1)
 				mocVetra -= 0.001;
+		} 
+
+		if (keyboard.pressed('m')) {
+			if(stSnezink < maxStSnezink - 100)
+				stSnezink += 10;
+			for(var i = 0; i < 100; i++)
+				scene.add(snezinke[i + (stSnezink - 100)]);
+		}
+		else if (keyboard.pressed('n')) {
+				if(stSnezink > 200)
+					stSnezink -= 10;
+				for(var i = 0; i < 100; i++)
+					scene.remove(snezinke[i+stSnezink]);
 		} 
 	}	 
 
