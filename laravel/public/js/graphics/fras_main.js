@@ -189,6 +189,54 @@ function updateDelnaOblacnost()
     }
 }
 
+function moveCloudsWithKeys()
+{
+    var speed = 0.01;
+    if (keyboard.pressed('left'))
+    {
+        for (var i = 0; i < 4; ++i)
+        {
+            oblaki[i].translateX(-speed);
+        }
+        cloud_big.translateX(-speed);
+        cloud_big2.translateX(-speed);
+    }
+    else if (keyboard.pressed('right'))
+    {
+        for (var i = 0; i < 4; ++i)
+        {
+            oblaki[i].translateX(speed);
+        }
+        cloud_big.translateX(speed);
+        cloud_big2.translateX(speed);
+    }
+
+    if (keyboard.pressed('up'))
+    {
+        for (var i = 0; i < 4; ++i)
+        {
+            oblaki[i].translateY(-speed);
+        }
+        cloud_big.translateY(-speed);
+        cloud_big2.translateY(-speed);
+    }
+    else if (keyboard.pressed('down'))
+    {
+        for (var i = 0; i < 4; ++i)
+        {
+            oblaki[i].translateY(speed);
+        }
+        cloud_big.trtanslateY(speed);
+        cloud_big2.tttranslateY(speed);
+    }
+}
+
+var isOKeyPressed = false;
+var is7KeyPressed = false;
+var jeDelnoOblacno = false
+var jeOblacno = false;
+var isSKeyPressed = false;
+var jeSoncno = false;
 
 function fras_init() 
 {
@@ -209,6 +257,7 @@ function fras_init()
          {
             scene.add(oblaki[i]);
          }
+         jeDelnoOblacno = true;
     }
     if(data_blob.condition_code == "broken_clouds")
     {
@@ -219,23 +268,18 @@ function fras_init()
         {
             scene.add(oblaki[i]);
         }
+
+        jeOblacno = true;
     }
 
 }
-
-var isOKeyPressed = false;
-var is7KeyPressed = false;
-var jeDelnoOblacno = false
-var jeOblacno = false;
-var isSKeyPressed = false;
-var jeSoncno = false;
 
 function fras_update()
 {  
     sonce.lookAt(camera.position);
     //updateObPremiku();
     updateDelnaOblacnost();
-
+    moveCloudsWithKeys();
 // oblaki
 if (keyboard.pressed('o')) 
     {
