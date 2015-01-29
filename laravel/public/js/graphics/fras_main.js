@@ -226,8 +226,8 @@ function moveCloudsWithKeys()
         {
             oblaki[i].translateY(speed);
         }
-        cloud_big.trtanslateY(speed);
-        cloud_big2.tttranslateY(speed);
+        cloud_big.translateY(speed);
+        cloud_big2.translateY(speed);
     }
 }
 
