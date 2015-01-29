@@ -127,10 +127,21 @@ function saso_update()
 				scene.remove(snezinke[i+stSnezink]);
 		}
 		isKeyPresed = 1;
-	}   
+	}  
 	else {
 		isKeyPresed = 0;
 	}
+
+	if(zastavica == 1) {
+		if (keyboard.pressed('right')) {
+			if(mocVetra < 0.1)
+				mocVetra += 0.001;
+		}
+		else if (keyboard.pressed('left')) {
+			if(mocVetra > -0.1)
+				mocVetra -= 0.001;
+		} 
+	}	 
 
 	if (zastavica == 1)
 		padanjeSnezink(stSnezink, hitrostPadanja, mocVetra, SnegMinY, SnegMaxY, SnegMinX, SnegMaxX, SnegMinZ, SnegMaxZ);
@@ -235,6 +246,46 @@ function premikanjeTipkovnica(maxLevo, maxDesno, maxNaprej, maxNazaj) {
 	if ( document.pointerLockElement === canvas || 
 		 document.mozPointerLockElement === canvas ||
   		 document.webkitPointerLockElement === canvas ) {
+
+		if(jeOblacno == false && zastavica == 0 && jeDelnoOblacno == false) {
+			if (keyboard.pressed('up') && keyboard.pressed('left')){
+				camera.translateZ( -hitrostHoje/1.2 );
+				camera.translateX( -hitrostHoje/1.2 );
+				simulacijaHoje();
+			}
+			else if (keyboard.pressed('up') && keyboard.pressed('right')){
+				camera.translateZ( -hitrostHoje/1.2 );
+				camera.translateX( hitrostHoje/1.2 );
+				simulacijaHoje();
+			}
+			else if (keyboard.pressed('down') && keyboard.pressed('left')){
+				camera.translateZ( hitrostHoje/1.2 );
+				camera.translateX( -hitrostHoje/1.2 );
+				simulacijaHoje();
+			}
+			else if (keyboard.pressed('down') && keyboard.pressed('right')){
+				camera.translateZ( hitrostHoje/1.2 );
+				camera.translateX( hitrostHoje/1.2 );
+				simulacijaHoje();
+			}
+			else if (keyboard.pressed('up')) {
+				camera.translateZ( -hitrostHoje );
+				simulacijaHoje();
+			} 
+			else if (keyboard.pressed('right')) {
+				camera.translateX( hitrostHoje );
+				simulacijaHoje();
+			} 
+			else if (keyboard.pressed('down')) {
+				camera.translateZ( hitrostHoje );
+				simulacijaHoje();
+				
+			} 
+			else if (keyboard.pressed('left')) {
+				camera.translateX( -hitrostHoje );
+				simulacijaHoje();
+			}
+		}
 
 		if (keyboard.pressed('w') && keyboard.pressed('a')){
 			camera.translateZ( -hitrostHoje/1.2 );
