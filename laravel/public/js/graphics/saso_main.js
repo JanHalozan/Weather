@@ -124,13 +124,13 @@ function saso_update()
 				mocVetra -= 0.001;
 		} 
 
-		if (keyboard.pressed('m')) {
+		if (keyboard.pressed('up')) {
 			if(stSnezink < maxStSnezink - 100)
 				stSnezink += 10;
 			for(var i = 0; i < 100; i++)
 				scene.add(snezinke[i + (stSnezink - 100)]);
 		}
-		else if (keyboard.pressed('n')) {
+		else if (keyboard.pressed('down')) {
 				if(stSnezink > 200)
 					stSnezink -= 10;
 				for(var i = 0; i < 100; i++)
