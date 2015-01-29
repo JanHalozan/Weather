@@ -192,7 +192,7 @@ function zoran_update()
 		}
 	}
 	
-	/*
+	
 	if (keyboard.pressed('t')) 
 	{
 		if(!isTKeyPressed) 
@@ -212,7 +212,7 @@ function zoran_update()
 	} 
 	else
 		isTKeyPressed = false;
-	*/
+	
 		
 	if (keyboard.pressed('r')) 
 	{
