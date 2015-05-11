@@ -1,5 +1,11 @@
 #Welcome to Smart Weather Agent repo
 
+This is (was) a smart web agent developed as a project assignment on college. It pulls weather info from weather APIs, parses it, stores it in a database and then uses it as a data source for displaying current weather at a select location, displaying possible activities and suggesting appropriate clothing.
+
+_This readme and the code needs a lot of fixes to be actually usable as a public repository so please stay tuned. We need to publish the ER diagram, some guidelines on how to make this project tick, update the readme, ..._
+
+_Everything below this comment is as it was when the project was finished._
+
 ##HOWTOSETUP DEVELOPMENT STUFF
 Na hitro v srjanscini, ker sem popizdovo poleg.
 
